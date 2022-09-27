@@ -6,12 +6,30 @@ TrackingTime is a collaborative, cloud-based time tracking service that helps bu
 
 ## Roadmap
 
-- Day 1 - Static pages 
+- Day 2 - Static pages with Responsiveness
   - Navbar - Suraj
   - Home page - Shivam
   - Integration page - Nirmal
   - Blog page - Priyanshu
   - Login - Sandhya
 
-- Add more integrations
+- Day 3 - Backend & Tool 
+  - Create Server.js - Everyone
+  - User Features - Sandhya & Priyanshu & Shivam
+  - Projects Features - Nirmal & Suraj
+  - Server Deployement - Everyone
+
+- Day 4 - Tool Projects Static
+  - Projects Frontend(Project Modal, Side Bar) - Priyanshu
+  - List (Task items, butoon to add, Task Modal ) - Nirmal
+  - Report - Suraj
+  - Tool Navbar - Shivam
+  - Notes - Sandhya
+  
+- Day 5 - Tool Projects Functionality
+  - Projects Frontend(Project Modal, Side Bar) Functional - Priyanshu
+  - List (Task items, butoon to add, Task Modal ) Functional - Nirmal
+  - Report  Functional - Suraj
+  - Tool Navbar  Functional - Shivam
+  - Notes  Functional - Sandhya  
 
