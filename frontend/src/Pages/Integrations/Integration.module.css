@@ -21,12 +21,14 @@
 .header>.row>.col_12>h1 {
     color: #2a2e4e;
     font-size: 3rem;
+    font-weight: 700;
     width: fit-content;
 }
 
 .header>.row>.col_12>h2 {
     color: #252850;
     font-size: 1.5rem;
+    font-weight: 700;
     width: fit-content;
     background-color: white;
 }
@@ -35,6 +37,7 @@
 .mainContent {
     /* border: 1px solid black; */
     position: relative;
+    margin-top: 2rem;
 }
 
 .mainContent:before {
@@ -127,6 +130,11 @@
     border-radius: 7px;
     /* margin: auto; */
 }
+.mainContent>.cards>.row>.card>.title{
+    font-weight: 700;
+    font-size: 20px;
+    margin-top: 30px;
+}
 .mainContent>.cards>.row>.card>.cardImg>img{
     width: 50px;
 }
@@ -153,6 +161,13 @@
 }
 .section>.parts>.sec_right{
     text-align: left;
+}
+.section>.parts>.sec_right>h1{
+    font-size: 40px;
+    font-weight: 600;
+}
+.section>.parts>.sec_right>p{
+    margin-bottom: 20px;
 }
 .section>.parts>.sec_right>.stores{
     display: flex;

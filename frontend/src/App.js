@@ -1,10 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
-import Integration from "./Pages/Integrations/Integration"
+import { Navbar } from './Components/Navbar/Navbar';
+import { Footer } from './Components/Footer/Footer';
+import { AllRoutes } from './Routes/AllRoutes';
+
+ 
 function App() {
   return (
-    <div className="App">
-      <Integration/>
+    <div>
+    <div>
+      <Navbar />
+      <AllRoutes/>
+      <Footer />
+    </div>
     </div>
   );
 }
