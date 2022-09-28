@@ -7,7 +7,7 @@ import Productivity from "../Pages/Blogs/Productivity"
 import RemoteWork from "../Pages/Blogs/RemoteWork"
 import Resource from "../Pages/Blogs/Resource"
 import HomePage from "../Pages/Home/HomePage"
-
+import Integration from "../Pages/Integrations/Integration"
 export const AllRoutes = () => {
     return <Routes>
         <Route path='/' element={<HomePage />} />
@@ -16,6 +16,7 @@ export const AllRoutes = () => {
         <Route path="/remotework" element={<RemoteWork/>} />
         <Route path="/practice" element={<BestPractice/>} />
         <Route path="/resources" element={<Resource/>} />
-       <Route path="/blog/blog-details" element={<BlogDetail/>} />
+        <Route path="/blog/blog-details" element={<BlogDetail/>} />
+        <Route path="/integrations" element={<Integration/>}/>
     </Routes>
 }

@@ -1,0 +1,190 @@
+.integration{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-top: 4rem;
+}
+
+.header {
+    /* border: 1px solid red; */
+    text-align: left;
+}
+
+.header>.row {
+    /* border: 1px solid red; */
+    width: 80%;
+    margin: auto;
+}
+
+.header>.row>.col_12 {
+    /* border: 1px solid black; */
+}
+
+.header>.row>.col_12>h1 {
+    color: #2a2e4e;
+    font-size: 3rem;
+    font-weight: 700;
+    width: fit-content;
+}
+
+.header>.row>.col_12>h2 {
+    color: #252850;
+    font-size: 1.5rem;
+    font-weight: 700;
+    width: fit-content;
+    background-color: white;
+}
+
+
+.mainContent {
+    /* border: 1px solid black; */
+    position: relative;
+    margin-top: 2rem;
+}
+
+.mainContent:before {
+    content: '';
+    display: block;
+    background: url(https://trackingtime.co/wp-content/themes/trackingtime-v5/img/layout/integrations/lines-integration.svg);
+    width: 700px;
+    height: 300px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -200px;
+    z-index: -1;
+}
+
+.mainContent>.row_search {
+    width: 80%;
+    margin: auto;
+    /* border: 2px solid purple; */
+}
+
+.mainContent>.row_search>.input {
+    width: 70%;
+    display: flex;
+    align-items: flex-start;
+    /* border: 2px solid red; */
+}
+
+.mainContent>.row_search>.input:after {
+    content: url(https://trackingtime.co/wp-content/themes/trackingtime-v5/img/temp/logos/search.png);
+    position: relative;
+    background-color: #fff;
+    right: calc(7%);
+    top: 1.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mainContent>.row_search>.input>.gsearch {
+    padding: 30px;
+    width: calc(100%);
+    font-weight: bold;
+    letter-spacing: .1rem;
+    border-radius: 3px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border: none;
+    /* border: 2px solid green; */
+}
+
+.mainContent>.row_search>.input>.gsearch::placeholder {
+    color: black;
+    font-weight: bold;
+    letter-spacing: .1rem;
+}
+
+.mainContent>.summary {
+    width: 80%;
+    margin: auto;
+    text-align: left;
+    font-weight: 600;
+    color: rgb(109, 109, 109);
+    font-size: larger;
+}
+
+.mainContent>.summary>article {
+    width: 100%;
+}
+
+.mainContent>.cards{
+    margin-top: 2rem;
+}
+.mainContent>.cards>.row{
+    /* border: 1px solid red; */
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 5rem;
+}
+.mainContent>.cards>.row>.card{
+    /* border: 1px solid red; */
+    text-align: left;
+}
+.mainContent>.cards>.row>.card>.cardImg{
+    padding: 20px;
+    /* border: 1px solid black; */
+    width: fit-content;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    border-radius: 7px;
+    /* margin: auto; */
+}
+.mainContent>.cards>.row>.card>.title{
+    font-weight: 700;
+    font-size: 20px;
+    margin-top: 30px;
+}
+.mainContent>.cards>.row>.card>.cardImg>img{
+    width: 50px;
+}
+.mainContent>.cards>.row>.card>.desc{
+    color: gray;
+    font-weight: 500;
+}
+.section{
+    margin-top: 50px;
+}
+.section>.parts{
+    /* border: 1px solid red; */
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 50% 30%;
+    align-items: center;
+    font-size: larger;
+
+    
+}
+.section>.parts>img{
+    /* border: 1px solid black; */
+}
+.section>.parts>.sec_right{
+    text-align: left;
+}
+.section>.parts>.sec_right>h1{
+    font-size: 40px;
+    font-weight: 600;
+}
+.section>.parts>.sec_right>p{
+    margin-bottom: 20px;
+}
+.section>.parts>.sec_right>.stores{
+    display: flex;
+    gap: 20px;
+}
+.section>.parts>.sec_right>.stores>img{
+    background-color:black;
+    width: 50px;
+    padding: 10px;
+    border-radius: 7px;
+}
+
+
+
+
+
+
+
+
+
