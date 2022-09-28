@@ -14,19 +14,21 @@
     margin: auto;
 }
 
-.header>.row>.col_12 {
-    /* border: 1px solid black; */
-}
+/* .header>.row>.col_12 {
+    border: 1px solid black;
+} */
 
 .header>.row>.col_12>h1 {
     color: #2a2e4e;
     font-size: 3rem;
+    font-weight: 700;
     width: fit-content;
 }
 
 .header>.row>.col_12>h2 {
     color: #252850;
     font-size: 1.5rem;
+    font-weight: 700;
     width: fit-content;
     background-color: white;
 }
@@ -105,7 +107,7 @@
 }
 
 .mainContent>.cards{
-    margin-top: 2rem;
+    margin-top: 4rem;
 }
 .mainContent>.cards>.row{
     /* border: 1px solid red; */
@@ -119,6 +121,7 @@
     /* border: 1px solid red; */
     text-align: left;
 }
+
 .mainContent>.cards>.row>.card>.cardImg{
     padding: 20px;
     /* border: 1px solid black; */
@@ -126,6 +129,11 @@
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     border-radius: 7px;
     /* margin: auto; */
+}
+.mainContent>.cards>.row>.card>.title{
+    margin-top: 30px;
+    font-weight: 700;
+    font-size: larger;
 }
 .mainContent>.cards>.row>.card>.cardImg>img{
     width: 50px;
@@ -148,9 +156,9 @@
 
     
 }
-.section>.parts>img{
-    /* border: 1px solid black; */
-}
+/* .section>.parts>img{
+    border: 1px solid black;
+} */
 .section>.parts>.sec_right{
     text-align: left;
 }
