@@ -1,6 +1,7 @@
 import React from 'react'
 import {Box, Button, Image, Input, InputGroup, InputLeftElement, Text} from "@chakra-ui/react";
 import styles from "./Login.module.css";
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   return (
@@ -47,9 +48,9 @@ const Login = () => {
            <br />
            <Text className={styles.text1}>Forgot Your password? <a href=''>Retrieve</a></Text>
            <br />
-           <Button className={styles.loginBtn}>LOGIN</Button>
+           <Button className={styles.loginBtn}> <Link to="/create-new-acc">LOGIN</Link> </Button>
            <br />
-           <Text className={styles.switch}>Don't have an account? <a href=''>SIGNUP</a></Text>
+           <Text className={styles.switch}>Don't have an account? <Link to="/signup">SIGNUP</Link></Text>
            <br />
            <Text className={styles.switch}><a href=''>Terms of service</a> /<a href=''>Privacy Policy</a></Text>
          </Box>

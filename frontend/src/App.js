@@ -1,21 +1,23 @@
-// import logo from './logo.svg';
-import { ChakraProvider, theme } from '@chakra-ui/react';
+
 import './App.css';
-import CreateNewAcc from './Pages/LoginSignup/CreateNewAcc/CreateNewAcc';
+import { Navbar } from './Components/Navbar/Navbar';
+import { Footer } from './Components/Footer/Footer';
+import { AllRoutes } from './Routes/AllRoutes';
+import { Route, Routes, useParams } from 'react-router-dom';
 import Login from './Pages/LoginSignup/Login/Login';
-import ReviewTerms from './Pages/LoginSignup/ModalLogin/ReviewTerms';
-import SignupPage from './Pages/LoginSignup/Signup/SignupPage';
+import { useEffect, useState } from 'react';
+import { ChakraProvider, theme } from '@chakra-ui/react';
 
-
+ 
 function App() {
   return (
-    <div className="App">
-      <ChakraProvider theme={theme}>
-        {/* <ReviewTerms /> */}
-        {/* <Login /> */}
-        {/* <SignupPage /> */}
-        <CreateNewAcc />
+    <div>
+    <div>
+    <ChakraProvider theme={theme}>
+      <AllRoutes/> 
       </ChakraProvider>
+    </div>
+
     </div>
   );
 }

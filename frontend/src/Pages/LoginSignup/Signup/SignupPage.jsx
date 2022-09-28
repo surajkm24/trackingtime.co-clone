@@ -1,6 +1,7 @@
 import React from 'react';
 import {Box, Button, Image, Input, Text, InputGroup, InputLeftElement} from "@chakra-ui/react";
 import styles from "../Login/Login.module.css";
+import { Link } from 'react-router-dom';
 
 const SignupPage = () => {
   return (
@@ -47,9 +48,9 @@ const SignupPage = () => {
          <Text className={styles.switch}>I agree with<a href=''>Terms of service & </a></Text>
          <Text className={styles.switch}><a href=''>Privacy Policy. </a></Text>
          <br />
-         <Button className={styles.loginBtn}>SIGN UP</Button>
+         <Button className={styles.loginBtn }> <Link to="/login">SIGN UP</Link> </Button>
          <br />
-         <Text className={styles.switch}><a href=''>Back to login</a></Text>
+         <Text className={styles.switch}><Link to="/login">Back to login</Link></Text>
          <br />
          <Text className={styles.switch}><a href=''>Terms of service</a> /<a href=''>Privacy Policy</a></Text>
        </Box>
