@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
+import { ChakraProvider, theme } from '@chakra-ui/react';
 import './App.css';
+import CreateNewAcc from './Pages/LoginSignup/CreateNewAcc/CreateNewAcc';
+import Login from './Pages/LoginSignup/Login/Login';
+import ReviewTerms from './Pages/LoginSignup/ModalLogin/ReviewTerms';
+import SignupPage from './Pages/LoginSignup/Signup/SignupPage';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ChakraProvider theme={theme}>
+        {/* <ReviewTerms /> */}
+        {/* <Login /> */}
+        {/* <SignupPage /> */}
+        <CreateNewAcc />
+      </ChakraProvider>
     </div>
   );
 }
