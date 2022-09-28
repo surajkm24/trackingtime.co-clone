@@ -18,7 +18,7 @@ import Marquee from "react-fast-marquee";
 const HomePage = () => {
     return (
         <>
-            <Container maxW="2xl" backgroundColor={"#F6F8F9"}>
+            <Container maxW="100%" backgroundColor={"#F6F8F9"}>
                 <Stack
                     textAlign={'center'}
                     align={'center'}
@@ -27,7 +27,6 @@ const HomePage = () => {
                     <Box maxW="90%" mb='25px'>
                         <Text fontSize="12px" fontWeight="bold" mb={"30px"}
                             color={"#ED565A"}>TRACKINGTIME TIME TRACKER SOFTWARE</Text>
-
                         <Heading as='h3' size="sm" color="#242954">SET AND FORGET TIME TRACKING</Heading>
                         <Heading
                             m={0}
@@ -42,7 +41,7 @@ const HomePage = () => {
                     <HStack pb="40px">
                         <Input outline='none'
                             placeholder='Your Work Email' p="10px" width='220px' />
-                        <Text backgroundColor="#ED565A" p={8} width='200px' color='white'>START FOR FREE!</Text>
+                        <Text backgroundColor="#ED565A" h="38px" width='200px' color='white'>START FOR FREE!</Text>
                     </HStack>
                     <Flex gap='20px'>
                         <Image h="25px" w="24px"
@@ -76,17 +75,17 @@ const HomePage = () => {
                     <HStack spacing={25}>
                         <Box backgroundColor="white" border="4px solid white" boxShadow="2xl" w="370px" p={5} pb="40px">
                             <Image src="https://trackingtime.co/wp-content/themes/trackingtime-v5/img/keywords/article-1.svg" />
-                            <Heading align="center" mt="-10px">Measure your team's productivity </Heading>
+                            <Heading fontSize="23px" align="center" mt="-10px">Measure your team's productivity </Heading>
                             <Text color='gray' lineHeight="28px" w="75%" m="auto">Get a Record of the worked hours and keep your projects in order, be abreast of ongoind or completed projects with our super friendly app.</Text>
                         </Box>
-                        <Box backgroundColor="white" border="2px solid white" boxShadow="2xl" w="370px" p={5} pb="40px">
+                        <Box backgroundColor="white" border="2px solid white" boxShadow="2xl" w="370px" p={55}>
                             <Image src="https://trackingtime.co/wp-content/themes/trackingtime-v5/img/keywords/article-2.svg" />
-                            <Heading align="center" mt="-10px" w="85%">The most flexible reporting engine</Heading>
+                            <Heading fontSize="23px" align="center" mt="-10px" w="85%">The most flexible reporting engine</Heading>
                             <Text color='gray' lineHeight="28px" w="77%" m="auto">Project budgeting, clint billing, payroll, productivity analytics and much more.Tracking time has got you covered</Text>
                         </Box>
                         <Box backgroundColor="white" border="2px solid white" boxShadow="2xl" w="370px" p={5} pb="60px">
                             <Image src="https://trackingtime.co/wp-content/themes/trackingtime-v5/img/keywords/article-3.svg" />
-                            <Heading align="center" mt="-10px" w="95%">Monitor your team's workload, in realtime </Heading>
+                            <Heading fontSize="23px" align="center" mt="-10px" w="95%">Monitor your team's workload, in realtime </Heading>
                             <Text color='gray' lineHeight="28px" w="75%" m="auto">See every works in progress and measure the productivity of the team by monitoring them in real life.</Text>
                         </Box>
 
@@ -95,8 +94,8 @@ const HomePage = () => {
                 <Box w="85%" m="auto" mt="120px" >
                     <Image src="https://trackingtime.co/wp-content/themes/trackingtime-v5/img/temp/logos/grupo.svg" w="231px" h="141px" />
                 </Box>
-                <HStack w="85%" m="auto" pb="100px">
-                    <Box w="29%" p={5} pl={10} mr="40px">
+                <HStack w="85%" m="auto">
+                    <Box w="49%" p={5} pl={10} mr="40px">
                         <Heading color="#242954" fontSize='30px'>Add time tracking to your favourite business apps</Heading>
                         <Text color="gray" p={2} lineHeight={2}>No matter where your employees work, TrackingTime works with them. Install the TrackingTime Button for chrome and Firefox and track time right within the productivity apps your employees use everyday.</Text>
                         <Button size='md'
@@ -105,53 +104,55 @@ const HomePage = () => {
                             rounded
                             colorScheme='#242954'>SEE ALL</Button>
                     </Box>
-                    <Box w="20%" p={5} pl={10} pt={75}>
+                    <Box w="33%" p={5} pl={10} pt={75}>
                         <Image src='https://trackingtime.co/wp-content/themes/trackingtime-v5/img/temp/logos/asana.png' h="64px" w="70px" />
-                        <Heading>Asana</Heading>
+                        <Heading fontSize="23px">Asana</Heading>
                         <Text color="gray" p={2} lineHeight={1.5}>Asana pust tasks and conversations together to enable teamwork without email.</Text>
                     </Box>
-                    <Box w="20%" p={5} pl={10} pt={75}>
+                    <Box w="33%" p={5} pl={10} pt={55}>
                         <Image src='https://trackingtime.co/wp-content/themes/trackingtime-v5/img/temp/logos/trello.png' h="70px" w="70px" />
-                        <Heading>Trello</Heading>
+                        <Heading fontSize="23px">Trello</Heading>
                         <Text color="gray" p={2} lineHeight={1.5}>Trello is a collaboration tool that organize your projects into boards.</Text>
                     </Box>
-                    <Box w="20%" p={5} pl={10} pt={75}>
+                    <Box w="33%" p={5} pl={10} pt={15}>
                         <Image src='https://trackingtime.co/wp-content/themes/trackingtime-v5/img/temp/logos/todoist.png' h="70px" w="70px" />
-                        <Heading>Todoist</Heading>
+                        <Heading fontSize="23px">Todoist</Heading>
                         <Text color="gray" p={2} lineHeight={1.5}>Todoist is a task manager that useful fast and easy to use.</Text>
                     </Box>
-                    <Box w="20%" p={5} pl={10} pt={75}>
+                    <Box w="33%" p={5} pl={10} pt={55}>
                         <Image src='https://trackingtime.co/wp-content/themes/trackingtime-v5/img/temp/logos/smartsheet.png' h="70px" w="70px" />
-                        <Heading>Smartsheet</Heading>
+                        <Heading fontSize="23px">Smartsheet</Heading>
                         <Text color="gray" p={2} lineHeight={1.5}>Smartsheet is web based project and task management and work collaboration software</Text>
                     </Box>
 
                 </HStack>
-                <Box w="100%" m="auto" backgroundColor="white" h="350px" pb={80}>
-                    <Flex pt={80} w="85%" m="auto" gap={50}>
+                <Box w="100%" m="auto" backgroundColor="white" h="350px" pb={80} mt="-50px">
+                    <Flex pt={20} w="85%" m="auto" gap={50}>
                         <Box>
                             <Image src='https://trackingtime.co/wp-content/themes/trackingtime-v5/img/keywords/slider-1.svg' w="233px" h="150px" />
-                            <Heading align="center">Timecards Approval</Heading>
+                            <Heading color="#242954" align="center" fontSize="23px">Timecards Approval</Heading>
                             <Text color="gray" align="center">Track clock in and out time with no effort</Text>
                         </Box>
                         <Box>
                             <Image src='https://trackingtime.co/wp-content/themes/trackingtime-v5/img/keywords/slider-2.svg' w="233px" h="150px" />
-                            <Heading align="center">Budgetting</Heading>
+                            <Heading color="#242954" align="center" fontSize="23px">Budgetting</Heading>
                             <Text color="gray" align="center">Keep your projects on time and budget.</Text>
                         </Box>
                         <Box>
                             <Image src='https://trackingtime.co/wp-content/themes/trackingtime-v5/img/keywords/slider-3.svg' w="233px" h="150px" />
-                            <Heading align="center">Work Schedules</Heading>
+                            <Heading color="#242954" align="center" fontSize="23px">Work Schedules</Heading>
                             <Text color="gray" align="center" wordSpacing>Specify employees are expected to be their at job.</Text>
                         </Box>
                         <Box>
                             <Image src='https://trackingtime.co/wp-content/themes/trackingtime-v5/img/keywords/slider-4.svg' w="233px" h="150px" />
-                            <Heading align="center">Timesheets Audits</Heading>
+                            <Heading color="#242954" align="center" fontSize="23px">Timesheets Audits</Heading>
                             <Text color="gray" align="center">Avoid data inconsistancies with just one click</Text>
                         </Box>
                     </Flex>
                 </Box>
-                <Flex mt={80} gap={100}>
+
+
+                <Flex mt={20} gap={100}>
                     <Box>
                         <Image src='capture.png' />
                     </Box>
@@ -161,7 +162,7 @@ const HomePage = () => {
                         <HStack>
                             <Input outline='none'
                                 placeholder='Your Work Email' p="10px" width='220px' />
-                            <Text align="center" backgroundColor="#ED565A" p={8} width='200px' color='white'>START FOR FREE!</Text>
+                            <Text alignItems="center" backgroundColor="#ED565A" h={38} width='200px' color='white'>START FOR FREE!</Text>
                         </HStack>
                     </Box>
                 </Flex>
