@@ -7,10 +7,10 @@ import Productivity from "../Pages/Blogs/Productivity"
 import RemoteWork from "../Pages/Blogs/RemoteWork"
 import Resource from "../Pages/Blogs/Resource"
 import HomePage from "../Pages/Home/HomePage"
-import Login from "../Pages/LoginSignup/Login/Login"
 import Integration from "../Pages/Integrations/Integration"
 import SignupPage from "../Pages/LoginSignup/Signup/SignupPage"
 import CreateNewAcc from "../Pages/LoginSignup/CreateNewAcc/CreateNewAcc"
+import Login from "../Pages/LoginSignup/Login/Login"
 export const AllRoutes = () => {
     return(
     <Routes> 
@@ -25,6 +25,7 @@ export const AllRoutes = () => {
             <Route path="/login" element={<Login />}/>
             <Route path="/signup" element={<SignupPage />}></Route>
             <Route path="/create-new-acc" element={<CreateNewAcc />}></Route>
-    </Routes>
+   </Routes>
+    
     )
 }
