@@ -127,6 +127,8 @@
     width:90%;
     margin: auto;
     margin-top: 30px;
+    font-weight: 700;
+    font-size: 18px;
 
 }
 
@@ -175,6 +177,7 @@
     height:40px;
     color:white;
     font-weight: 600;
+    font-size: 28px;
     margin: auto;
     margin-top: 20px;
     text-align: center;
@@ -248,6 +251,7 @@
     height:40px;
     color:white;
     font-weight: 600;
+    font-size: 28px;
     margin-top: 30px;
     padding-left: 60px;
  
@@ -264,8 +268,9 @@
     margin-top: 30px;
     color:#242954;
     font-family:Arial, Helvetica, sans-serif;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 42px;
+    font-weight: 600;
 }
 
 .detail-heading2{
@@ -274,6 +279,7 @@
     color:#242954;
     font-family:Arial, Helvetica, sans-serif;
     font-size: 24px;
+    font-weight: 600;
  
    
 }
