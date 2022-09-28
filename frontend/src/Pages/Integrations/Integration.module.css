@@ -10,7 +10,7 @@
 
 .header>.row {
     /* border: 1px solid red; */
-    width: 70%;
+    width: 80%;
     margin: auto;
 }
 
@@ -51,7 +51,7 @@
 }
 
 .mainContent>.row_search {
-    width: 70%;
+    width: 80%;
     margin: auto;
     /* border: 2px solid purple; */
 }
@@ -92,7 +92,7 @@
 }
 
 .mainContent>.summary {
-    width: 70%;
+    width: 80%;
     margin: auto;
     text-align: left;
     font-weight: 600;
@@ -109,7 +109,7 @@
 }
 .mainContent>.cards>.row{
     /* border: 1px solid red; */
-    width: 70%;
+    width: 80%;
     margin: auto;
     display: grid;
     grid-template-columns: repeat(3,1fr);
