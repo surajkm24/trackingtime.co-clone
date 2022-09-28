@@ -22,12 +22,14 @@ import {
 } from '@chakra-ui/icons';
 import { BsTwitter, BsLinkedin } from 'react-icons/bs';
 import { GrFacebookOption } from 'react-icons/gr';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import './Navbar.css';
+import {useNavigate} from "react-router-dom"
+import Login from '../../Pages/LoginSignup/Login/Login';
 
 export function Navbar() {
     const { isOpen, onToggle } = useDisclosure();
-
+    const navigate = useNavigate()
     return (
         <Box style={{ position: "sticky", top: "0px", width: "100%", zIndex: 2 }}>
             <Flex
@@ -89,6 +91,8 @@ export function Navbar() {
                             fontSize={'12px'}
                             fontWeight={700}
                             as={NavLink}
+                            target="_blank"
+                            rel='noreferrer'
                             to='/login'
                             color={'white'}
                             bg={'#ED565A'}
@@ -100,8 +104,10 @@ export function Navbar() {
                             }}
                             height="35px"
                             width="140px"
+                            onClick={()=>navigate("/login")}
                         >
                             LOGIN
+                           
                         </Button>
                     </Stack>
                 </Flex>
@@ -112,6 +118,7 @@ export function Navbar() {
                     <MobileNav />
                 </Collapse>
             </Box>
+            <Outlet/>
         </Box>
     );
 }

@@ -13,11 +13,18 @@ import {
     Link,
 } from '@chakra-ui/react';
 import Marquee from "react-fast-marquee";
+import { Outlet } from 'react-router-dom';
+import { Navbar } from '../../Components/Navbar/Navbar';
+import { Footer } from '../../Components/Footer/Footer';
 
 
 const HomePage = () => {
     return (
         <>
+         {/* navbar start */}
+         <Navbar />
+         {/* navbar end */}
+
             <Container maxW="100%" backgroundColor={"#F6F8F9"}>
                 <Stack
                     textAlign={'center'}
@@ -168,8 +175,10 @@ const HomePage = () => {
                 </Flex>
             </Container>
 
-
+            {/* footer */}
+            <Footer />
         </>
+
     )
 }
 

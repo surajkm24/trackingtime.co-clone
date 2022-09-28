@@ -1,0 +1,33 @@
+.CreateMainBox{
+    /* border: 1px solid red; */
+    height: 644px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.leftBox{
+    height: 644px;
+    margin:auto;
+    /* border: 1px solid red; */
+    width: 50%;
+}
+
+.leftBox>img{
+    height: 100%;
+    width: 100%;
+   background-color: #2E4476;
+   background-size: cover;
+}
+
+.rightBox{
+    /* border: 1px solid red; */
+    width: 50%;
+    padding-top: 70px;
+    background-color: #2A313c;
+    color: white;
+}
+
+.rightBox2{
+    margin: auto;
+    width: 60%;
+}
