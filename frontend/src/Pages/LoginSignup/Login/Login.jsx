@@ -1,9 +1,44 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {Box, Button, Image, Input, InputGroup, InputLeftElement, Text} from "@chakra-ui/react";
 import styles from "./Login.module.css";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from "axios";
 
+// post user
+// const postUser = async(text)=>{
+//    let res = await axios.post("http://localhost:8080/user/login", text);
+//    console.log(res.data);
+//    return res.data;
+// }
+
+// login main function
 const Login = () => {
+
+//   const navigate = useNavigate();
+//   const [text, setText] = useState({
+//     email: "",
+//     password: "",
+//   });
+
+//  const handleSubmit = (e) => {
+//   e.preventDefault();
+//   console.log("hello");
+//   postUser(text);
+//   return navigate("/create-new-acc")
+
+//  };
+
+// //  console.log(data);
+//  const handleChange = (e) => {
+//    const {name, value} = e.target;
+//    setText({
+//    ...text,
+//     [name]: value,
+//    });
+//  };
+
+ 
+
   return (
   
       
@@ -40,17 +75,29 @@ const Login = () => {
 
            {/* <br /> */}
 
+{/* from start*/}
+         <form onSubmit={handleSubmit}>
            <Text className={styles.text2}>Sign in with you email</Text>
            <br />
-           <Input className={styles.whiteBackG} type="email" placeholder="Email"></Input>
+           <Input onChange={handleChange} name="email" value={text.email} required className={styles.whiteBackG} type="email" placeholder="Email"></Input>
            <br />
-           <Input className={styles.whiteBackG} type="password" placeholder="Password"></Input>
+           <Input onChange={handleChange} name="password" value={text.password} required className={styles.whiteBackG} type="password" placeholder="Password"></Input>
            <br />
            <Text className={styles.text1}>Forgot Your password? <a href=''>Retrieve</a></Text>
            <br />
-           <Button className={styles.loginBtn}> <Link to="/create-new-acc">LOGIN</Link> </Button>
+           <Button type='submit' className={styles.loginBtn}>
+             {/* <Link to="/create-new-acc"> */}
+            LOGIN
+            {/* </Link> */}
+             </Button>
+        </form>
+{/* form end */}
            <br />
-           <Text className={styles.switch}>Don't have an account? <Link to="/signup">SIGNUP</Link></Text>
+           <Text className={styles.switch}>Don't have an account? 
+           <Link to="/signup">
+            SIGNUP
+            </Link>
+            </Text>
            <br />
            <Text className={styles.switch}><a href=''>Terms of service</a> /<a href=''>Privacy Policy</a></Text>
          </Box>
