@@ -24,7 +24,7 @@ import { BsTwitter, BsLinkedin } from 'react-icons/bs';
 import { GrFacebookOption } from 'react-icons/gr';
 import { NavLink, Outlet } from 'react-router-dom';
 import './Navbar.css';
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import Login from '../../Pages/LoginSignup/Login/Login';
 
 export function Navbar() {
@@ -70,6 +70,8 @@ export function Navbar() {
                         spacing={6}>
                         <Button
                             as={NavLink}
+                            target="_blank"
+                            rel='noreferrer'
                             to='/signup'
                             fontSize={'12px'}
                             border="2px solid #ed565a"
@@ -104,10 +106,9 @@ export function Navbar() {
                             }}
                             height="35px"
                             width="140px"
-                            onClick={()=>navigate("/login")}
                         >
                             LOGIN
-                           
+
                         </Button>
                     </Stack>
                 </Flex>
@@ -118,7 +119,7 @@ export function Navbar() {
                     <MobileNav />
                 </Collapse>
             </Box>
-            <Outlet/>
+            <Outlet />
         </Box>
     );
 }

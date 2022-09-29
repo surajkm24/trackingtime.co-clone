@@ -1,9 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Box, Button, Image, Input, Text, InputGroup, InputLeftElement} from "@chakra-ui/react";
 import styles from "../Login/Login.module.css";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from "axios";
 
-const SignupPage = () => {
+// post user
+// const postUser = async(text)=>{
+//   try{
+//       let res = await axios.post("http://localhost:8080/user/signup", text);
+//       return res.data;
+//   }catch(e){
+//     console.log(e);
+//   } 
+// }
+
+  //  main sign up function
+  const SignupPage = () => {
+  //   const navigate = useNavigate();
+  //   const [email, setEmail] = useState(''); 
+  //   const [text, setText] = useState({
+  //     email: "",
+  //     password: "",
+  //   });
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+   
+  //   postUser(text)
+  //   .then((res)=> {
+
+  //       if(res.token){
+  //      setText("")
+  //        return navigate("/login")
+  //       }else{
+  //         console.log("login failed");
+  //       }
+  //   })
+
+  //   .catch(()=>{
+  //     console.log("error");
+  //   })
+  //   // return navigate("/login")
+  // };
+
+  // const handleChange = (e) => {
+  //   const {name, value} = e.target;
+  //   setText({
+  //   ...text,
+  //     [name]: value,
+  //   });
+  // };
+
   return (
     <Box className={styles.LoginMainBox} >
       
@@ -36,11 +83,13 @@ const SignupPage = () => {
               <Input className={styles.greyBackG} placeholder="Sign in with Apple"></Input>
            </InputGroup>
 
+{/* form start */}
+        <form onSubmit={handleSubmit}>
          <Text className={styles.text2}>Sign in with you email</Text>
          <br />
-         <Input className={styles.whiteBackG} type="email" placeholder="Email"></Input>
+         <Input className={styles.whiteBackG} onChange={handleChange} name="email" required value={text.email} type="email" placeholder="Email"></Input>
          <br />
-         <Input className={styles.whiteBackG} type="password"   placeholder="Password"></Input>
+         <Input className={styles.whiteBackG} onChange={handleChange} name="password" required value={text.password} type="password"   placeholder="Password"></Input>
          <br />
          <Box>
            <Input className={styles.check} type="checkbox"></Input>
@@ -48,7 +97,15 @@ const SignupPage = () => {
          <Text className={styles.switch}>I agree with<a href=''>Terms of service & </a></Text>
          <Text className={styles.switch}><a href=''>Privacy Policy. </a></Text>
          <br />
-         <Button className={styles.loginBtn }> <Link to="/login">SIGN UP</Link> </Button>
+         <Button className={styles.loginBtn } type='submit'> 
+         {/* <Link to="/login"> */}
+
+          SIGN UP
+          {/* </Link>  */}
+          </Button>
+      </form>
+    {/* form end */}
+
          <br />
          <Text className={styles.switch}><Link to="/login">Back to login</Link></Text>
          <br />

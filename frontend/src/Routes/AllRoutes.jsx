@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom"
-import { Navbar } from "../Components/Navbar/Navbar"
 import BestPractice from "../Pages/Blogs/BestPractice"
 import BlogDetail from "../Pages/Blogs/BlogDetail"
 import BlogPage from "../Pages/Blogs/BlogPage"
@@ -11,6 +10,7 @@ import Integration from "../Pages/Integrations/Integration"
 import SignupPage from "../Pages/LoginSignup/Signup/SignupPage"
 import CreateNewAcc from "../Pages/LoginSignup/CreateNewAcc/CreateNewAcc"
 import Login from "../Pages/LoginSignup/Login/Login"
+import CreateNewOrg from "../Pages/LoginSignup/CreateNewOrg/CreateNewOrg"
 export const AllRoutes = () => {
     return(
     <Routes> 
@@ -25,6 +25,7 @@ export const AllRoutes = () => {
             <Route path="/login" element={<Login />}/>
             <Route path="/signup" element={<SignupPage />}></Route>
             <Route path="/create-new-acc" element={<CreateNewAcc />}></Route>
+            <Route path="/create-new-org" element={<CreateNewOrg />}></Route>
    </Routes>
     
     )
