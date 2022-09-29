@@ -8,15 +8,15 @@ import Login from './Pages/LoginSignup/Login/Login';
 import { useEffect, useState } from 'react';
 import { ChakraProvider, theme } from '@chakra-ui/react';
 
- 
+
 function App() {
   return (
     <div>
-    <div>
-    <ChakraProvider theme={theme}>
-      <AllRoutes/> 
-      </ChakraProvider>
-    </div>
+      <div>
+        <ChakraProvider theme={theme}>
+          <AllRoutes />
+        </ChakraProvider>
+      </div>
 
     </div>
   );
