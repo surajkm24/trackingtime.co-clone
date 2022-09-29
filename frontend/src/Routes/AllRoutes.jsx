@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom"
+import { Navbar } from "../Components/Navbar/Navbar"
 import BestPractice from "../Pages/Blogs/BestPractice"
 import BlogDetail from "../Pages/Blogs/BlogDetail"
 import BlogPage from "../Pages/Blogs/BlogPage"
