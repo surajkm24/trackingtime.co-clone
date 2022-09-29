@@ -1,5 +1,6 @@
 import { Box, Image, Text } from '@chakra-ui/react'
 import React from 'react'
+import { Link } from 'react-router-dom';
 import styles from "../CreateNewAcc/CreateNewAcc.module.css";
 
 
@@ -20,16 +21,18 @@ const CreateNewAcc = () => {
        <Image  src={process.env.PUBLIC_URL+"Time-tracking-white-logo.png"}></Image>
 
        <Box className={styles.inputBox}>
-          <Text>Let's set up your account</Text>
-          <Text>Welcome to trackingtime and thank you for signing up! please choose an option below to get started.</Text>
+          <Text className={styles.lets}>Let's set up your account</Text>
+          <Text className={styles.welcome}>Welcome to trackingtime and thank you for signing up! please choose an option below to get started.</Text>
 
-          <Box>
-            <Text>Create a new account</Text>
-            <Text>Start a new account and invite your teammates.</Text>
-          </Box>
-          <Box>
-            <Text>join an existing account</Text>
-            <Text>Your company is already using trackingtime.</Text>
+          <Link to="/create-new-org">
+            <Box className={styles.jointBox}>
+              <Text className={styles.headBox}>Create a new account</Text>
+              <Text className={styles.joinBox}>Start a new account and invite your teammates</Text>
+            </Box>
+          </Link>
+          <Box className={styles.jointBox}>
+            <Text className={styles.headBox}>Join an existing account</Text>
+            <Text className={styles.joinBox}>Your company is already using trackingtime</Text>
           </Box>
        </Box>
 

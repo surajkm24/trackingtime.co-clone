@@ -14,9 +14,9 @@
     margin: auto;
 }
 
-.header>.row>.col_12 {
-    /* border: 1px solid black; */
-}
+/* .header>.row>.col_12 {
+    border: 1px solid black;
+} */
 
 .header>.row>.col_12>h1 {
     color: #2a2e4e;
@@ -108,7 +108,7 @@
 }
 
 .mainContent>.cards{
-    margin-top: 2rem;
+    margin-top: 4rem;
 }
 .mainContent>.cards>.row{
     /* border: 1px solid red; */
@@ -122,6 +122,7 @@
     /* border: 1px solid red; */
     text-align: left;
 }
+
 .mainContent>.cards>.row>.card>.cardImg{
     padding: 20px;
     /* border: 1px solid black; */
@@ -156,9 +157,9 @@
 
     
 }
-.section>.parts>img{
-    /* border: 1px solid black; */
-}
+/* .section>.parts>img{
+    border: 1px solid black;
+} */
 .section>.parts>.sec_right{
     text-align: left;
 }

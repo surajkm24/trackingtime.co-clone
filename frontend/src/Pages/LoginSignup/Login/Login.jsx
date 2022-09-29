@@ -30,7 +30,7 @@ const Login = () => {
            {/* <br /> */}
            <InputGroup>
            <InputLeftElement className={styles.iconImg} children={<Image src={process.env.PUBLIC_URL+"microsoft-logo-login.png"} color="gray.300" />} />
-             <Input className={styles.greyBackG} placeholder="Sign in Microsoft"></Input>
+             <Input className={styles.greyBackG} placeholder="Sign in with Microsoft"></Input>
            </InputGroup>
            {/* <br /> */}
            <InputGroup>
