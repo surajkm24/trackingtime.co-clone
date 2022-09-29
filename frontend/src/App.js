@@ -7,6 +7,7 @@ import { Route, Routes, useParams } from 'react-router-dom';
 import Login from './Pages/LoginSignup/Login/Login';
 import { useEffect, useState } from 'react';
 import { ChakraProvider, theme } from '@chakra-ui/react';
+import CreateNewOrg from './Pages/LoginSignup/CreateNewOrg/CreateNewOrg';
 
  
 function App() {
@@ -14,8 +15,9 @@ function App() {
     <div>
     <div>
     <ChakraProvider theme={theme}>
-      <AllRoutes/> 
-      </ChakraProvider>
+        <AllRoutes/> 
+        <CreateNewOrg />
+    </ChakraProvider>
     </div>
 
     </div>
