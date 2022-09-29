@@ -5,37 +5,37 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 
 // post user
-// const postUser = async(text)=>{
-//    let res = await axios.post("http://localhost:8080/user/login", text);
-//    console.log(res.data);
-//    return res.data;
-// }
+const postUser = async(text)=>{
+   let res = await axios.post("http://localhost:8080/user/login", text);
+   console.log(res.data);
+   return res.data;
+}
 
 // login main function
 const Login = () => {
 
-//   const navigate = useNavigate();
-//   const [text, setText] = useState({
-//     email: "",
-//     password: "",
-//   });
+  const navigate = useNavigate();
+  const [text, setText] = useState({
+    email: "",
+    password: "",
+  });
 
-//  const handleSubmit = (e) => {
-//   e.preventDefault();
-//   console.log("hello");
-//   postUser(text);
-//   return navigate("/create-new-acc")
+ const handleSubmit = (e) => {
+  e.preventDefault();
+  console.log("hello");
+  postUser(text);
+  return navigate("/create-new-acc")
 
-//  };
+ };
 
-// //  console.log(data);
-//  const handleChange = (e) => {
-//    const {name, value} = e.target;
-//    setText({
-//    ...text,
-//     [name]: value,
-//    });
-//  };
+//  console.log(data);
+ const handleChange = (e) => {
+   const {name, value} = e.target;
+   setText({
+   ...text,
+    [name]: value,
+   });
+ };
 
  
 
