@@ -1,11 +1,19 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 import BlogNavbar from "../../Components/BlogNavbar/BlogNavbar";
+import { Footer } from "../../Components/Footer/Footer";
+import { Navbar } from "../../Components/Navbar/Navbar";
 import { BlogData } from "./BlogData";
 import BlogItem from "./BlogItem";
 import "./BlogPage.css";
 const BlogPage = () => {
   return (
     <div>
+
+      {/* navbar */}
+      <Navbar/>
+
+
       <BlogNavbar />
 
       <div className="heroimage-box">
@@ -36,6 +44,9 @@ const BlogPage = () => {
           <BlogItem title={item.title} image={item.image} />
         ))}
       </div>
+
+      {/* footer */}
+      <Footer />
     </div>
   );
 };

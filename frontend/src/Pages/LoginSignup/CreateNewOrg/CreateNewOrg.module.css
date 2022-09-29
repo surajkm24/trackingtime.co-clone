@@ -1,0 +1,95 @@
+.CreateMainBox{
+    /* border: 1px solid red; */
+    height: 644px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.leftBox{
+    height: 644px;
+    margin:auto;
+    /* border: 1px solid red; */
+    width: 50%;
+}
+
+.leftBox>img{
+    height: 100%;
+    width: 100%;
+   background-color: #2E4476;
+   background-size: cover;
+}
+
+.rightBox{
+    /* border: 1px solid red; */
+    width: 50%;
+    padding-top: 70px;
+    background-color: #2A313c;
+    color: white;
+}
+
+.rightBox2{
+    /* border: 1px solid white; */
+    margin: auto;
+    width: 60%;
+    margin-top: 110px;
+}
+
+.rightBox2>img{
+    margin-bottom:  30px;
+}
+
+.lets{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.welcome{
+    margin-top: 5px;
+    font-size: 14px;
+    color: rgb(165, 172, 184);
+    margin-bottom: 20px;
+}
+
+.jointBox{
+    padding: 12px;
+    border-radius: 4px;
+    border: 0.02px solid rgb(60, 61, 62);
+}
+
+.headBox{
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.joinBox{
+    font-weight: bold;
+    font-size: 12px;
+    color: rgb(165, 172, 184);
+}
+
+.BtnFlex{
+    gap:15px;
+}
+.BtnFlex>button{
+    background-color: #363e52;
+    height: 30px;
+    color: rgb(165, 172, 184);
+    font-weight: 500;
+}
+
+.getStarted{
+    gap:6px;
+    
+}
+.back{
+    background-color: rgb(30, 36, 52);
+    color: rgb(165, 172, 184);
+    font-size: 13px;
+}
+
+.started{
+    background-color: black;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+}

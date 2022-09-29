@@ -1,0 +1,121 @@
+.LoginMainBox{
+    /* border: 1px solid red; */
+    height: 644px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.leftBox{
+    height: 644px;
+    margin:auto;
+    /* border: 1px solid red; */
+    width: 50%;
+}
+
+.leftBox>img{
+    height: 100%;
+    width: 100%;
+   background-color: #2E4476;
+   background-size: cover;
+}
+
+.rightBox{
+     height: 644px;
+    /* border: 1px solid red; */
+    width: 50%;
+    padding-top: 70px;
+    margin: auto;
+}
+
+.rightBox>img{
+    margin: auto;
+    width:23%;
+    margin-bottom:20px;
+}
+.inputBox{
+    width: 41%;
+    margin: auto;
+}
+
+.iconImg>img{
+    /* border:1px solid red; */
+    margin:auto;
+    margin-top:5px;
+    margin-left: 10px;
+    text-align: center;
+    height:22px;
+    width:22px;
+}
+
+.greyBackG{
+    width: 97%;
+    background-color: #F2F2F4 ;
+    border: none;
+    height: 37px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    place-content: center;
+    line-height: 0px;
+}
+
+.whiteBackG{
+    width: 97%;
+    background-color: #F2F2F4 ;
+    border: none;
+    height: 37px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    place-content: center;
+    line-height: 0px;
+    background-color: white;
+    border:grey;
+}
+
+.whiteBackG::placeholder{
+      color:black;
+      text-align: center;
+      font-weight: 400;
+}
+
+.greyBackG::placeholder{
+    color:black;
+    text-align: center;
+    font-weight: 400;
+  /* background-color: yellow; */
+}
+
+.text2{
+    text-align: center;
+    margin-top: 23px;
+    font-weight: 500;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+.text1{
+    font-size: 10px;
+    font-weight: 400;
+    text-align: right;
+}
+
+.loginBtn{
+    background-color: black;
+    color: white;
+    width: 97%;
+    height: 40px;
+    border-radius: 4px;
+    margin-top: -18px;
+    
+}
+
+.switch{
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 16px;
+    color:grey;
+    line-height:0px;
+}
+
+/* .switch>a{
+    color:grey;
+} */

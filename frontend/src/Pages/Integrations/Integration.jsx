@@ -1,8 +1,16 @@
 import React, { Fragment } from "react";
+import { Footer } from "../../Components/Footer/Footer";
+import { Navbar } from "../../Components/Navbar/Navbar";
 import styles from "./Integration.module.css";
 const Integration = () => {
   return (
+    <>
+
+    {/* navbar */}
+    <Navbar/>
+
     <div className={styles.integration}>
+
       {/* <nav></nav> */}
       <div className={styles.header}>
         <div className={styles.row}>
@@ -94,7 +102,10 @@ const Integration = () => {
       </div>
 
       {/* <footer></footer> */}
+      <Footer />
     </div>
+
+    </>
   );
 };
 

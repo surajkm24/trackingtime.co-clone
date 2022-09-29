@@ -37,6 +37,7 @@
 .mainContent {
     /* border: 1px solid black; */
     position: relative;
+    margin-top: 2rem;
 }
 
 .mainContent:before {
@@ -131,9 +132,9 @@
     /* margin: auto; */
 }
 .mainContent>.cards>.row>.card>.title{
-    margin-top: 30px;
     font-weight: 700;
-    font-size: larger;
+    font-size: 20px;
+    margin-top: 30px;
 }
 .mainContent>.cards>.row>.card>.cardImg>img{
     width: 50px;
@@ -161,6 +162,13 @@
 } */
 .section>.parts>.sec_right{
     text-align: left;
+}
+.section>.parts>.sec_right>h1{
+    font-size: 40px;
+    font-weight: 600;
+}
+.section>.parts>.sec_right>p{
+    margin-bottom: 20px;
 }
 .section>.parts>.sec_right>.stores{
     display: flex;
