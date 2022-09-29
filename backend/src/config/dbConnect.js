@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const connect = ()=>{
-    return mongoose.connect("mongodb+srv://Timetracking:time123@cluster0.ojlqm0r.mongodb.net/?retryWrites=true&w=majority/tracking-time");
+    return mongoose.connect("mongodb+srv://newTimeTracking:time1234@cluster0.zevrlzo.mongodb.net/newTimeTracking");
 }
 
 module.exports = connect;
