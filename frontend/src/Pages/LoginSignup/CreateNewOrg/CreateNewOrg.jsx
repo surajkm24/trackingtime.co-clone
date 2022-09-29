@@ -1,5 +1,6 @@
 import { Box, Image, Text, Input,Flex, Button } from '@chakra-ui/react'
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styles from "../CreateNewOrg/CreateNewOrg.module.css"
 
 const CreateNewOrg = () => {
@@ -43,7 +44,9 @@ const CreateNewOrg = () => {
 
          <Flex className={styles.getStarted}>
             <Button className={styles.back}>BACK</Button>
-            <Button className={styles.started}>GET STARTED</Button>
+            <Link to="#">
+              <Button  className={styles.started}>GET STARTED</Button>
+            </Link>
          </Flex>
        </Box>
 

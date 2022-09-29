@@ -19,6 +19,13 @@ TrackingTime is a collaborative, cloud-based time tracking service that helps bu
   - Projects Features - Nirmal & Suraj
   - Server Deployement - Everyone
 
+<!-- DAY-3  tasks commit section-->
+<!-- user.router/ user.schema  =  Suraj -->
+<!-- config/server.js = sandhya-->
+<!-- login.jsx/function = priyanshu -->
+<!-- signup.jsx/ function = shivam -->
+
+
 - Day 4 - Tool Projects Static
   - Projects Frontend(Project Modal, Side Bar) - Priyanshu
   - List (Task items, butoon to add, Task Modal ) - Nirmal
@@ -32,3 +39,4 @@ TrackingTime is a collaborative, cloud-based time tracking service that helps bu
   - Report  Functional - Suraj
   - Tool Navbar  Functional - Shivam
   - Notes  Functional - Sandhya  
+

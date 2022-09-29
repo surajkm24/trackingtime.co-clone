@@ -70,6 +70,8 @@ export function Navbar() {
                         spacing={6}>
                         <Button
                             as={NavLink}
+                            target="_blank"
+                            rel='noreferrer'
                             to='/signup'
                             fontSize={'12px'}
                             border="2px solid #ed565a"
