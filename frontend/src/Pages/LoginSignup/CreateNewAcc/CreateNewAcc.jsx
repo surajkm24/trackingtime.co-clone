@@ -18,7 +18,7 @@ const CreateNewAcc = () => {
     <Box className={styles.rightBox} > 
 
       <Box className={styles.rightBox2}>
-       <Image  src={process.env.PUBLIC_URL+"Time-tracking-white-logo.png"}></Image>
+       <Image  src="time-white-logo.svg"></Image>
 
        <Box className={styles.inputBox}>
           <Text className={styles.lets}>Let's set up your account</Text>

@@ -1,7 +1,8 @@
 import './App.css';
 import { AllRoutes } from './Routes/AllRoutes';
 import { ChakraProvider, theme } from '@chakra-ui/react';
-import { Report } from './Components/ProjectReport/Report.jsx';
+import CreateNewOrg from './Pages/LoginSignup/CreateNewOrg/CreateNewOrg';
+import ToolsNavbar from './Components/ToolsNavbar';
 
 
 function App() {

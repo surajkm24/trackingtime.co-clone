@@ -1,19 +1,20 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import {Box, Button, Image, Input, InputGroup, InputLeftElement, Text} from "@chakra-ui/react";
 import styles from "./Login.module.css";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
+import AuthContext from '../../ContextAPI/AuthContext';
 
 // post user
 const postUser = async(text)=>{
    let res = await axios.post("http://localhost:8080/user/login", text);
-   console.log(res.data);
+  //  console.log(res.data);
    return res.data;
 }
 
 // login main function
 const Login = () => {
-
+ 
   const navigate = useNavigate();
   const [text, setText] = useState({
     email: "",
@@ -23,7 +24,7 @@ const Login = () => {
  const handleSubmit = (e) => {
   e.preventDefault();
   console.log("hello");
-  postUser(text);
+  postUser(text);  
   return navigate("/create-new-acc")
 
  };
