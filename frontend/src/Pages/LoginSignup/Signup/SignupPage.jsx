@@ -1,120 +1,139 @@
-import React, { useState } from 'react';
-import {Box, Button, Image, Input, Text, InputGroup, InputLeftElement} from "@chakra-ui/react";
+import React, { useContext, useState } from 'react';
+import { Box, Button, Image, Input, Text, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import styles from "../Login/Login.module.css";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
+import { AuthContext } from '../../ContextAPI/AuthContext';
 
 // post user
 const postUser = async(text)=>{
-//   try{
-//       let res = await axios.post("http://localhost:8080/user/signup", text);
-//       return res.data;
-//   }catch(e){
-//     console.log(e);
-//   } 
-// }
+  try{
+      let res = await axios.post("http://localhost:8080/user/signup", text);
+      return res.data;
+  }catch(e){
+    console.log(e);
+  } 
+}
 
   //  main sign up function
-  // const SignupPage = () => {
-  //   const navigate = useNavigate();
-  //   const [email, setEmail] = useState(''); 
-  //   const [text, setText] = useState({
-  //     email: "",
-  //     password: "",
-  //   });
+  const SignupPage = () => {
+    const navigate = useNavigate();
+    const [email, setEmail] = useState(''); 
+    const [text, setText] = useState({
+      email: "",
+      password: "",
+    });
+// const postUser = async (text) => {
+//   try {
+//     let res = await axios.post("http://localhost:8080/user/signup", text);
+//     return res.data;
+//   } catch (e) {
+//     console.log(e);
+//   }
+// }
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-   
-  //   postUser(text)
-  //   .then((res)=> {
+//  main sign up function
+const SignupPage = () => {
+  const {setToken} = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [text, setText] = useState({
+    email: "",
+    password: "",
+  });
 
-  //       if(res.token){
-  //      setText("")
-  //        return navigate("/login")
-  //       }else{
-  //         console.log("login failed");
-  //       }
-  //   })
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  //   .catch(()=>{
-  //     console.log("error");
-  //   })
-    // return navigate("/login")
-  // };
+    postUser(text)
+      .then((res) => {
+        if (res.token) {
+          setText("")
+          setToken(res.token);
+          return navigate("/login")
+        } else {
+          console.log("login failed");
+        }
+      })
 
-  // const handleChange = (e) => {
-  //   const {name, value} = e.target;
-  //   setText({
-  //   ...text,
-  //     [name]: value,
-  //   });
-  // };
+      .catch(() => {
+        console.log("error");
+      })
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setText({
+      ...text,
+      [name]: value,
+    });
+  };
 
   return (
     <Box className={styles.LoginMainBox} >
-      
-    {/* <div class="background" style="background-image: url(img/ui-login-background.svg);"></div> */}
-    {/* leftBox */}
-    <Box className={styles.leftBox} >
-       {/* <Box backgroundImage="url:(img/ui-login-background.svg)"></Box> */}
-       
-       <Image src="https://pro.trackingtime.co/img/ui-login-background.svg"></Image>
-    </Box>
 
-    {/* rightBox */}
-    <Box className={styles.rightBox} > 
-       <Image  src={process.env.PUBLIC_URL+"TrackingTime-logo.png"}></Image>
+      {/* <div class="background" style="background-image: url(img/ui-login-background.svg);"></div> */}
+      {/* leftBox */}
+      <Box className={styles.leftBox} >
+        {/* <Box backgroundImage="url:(img/ui-login-background.svg)"></Box> */}
 
-       <Box className={styles.inputBox}>
+        <Image src="https://pro.trackingtime.co/img/ui-login-background.svg"></Image>
+      </Box>
+
+      {/* rightBox */}
+      <Box className={styles.rightBox} >
+        <Image src={process.env.PUBLIC_URL + "TrackingTime-logo.png"}></Image>
+
+        <Box className={styles.inputBox}>
           <InputGroup>
-             <InputLeftElement className={styles.iconImg} children={<Image src={process.env.PUBLIC_URL+"google-logo-login.png"} color="gray.300" />} />
-             <Input className={styles.greyBackG} placeholder="Sign in with Google"></Input>
+            <InputLeftElement className={styles.iconImg} children={<Image src={process.env.PUBLIC_URL + "google-logo-login.png"} color="gray.300" />} />
+            <Input className={styles.greyBackG} placeholder="Sign in with Google"></Input>
           </InputGroup>
-          
-           {/* <br /> */}
-           <InputGroup>
-             <InputLeftElement className={styles.iconImg} children={<Image src={process.env.PUBLIC_URL+"microsoft-logo-login.png"} color="gray.300" />} />
-             <Input className={styles.greyBackG} placeholder="Sign in Microsoft"></Input>
-           </InputGroup>
-           {/* <br /> */}
-           <InputGroup>
-              <InputLeftElement className={styles.iconImg} children={<Image src={process.env.PUBLIC_URL+"apple-logo-login.png"} color="gray.300" />} />
-              <Input className={styles.greyBackG} placeholder="Sign in with Apple"></Input>
-           </InputGroup>
 
-{/* form start */}
-        <form onSubmit={handleSubmit}>
-         <Text className={styles.text2}>Sign in with you email</Text>
-         <br />
-         <Input className={styles.whiteBackG} onChange={handleChange} name="email" required value={text.email} type="email" placeholder="Email"></Input>
-         <br />
-         <Input className={styles.whiteBackG} onChange={handleChange} name="password" required value={text.password} type="password"   placeholder="Password"></Input>
-         <br />
-         <Box>
-           <Input className={styles.check} type="checkbox"></Input>
-         </Box>
-         <Text className={styles.switch}>I agree with<a href=''>Terms of service & </a></Text>
-         <Text className={styles.switch}><a href=''>Privacy Policy. </a></Text>
-         <br />
-         <Button className={styles.loginBtn } type='submit'> 
-         {/* <Link to="/login"> */}
+          {/* <br /> */}
+          <InputGroup>
+            <InputLeftElement className={styles.iconImg} children={<Image src={process.env.PUBLIC_URL + "microsoft-logo-login.png"} color="gray.300" />} />
+            <Input className={styles.greyBackG} placeholder="Sign in Microsoft"></Input>
+          </InputGroup>
+          {/* <br /> */}
+          <InputGroup>
+            <InputLeftElement className={styles.iconImg} children={<Image src={process.env.PUBLIC_URL + "apple-logo-login.png"} color="gray.300" />} />
+            <Input className={styles.greyBackG} placeholder="Sign in with Apple"></Input>
+          </InputGroup>
 
-          SIGN UP
-          {/* </Link>  */}
-          </Button>
-      </form>
-    {/* form end */}
+          {/* form start */}
+          <form onSubmit={handleSubmit}>
+            <Text className={styles.text2}>Sign in with you email</Text>
+            <br />
+            <Input className={styles.whiteBackG} onChange={handleChange} name="email" required value={text.email} type="email" placeholder="Email"></Input>
+            <br />
+            <Input className={styles.whiteBackG} onChange={handleChange} name="password" required value={text.password} type="password" placeholder="Password"></Input>
+            <br />
+            <Box>
+              <Input className={styles.check} type="checkbox"></Input>
+            </Box>
+            <Text className={styles.switch}>I agree with<a href=''>Terms of service & </a></Text>
+            <Text className={styles.switch}><a href=''>Privacy Policy. </a></Text>
+            <br />
+            <Button className={styles.loginBtn} type='submit'>
+              {/* <Link to="/login"> */}
 
-         <br />
-         <Text className={styles.switch}><Link to="/login">Back to login</Link></Text>
-         <br />
-         <Text className={styles.switch}><a href=''>Terms of service</a> /<a href=''>Privacy Policy</a></Text>
-       </Box>
+              SIGN UP
+              {/* </Link>  */}
+            </Button>
+          </form>
+          {/* form end */}
+
+          <br />
+          <Text className={styles.switch}><Link to="/login">Back to login</Link></Text>
+          <br />
+          <Text className={styles.switch}><a href=''>Terms of service</a> /<a href=''>Privacy Policy</a></Text>
+        </Box>
+      </Box>
+
     </Box>
-
-  </Box>
   )
+}
 }
 
 export default SignupPage

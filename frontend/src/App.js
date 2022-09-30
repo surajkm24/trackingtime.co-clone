@@ -8,6 +8,7 @@ import Login from './Pages/LoginSignup/Login/Login';
 import { useEffect, useState } from 'react';
 import { ChakraProvider, theme } from '@chakra-ui/react';
 import CreateNewOrg from './Pages/LoginSignup/CreateNewOrg/CreateNewOrg';
+// import ToolsNavbar from './Components/ToolsNavbar';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <div>
         <ChakraProvider theme={theme}>
           <AllRoutes />
+          {/* <ToolsNavbar /> */}
         </ChakraProvider>
       </div>
     </div>

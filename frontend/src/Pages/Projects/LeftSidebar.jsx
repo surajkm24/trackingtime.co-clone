@@ -27,7 +27,7 @@ const LeftSidebar = () => {
    
 
   return (
-    <Box w="23%" h="100vh" bg="#313946">
+    <Box w="23%" h="92vh" bg="#313946" >
       <Box
         borderBottom="1px solid #374050"
         color="#7fa8c1"
