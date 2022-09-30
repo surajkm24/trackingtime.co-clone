@@ -117,6 +117,12 @@
     line-height:0px;
 }
 
-/* .switch>a{
-    color:grey;
-} */
+.switch>a{
+    /* color:grey; */
+    text-decoration: underline;;
+}
+
+.text1>a{
+    /* color:grey; */
+    text-decoration: underline;;
+}
