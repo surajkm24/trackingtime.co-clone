@@ -9,8 +9,7 @@ function App() {
     <div>
       <div>
         <ChakraProvider theme={theme}>
-          {/* <AllRoutes /> */}
-          <Report />
+          <AllRoutes />
         </ChakraProvider>
       </div>
     </div>
