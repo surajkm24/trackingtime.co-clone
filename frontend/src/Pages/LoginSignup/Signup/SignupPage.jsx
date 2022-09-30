@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 
 // post user
-// const postUser = async(text)=>{
+const postUser = async(text)=>{
 //   try{
 //       let res = await axios.post("http://localhost:8080/user/signup", text);
 //       return res.data;
@@ -15,7 +15,7 @@ import axios from "axios";
 // }
 
   //  main sign up function
-  const SignupPage = () => {
+  // const SignupPage = () => {
   //   const navigate = useNavigate();
   //   const [email, setEmail] = useState(''); 
   //   const [text, setText] = useState({
@@ -40,7 +40,7 @@ import axios from "axios";
   //   .catch(()=>{
   //     console.log("error");
   //   })
-  //   // return navigate("/login")
+    // return navigate("/login")
   // };
 
   // const handleChange = (e) => {

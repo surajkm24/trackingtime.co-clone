@@ -44,7 +44,7 @@ const CreateNewOrg = () => {
 
          <Flex className={styles.getStarted}>
             <Button className={styles.back}>BACK</Button>
-            <Link to="#">
+            <Link to="/project">
               <Button  className={styles.started}>GET STARTED</Button>
             </Link>
          </Flex>
