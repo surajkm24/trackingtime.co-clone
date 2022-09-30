@@ -27,7 +27,7 @@ TrackingTime is a collaborative, cloud-based time tracking service that helps bu
 
 
 - Day 4 - Tool Projects Static
-  - Projects Frontend(Project Modal, Side Bar) - Priyanshu
+  - Projects Frontend(Project Modal, Side Bar) - Priyanshu, Shivam
   - List (Task items, butoon to add, Task Modal ) - Nirmal
   - Report - Suraj
   - Tool Navbar - Shivam
