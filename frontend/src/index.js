@@ -15,9 +15,9 @@ root.render(
     
     <BrowserRouter>
     <AuthContextProvider>
-      {/* <ChakraProvider theme={theme}> */}
+      <ChakraProvider theme={theme}>
         <App />
-      {/* </ChakraProvider> */}
+      </ChakraProvider>
     </AuthContextProvider>
     </BrowserRouter>
   </React.StrictMode>
