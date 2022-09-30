@@ -1,10 +1,12 @@
 import React from "react";
 import BlogNavbar from "../../Components/BlogNavbar/BlogNavbar";
+import { Navbar } from "../../Components/Navbar/Navbar";
 import "./BlogPage.css";
 
 const BlogDetail = () => {
   return (
     <div>
+      <Navbar/>
       <BlogNavbar />
       <div className="heroimage-box2">
         <div className="detail-heroimg">
