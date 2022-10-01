@@ -30,6 +30,7 @@ const Login = () => {
     console.log("hello");
     postUser(text).then((res) => {
       if (res.token) {
+        localStorage.setItem('token', res.token);
         setToken(res.token);
         return navigate("/create-new-acc")
       }

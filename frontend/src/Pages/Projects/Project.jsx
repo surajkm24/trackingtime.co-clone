@@ -6,6 +6,8 @@ import { useState } from 'react';
 import { getData, postData } from '../../Components/Function/Function';
 import { useContext } from 'react';
 import { AuthContext } from '../ContextAPI/AuthContext.jsx';
+import Nav2Space from '../NotesComponent/Nav2Space.jsx';
+import NavProject2 from '../../Components/NavProject2/NavProject2.jsx'
 
 const Project = () => {
   const [data, setData] = useState([]);
@@ -15,8 +17,8 @@ const Project = () => {
   const getProjects = (token) => {
     getData(token).then((res) => {
       console.log(res)
-      setSingleProject(res[0]);
-      setData(res)
+      setSingleProject(res[0]||{});
+      setData(res||[])
     }).catch((e) => {
       console.log(e);
     })
@@ -25,6 +27,7 @@ const Project = () => {
   const addProject = (params) => {
     postData(token, params).then((res) => {
       setData([...data, res])
+      setSingleProject(res);
     })
   }
 
@@ -41,7 +44,11 @@ const Project = () => {
     <div className={styles.ProjectBodyBox} >
 
       <ToolsNavbar />
+      <div style={{display:"flex"}}>
       <LeftSidebar addProject={addProject} data={data} singleProject={singleProject} setSingleProject={setSingleProject} />
+      {/* <NavProject2/>
+      <Nav2Space /> */}
+      </div>
     </div>
   )
 }
