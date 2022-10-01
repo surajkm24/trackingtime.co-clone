@@ -19,12 +19,12 @@ import RightBar from "./RightBar";
 
 
 
-const LeftSidebar = () => {
+const LeftSidebar = ({ addProject }) => {
 
-  const [Filtered,setFiltered] = useState({all:"ALL",duedate:"BY DUEDATE"})
+  const [Filtered, setFiltered] = useState({ all: "ALL", duedate: "BY DUEDATE" })
 
-  
-   
+
+
 
   return (
     <Box w="23%" h="92vh" bg="#313946" >
@@ -66,11 +66,11 @@ const LeftSidebar = () => {
             borderRadius="5px"
             border="1px solid #374050"
           >
-            <RightBar />
+            <RightBar addProject={addProject} />
           </Box>
         </HStack>
       </Box>
-     
+
       <Popover trigger="hover" >
         <PopoverTrigger>
           <Button
@@ -81,19 +81,19 @@ const LeftSidebar = () => {
             px="10px"
             color="white"
           >
-            {Filtered.all} <ChevronDownIcon/>
+            {Filtered.all} <ChevronDownIcon />
           </Button>
         </PopoverTrigger>
         <PopoverContent bg="#2A313C" w="200px" borderColor="#2A313C" color="white">
           <PopoverBody fontWeight={600} fontSize="13px">
-          <Box
+            <Box
               display="flex"
               cursor="pointer"
               alignItems="center"
               gap="7px"
               padding="10px"
-              _hover={{ color:"blue" }}
-              onClick={()=>setFiltered({...Filtered,all:"ALL"})}
+              _hover={{ color: "blue" }}
+              onClick={() => setFiltered({ ...Filtered, all: "ALL" })}
             >
               All
             </Box>
@@ -103,8 +103,8 @@ const LeftSidebar = () => {
               alignItems="center"
               gap="7px"
               padding="10px"
-              _hover={{ color:"blue" }}
-              onClick={()=>setFiltered({...Filtered,all:"FAVORITES"})}   
+              _hover={{ color: "blue" }}
+              onClick={() => setFiltered({ ...Filtered, all: "FAVORITES" })}
 
             >
               Favorites
@@ -115,15 +115,15 @@ const LeftSidebar = () => {
               alignItems="center"
               gap="7px"
               padding="10px"
-              _hover={{color:"blue" }}
-              onClick={()=>setFiltered({...Filtered,all:"BY CLIENT"})}
+              _hover={{ color: "blue" }}
+              onClick={() => setFiltered({ ...Filtered, all: "BY CLIENT" })}
             >
               By Client
             </Box>
           </PopoverBody>
         </PopoverContent>
       </Popover>
- 
+
       <Popover trigger="hover" >
         <PopoverTrigger>
           <Button
@@ -134,19 +134,19 @@ const LeftSidebar = () => {
             px="10px"
             color="white"
           >
-            {Filtered.duedate} <ChevronDownIcon/>
+            {Filtered.duedate} <ChevronDownIcon />
           </Button>
         </PopoverTrigger>
         <PopoverContent bg="#2A313C" w="200px" borderColor="#2A313C" color="white">
           <PopoverBody fontWeight={600} fontSize="13px">
-          <Box
+            <Box
               display="flex"
               cursor="pointer"
               alignItems="center"
               gap="7px"
               padding="10px"
-              _hover={{ color:"blue" }}
-              onClick={()=>setFiltered({...Filtered,duedate:"BY ORDER"})}
+              _hover={{ color: "blue" }}
+              onClick={() => setFiltered({ ...Filtered, duedate: "BY ORDER" })}
             >
               By Order
             </Box>
@@ -156,8 +156,8 @@ const LeftSidebar = () => {
               alignItems="center"
               gap="7px"
               padding="10px"
-              _hover={{ color:"blue" }}
-              onClick={()=>setFiltered({...Filtered,duedate:"BY NAME"})}   
+              _hover={{ color: "blue" }}
+              onClick={() => setFiltered({ ...Filtered, duedate: "BY NAME" })}
               Favorites
             >
               By Name
@@ -168,8 +168,8 @@ const LeftSidebar = () => {
               alignItems="center"
               gap="7px"
               padding="10px"
-              _hover={{color:"blue" }}
-              onClick={()=>setFiltered({...Filtered,duedate:"BY DUE DATE"})}
+              _hover={{ color: "blue" }}
+              onClick={() => setFiltered({ ...Filtered, duedate: "BY DUE DATE" })}
             >
               By Due Date
             </Box>
