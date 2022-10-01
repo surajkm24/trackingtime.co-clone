@@ -1,5 +1,5 @@
 const User = require('../users/user.schema.js');
-
+ 
 const authmiddleware = async (req, res, next) => {
     try {
         let { token } = req.headers;
