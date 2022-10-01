@@ -16,13 +16,13 @@ const postUser = async(text)=>{
 }
 
   //  main sign up function
-  const SignupPage = () => {
-    const navigate = useNavigate();
-    const [email, setEmail] = useState(''); 
-    const [text, setText] = useState({
-      email: "",
-      password: "",
-    });
+  // const SignupPage = () => {
+  //   const navigate = useNavigate();
+  //   const [email, setEmail] = useState(''); 
+  //   const [text, setText] = useState({
+  //     email: "",
+  //     password: "",
+  //   });
 // const postUser = async (text) => {
 //   try {
 //     let res = await axios.post("http://localhost:8080/user/signup", text);
@@ -52,10 +52,9 @@ const SignupPage = () => {
           setToken(res.token);
           return navigate("/login")
         } else {
-          console.log("login failed");
+          console.log("Signup failed");
         }
       })
-
       .catch(() => {
         console.log("error");
       })
@@ -134,6 +133,6 @@ const SignupPage = () => {
     </Box>
   )
 }
-}
+
 
 export default SignupPage

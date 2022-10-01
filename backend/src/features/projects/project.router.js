@@ -20,7 +20,7 @@ app.post('/', async (req, res) => {
 })
 
 app.get('/', async (req, res) => {
-    let projects = await Project.find({ 'userId': req.body.userId });
+    let projects = await Project.find({ 'userId': req.userId });
     res.send(projects);
 })
 
