@@ -14,11 +14,14 @@ import {
   MenuDivider,
 } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons';
+import SingleProHeader from '../SingleProHeader/SingleProHeader';
 
 
 const NavProject2 = () => {
   return (
+
     <Box className={styles.NavPro2Container}>
+       {/* <SingleProHeader /> */}
         <Flex className={styles.nav}>
            <NavLink to="/list" className={({isActive})=> isActive? styles.active : styles.default}>List</NavLink>
            <NavLink to="/Board" className={({isActive})=> isActive? styles.active  : styles.default}>Board</NavLink>
@@ -33,12 +36,15 @@ const NavProject2 = () => {
                 <Menu>
                   {({ isOpen }) => (
                     <>
-                      <MenuButton isActive={isOpen} as={Button} rightIcon={<ChevronDownIcon />} w={"120px"} h={"30px"} fontSize={"13px"} fontWeight={"bold"} mt={"12px"} backgroundColor={"#343D4B"} color={"white"}>
+                      <MenuButton isActive={isOpen} as={Button} rightIcon={<ChevronDownIcon />}
+                         w={"120px"} h={"30px"} fontSize={"13px"} 
+                         fontWeight={"bold"} mt={"12px"} backgroundColor={"#343D4B"} 
+                         color={"white"} _hover={{backgroundColor:"#343D4B"}}>
                         {isOpen ? 'Open tasks' : 'Open tasks'}
                       </MenuButton>
                       <MenuList  backgroundColor={"#343D4B"} color={"white"}>
-                        <MenuItem>All tasks</MenuItem>
-                        <MenuItem onClick={() => alert('Kagebunshin')}>open tasks</MenuItem>
+                        <MenuItem _hover={{backgroundColor:"#374050"}}>All tasks</MenuItem>
+                        <MenuItem _hover={{backgroundColor:"#374050"}} onClick={() => alert('Kagebunshin')}>open tasks</MenuItem>
                       </MenuList>
                     </>
                   )}    
@@ -49,12 +55,15 @@ const NavProject2 = () => {
                 <Menu>
                   {({ isOpen }) => (
                     <>
-                      <MenuButton isActive={isOpen} as={Button} rightIcon={<ChevronDownIcon />}  w={"100px"} h={"30px"} fontSize={"13px"} mt={"12px"} fontWeight={"bold"} backgroundColor={"#343D4B"} color={"white"}>
+                      <MenuButton isActive={isOpen} as={Button} rightIcon={<ChevronDownIcon />}  
+                         w={"100px"} h={"30px"} fontSize={"13px"} mt={"12px"}
+                           fontWeight={"bold"} backgroundColor={"#343D4B"} color={"white"}
+                           _hover={{backgroundColor:"#343D4B"}}>
                         {isOpen ? '+ Tasks' : '+ Tasks'}
                       </MenuButton>
                       <MenuList  backgroundColor={"#343D4B"} color={"white"}>
-                        <MenuItem>Add task list</MenuItem>
-                        <MenuItem onClick={() => alert('Kagebunshin')}>Add multiple tasks</MenuItem>
+                        <MenuItem  _hover={{backgroundColor:"#374050"}}>Add task list</MenuItem>
+                        <MenuItem _hover={{backgroundColor:"#374050"}} onClick={() => alert('Kagebunshin')}>Add multiple tasks</MenuItem>
                       </MenuList>
                     </>
                   )}    

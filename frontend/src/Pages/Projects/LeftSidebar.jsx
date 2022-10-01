@@ -175,7 +175,7 @@ const LeftSidebar = ({ addProject, data, singleProject, setSingleProject }) => {
         </PopoverContent>
       </Popover>
 
-      {data.map(project => {
+      {data?.length !==0? data.map(project => {
         return <Box
           p='10px 14px'
           bg={singleProject._id === project._id ? "#374050" : "initial"}
@@ -194,7 +194,7 @@ const LeftSidebar = ({ addProject, data, singleProject, setSingleProject }) => {
             <span style={{fontSize:"8px",color:"#989CA2",fontWeight:"600"}}>{project.duration}s/{project.estimatedTime}:00</span>
           </Box>
         </Box>
-      })}
+      }):null}
     </Box>
   );
 };

@@ -7,7 +7,8 @@ import { getData, postData } from '../../Components/Function/Function';
 import { useContext } from 'react';
 import { AuthContext } from '../ContextAPI/AuthContext.jsx';
 import NavProject2 from '../../Components/NavProject2/NavProject2';
-import { Flex } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
+import SingleProHeader from '../../Components/SingleProHeader/SingleProHeader';
 
 const Project = () => {
   const [data, setData] = useState([]);
@@ -15,10 +16,11 @@ const Project = () => {
 
   const { token } = useContext(AuthContext);
   const getProjects = (token) => {
+    console.log('getProjects')
     getData(token).then((res) => {
-      console.log(res)
-      setSingleProject(res[0]);
-      setData(res)
+      console.log(res+"hello")
+      setSingleProject(res[0] || {});
+      setData(res || [])
     }).catch((e) => {
       console.log(e);
     })
@@ -41,10 +43,15 @@ const Project = () => {
   return (
 
     <div className={styles.ProjectBodyBox} >
-        <ToolsNavbar />
+
+      <ToolsNavbar />
       <Flex>
       <LeftSidebar addProject={addProject} data={data} singleProject={singleProject} setSingleProject={setSingleProject} />
-      <NavProject2/>
+      <Box>
+        <SingleProHeader singleProject={singleProject}/>
+         <NavProject2/>
+      </Box>
+      
       </Flex>
     
      
