@@ -3,13 +3,19 @@ import {Box, Button, Image, Input, InputGroup, InputLeftElement, Text} from "@ch
 import styles from "./Login.module.css";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
-import AuthContext from '../../ContextAPI/AuthContext';
+import {AuthContext} from '../../ContextAPI/AuthContext';
 
 // post user
 const postUser = async(text)=>{
-   let res = await axios.post("http://localhost:8080/user/login", text);
-  //  console.log(res.data);
-   return res.data;
+  try{
+    let res = await axios.post("http://localhost:8080/user/login", text);
+    //  console.log(res.data);
+     return res.data;
+ 
+    }catch(e){
+    console.log(e)
+  }
+
 }
 
 // login main function
@@ -20,12 +26,27 @@ const Login = () => {
     email: "",
     password: "",
   });
-
+  const {token,setToken} = useContext(AuthContext)
+  console.log(token)
  const handleSubmit = (e) => {
   e.preventDefault();
-  console.log("hello");
-  postUser(text);  
-  return navigate("/create-new-acc")
+
+  postUser(text)
+  .then((res) => {
+    if (res.token) {
+      setText("")
+      setToken(res.token);
+      return navigate("/create-new-acc")
+    } else {
+      console.log("login failed");
+    }
+  })
+
+  .catch(() => {
+    console.log("error");
+  })
+
+
 
  };
 

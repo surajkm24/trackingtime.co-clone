@@ -1,18 +1,38 @@
-import React from 'react'
-import RightBar from './RightBar'
-import styles from "./Project.module.css";
-import LeftSidebar from './LeftSidebar';
-import ToolsNavbar from '../../Components/ToolsNavbar';
-const Project = () => {
+// import React from 'react'
+// import RightBar from './RightBar'
+// import styles from "./Project.module.css";
+// import LeftSidebar from './LeftSidebar';
+// import ToolsNavbar from '../../Components/ToolsNavbar';
+// import { useState } from 'react';
+// import { useContext } from 'react';
+// import { AuthContext } from '../ContextAPI/AuthContext';
+// import { getData } from '../../Components/Function/Function';
+// import { useEffect } from 'react';
+// const Project = () => {
+//   const {token} = useContext(AuthContext)
+//   const [data,setData] = useState([])
 
-  return (
+//   const displayData = ()=>{
+//     // let [id] = token.split(":") 
+//     getData(token).then((res)=>{
+//       console.log(res)
+//       setData(res);
+//     })
+//   }
+//   console.log(data)
 
-    <div className={styles.ProjectBodyBox} >
+//   useEffect(()=>{
+//     displayData();
+//   },[])
+   
+//   return (
 
-     <ToolsNavbar/>
-     <LeftSidebar/>
-    </div>
-  )
-}
+//     <div className={styles.ProjectBodyBox} >
 
-export default Project
+//      <ToolsNavbar/>
+//      <LeftSidebar/>
+//     </div>
+//   )
+// }
+
+// export default Project
