@@ -6,6 +6,8 @@ import { useState } from 'react';
 import { getData, postData } from '../../Components/Function/Function';
 import { useContext } from 'react';
 import { AuthContext } from '../ContextAPI/AuthContext.jsx';
+import NavProject2 from '../../Components/NavProject2/NavProject2';
+import { Flex } from '@chakra-ui/react';
 
 const Project = () => {
   const [data, setData] = useState([]);
@@ -39,9 +41,13 @@ const Project = () => {
   return (
 
     <div className={styles.ProjectBodyBox} >
-
-      <ToolsNavbar />
+        <ToolsNavbar />
+      <Flex>
       <LeftSidebar addProject={addProject} data={data} singleProject={singleProject} setSingleProject={setSingleProject} />
+      <NavProject2/>
+      </Flex>
+    
+     
     </div>
   )
 }
