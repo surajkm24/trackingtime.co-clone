@@ -27,7 +27,7 @@ export default function Timer() {
     
     function strToSeconds(str){
       str=str.split(":").map(Number);
-      seconds = (str[0]*60*60)+(str[1]*60)+str[2]
+      let seconds = (str[0]*60*60)+(str[1]*60)+str[2]
       return seconds
     }
     
