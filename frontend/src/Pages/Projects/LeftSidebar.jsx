@@ -10,6 +10,8 @@ import {
   PopoverContent,
   PopoverBody,
   Button,
+  Text,
+  Progress
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import styles from "./Project.module.css";
@@ -19,13 +21,9 @@ import RightBar from "./RightBar";
 
 
 
-const LeftSidebar = ({ addProject }) => {
+const LeftSidebar = ({ addProject, data, singleProject, setSingleProject }) => {
 
   const [Filtered, setFiltered] = useState({ all: "ALL", duedate: "BY DUEDATE" })
-
-
-
-
   return (
     <Box w="23%" h="92vh" bg="#313946" >
       <Box
@@ -177,6 +175,26 @@ const LeftSidebar = ({ addProject }) => {
         </PopoverContent>
       </Popover>
 
+      {data.map(project => {
+        return <Box
+          p='10px 14px'
+          bg={singleProject._id === project._id ? "#374050" : "initial"}
+          cursor='pointer'
+          _hover={{ background: "#374050" }}
+          onClick={() => setSingleProject(project)}>
+          <Box display='flex'
+            alignItems='center'
+            gap='10px'>
+            <Box h='15px' w='15px' borderRadius='3px' bg='lightgray'></Box>
+            <Text color='white' fontWeight={600} fontSize='14px'>{project.projectName}</Text>
+          </Box>
+          <Box display='flex' alignItems='center' gap='10px'>
+            <Progress value={Math.floor((project.duration / (project.estimatedTime * 3600)) * 100)} colorScheme='green' height='4px' w='20px' borderRadius='2px'/>
+            <span style={{fontSize:"8px",color:"white",fontWeight:"600"}}>{Math.floor((project.duration / (project.estimatedTime * 3600)) * 100)}%</span>
+            <span style={{fontSize:"8px",color:"#989CA2",fontWeight:"600"}}>{project.duration}s/{project.estimatedTime}:00</span>
+          </Box>
+        </Box>
+      })}
     </Box>
   );
 };
