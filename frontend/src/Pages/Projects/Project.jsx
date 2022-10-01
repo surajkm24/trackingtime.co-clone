@@ -9,10 +9,13 @@ import { AuthContext } from '../ContextAPI/AuthContext.jsx';
 
 const Project = () => {
   const [data, setData] = useState([]);
+  const [singleProject, setSingleProject] = useState({});
+
   const { token } = useContext(AuthContext);
   const getProjects = (token) => {
     getData(token).then((res) => {
       console.log(res)
+      setSingleProject(res[0]);
       setData(res)
     }).catch((e) => {
       console.log(e);
@@ -20,8 +23,8 @@ const Project = () => {
   }
 
   const addProject = (params) => {
-    postData(token, params).then((res)=>{
-      setData([...data,res])
+    postData(token, params).then((res) => {
+      setData([...data, res])
     })
   }
 
@@ -29,16 +32,16 @@ const Project = () => {
     getProjects(token);
   }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(data);
-  },[data])
+  }, [data])
 
   return (
 
     <div className={styles.ProjectBodyBox} >
 
       <ToolsNavbar />
-      <LeftSidebar addProject={addProject} />
+      <LeftSidebar addProject={addProject} data={data} singleProject={singleProject} setSingleProject={setSingleProject} />
     </div>
   )
 }
