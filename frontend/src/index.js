@@ -5,15 +5,20 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { ChakraProvider, theme } from '@chakra-ui/react';
+import AuthContext from './Pages/ContextAPI/AuthContext';
+import AuthContextProvider from './Pages/ContextAPI/AuthContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    
     <BrowserRouter>
-      {/* <ChakraProvider theme={theme}> */}
+    <AuthContextProvider>
+      <ChakraProvider theme={theme}>
         <App />
-      {/* </ChakraProvider> */}
+      </ChakraProvider>
+    </AuthContextProvider>
     </BrowserRouter>
   </React.StrictMode>
 

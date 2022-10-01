@@ -1,0 +1,48 @@
+/* .NotesContainer{
+    border:1px solid red;
+    width: 76%;
+    height: 80%;
+    margin-top: 11%;
+    margin-left:24%;
+    background-color:#2A313C;
+} */
+
+.Container{
+    /* border:0.02px solid  #747981; */
+    height:435px;
+    width: 100%;
+}
+
+/* #747981 */
+
+.addTaskBtn{
+    border:1px solid  #747981;
+    font-weight: lighter;
+    height: 15px !important;
+    color: #747981;
+    background-color:#2A313C !important;
+    width: -10px !important;
+}
+
+.addTaskFlex{
+    /* border:1px solid  #747981; */
+    gap: 10px;
+    margin-top: 6%;
+    margin-left: 10%;
+}
+
+.addTaskFlex>p{
+    color: #747981;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top:7px;
+}
+
+.addTaskFlex>p:hover{
+    color: white;
+}
+
+.addTaskBtn:hover{
+    border-color: white;
+    color: white;
+}

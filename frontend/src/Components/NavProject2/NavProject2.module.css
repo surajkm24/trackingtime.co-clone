@@ -1,0 +1,38 @@
+.NavPro2Container{
+    /* border:1px solid red; */
+    width: 76%;
+    height: 90%;
+    /* margin-top: 4%; */
+    /* margin-left:24%; */
+    background-color:#2A313C;
+}
+
+.nav{
+    /* border: 0.02px solid #414347; */
+    /* padding: 13px; */
+    gap:-4px;
+    color:#969BA6;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.menuRight{
+    margin-left: 300px;
+    gap:10px
+}
+
+.active {
+    color: rgb(116, 116, 240);
+    text-decoration:underline;
+    padding: 1rem;
+  }
+.default{
+    color:#969BA6;
+    text-decoration: none;
+    padding: 1rem;
+}
+
+.nav>p:hover{
+    color:white;
+    cursor: pointer;
+}

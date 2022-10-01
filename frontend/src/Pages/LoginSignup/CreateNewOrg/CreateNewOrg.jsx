@@ -16,19 +16,19 @@ const CreateNewOrg = () => {
     <Box className={styles.rightBox} > 
 
       <Box className={styles.rightBox2}>
-       <Image  src={process.env.PUBLIC_URL+"Time-tracking-white-logo.png"}></Image>
+       <Image  src="time-white-logo.svg"></Image>
 
      
        <Box className={styles.inputBox}>
         
-            <Text className={styles.lets}>Create your organisation</Text>
+          <Text className={styles.lets}>Create your organization</Text>
           
           <Text className={styles.welcome}>Set up your company in TrackingTime.</Text>
           
-         <Text>Organisation name</Text>
-         <Input></Input>
+         <Text className={styles.orgName}>Organization name</Text>
+         <Input className={styles.inp}></Input>
 
-         <Text>Team size</Text>
+         <Text className={styles.orgName}>Team size</Text>
          <Flex className={styles.BtnFlex}>
             <Button>solo (1)</Button>
             <Button>2-5</Button>
@@ -36,15 +36,15 @@ const CreateNewOrg = () => {
             <Button>+15</Button>
          </Flex>
 
-         <Text>Your name</Text>
-         <Input></Input>
+         <Text className={styles.orgName}>Your name</Text>
+         <Input  className={styles.inp}></Input>
 
-         <Text>Last name</Text>
-         <Input></Input>
+         <Text className={styles.orgName}>Last name</Text>
+         <Input  className={styles.inp}></Input>
 
          <Flex className={styles.getStarted}>
             <Button className={styles.back}>BACK</Button>
-            <Link to="#">
+            <Link to="/project">
               <Button  className={styles.started}>GET STARTED</Button>
             </Link>
          </Flex>

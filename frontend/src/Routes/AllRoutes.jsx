@@ -12,6 +12,7 @@ import SignupPage from "../Pages/LoginSignup/Signup/SignupPage"
 import CreateNewAcc from "../Pages/LoginSignup/CreateNewAcc/CreateNewAcc"
 import Login from "../Pages/LoginSignup/Login/Login"
 import CreateNewOrg from "../Pages/LoginSignup/CreateNewOrg/CreateNewOrg"
+import Project from "../Pages/Projects/Project"
 export const AllRoutes = () => {
     return(
     <Routes> 
@@ -27,6 +28,7 @@ export const AllRoutes = () => {
             <Route path="/signup" element={<SignupPage />}></Route>
             <Route path="/create-new-acc" element={<CreateNewAcc />}></Route>
             <Route path="/create-new-org" element={<CreateNewOrg />}></Route>
+            <Route path="/project" element={<Project/>} />
    </Routes>
     
     )

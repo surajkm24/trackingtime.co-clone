@@ -20,13 +20,13 @@ app.post('/', async (req, res) => {
 })
 
 app.get('/', async (req, res) => {
-    let projects = await Project.find({ 'userId': req.body.userId });
+    let projects = await Project.find({ 'userId': req.userId });
     res.send(projects);
 })
 
 app.get('/:id', async (req, res) => {
     let id = req.params.id;
-    let project = await Project.findById(id);
+    let project = await Project.findById(id).populate({ path:"task",populate: { path: "taskId" } });
     res.send(project);
 })
 

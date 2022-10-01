@@ -1,21 +1,40 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Box, Button, Image, Input, Text, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import styles from "../Login/Login.module.css";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
+import { AuthContext } from '../../ContextAPI/AuthContext';
 
 // post user
-const postUser = async (text) => {
-  try {
-    let res = await axios.post("http://localhost:8080/user/signup", text);
-    return res.data;
-  } catch (e) {
+const postUser = async(text)=>{
+  try{
+      let res = await axios.post("http://localhost:8080/user/signup", text);
+      return res.data;
+  }catch(e){
     console.log(e);
-  }
+  } 
 }
+
+  //  main sign up function
+  // const SignupPage = () => {
+  //   const navigate = useNavigate();
+  //   const [email, setEmail] = useState(''); 
+  //   const [text, setText] = useState({
+  //     email: "",
+  //     password: "",
+  //   });
+// const postUser = async (text) => {
+//   try {
+//     let res = await axios.post("http://localhost:8080/user/signup", text);
+//     return res.data;
+//   } catch (e) {
+//     console.log(e);
+//   }
+// }
 
 //  main sign up function
 const SignupPage = () => {
+  const {setToken} = useContext(AuthContext);
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [text, setText] = useState({
@@ -28,19 +47,17 @@ const SignupPage = () => {
 
     postUser(text)
       .then((res) => {
-
         if (res.token) {
           setText("")
+          setToken(res.token);
           return navigate("/login")
         } else {
-          console.log("login failed");
+          console.log("Signup failed");
         }
       })
-
       .catch(() => {
         console.log("error");
       })
-    // return navigate("/login")
   };
 
   const handleChange = (e) => {
@@ -116,5 +133,6 @@ const SignupPage = () => {
     </Box>
   )
 }
+
 
 export default SignupPage
