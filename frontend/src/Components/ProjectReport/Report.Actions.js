@@ -7,6 +7,7 @@ export const getProject = async (token, id) => {
                 token: token
             }
         });
+        console.log(res,'getProject')
         return res.data
     }
     catch (e) {

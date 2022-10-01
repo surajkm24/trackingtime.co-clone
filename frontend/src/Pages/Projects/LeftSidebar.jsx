@@ -22,7 +22,7 @@ import RightBar from "./RightBar";
 
 
 
-const LeftSidebar = ({ addProject, data, singleProject, setSingleProject }) => {
+const LeftSidebar = ({ addProject, data, singleProject, setSingleProject, deleteProject }) => {
 
   const [Filtered, setFiltered] = useState({ all: "ALL", duedate: "BY DUEDATE" })
   return (
@@ -178,69 +178,77 @@ const LeftSidebar = ({ addProject, data, singleProject, setSingleProject }) => {
       <div id='projectTiles'>
         {data?.length !== 0 ? data.map(project => {
           return <Box
-            display='flex'
-            alignItems='center'
-            justifyContent='space-between'
             p='10px 14px'
             bg={singleProject._id === project._id ? "#374050" : "initial"}
             cursor='pointer'
             _hover={{ background: "#374050" }}
-            onClick={() => setSingleProject(project)}
-            key={project._id}
-          >
-            <Box>
-              <Box display='flex'
-                alignItems='center'
-                gap='10px'>
-                <Box h='15px' w='15px' borderRadius='3px' bg='lightgray'></Box>
-                <Text color='white' fontWeight={600} fontSize='14px'>{project.projectName}</Text>
-              </Box>
-              <Box display='flex' alignItems='center' gap='10px'>
-                <Progress value={Math.floor((project.duration / (project.estimatedTime * 3600)) * 100)} colorScheme='green' height='4px' w='20px' borderRadius='2px' />
-                <span style={{ fontSize: "8px", color: "white", fontWeight: "600" }}>{Math.floor((project.duration / (project.estimatedTime * 3600)) * 100)}%</span>
-                <span style={{ fontSize: "8px", color: "#989CA2", fontWeight: "600" }}>{project.duration}s/{project.estimatedTime}:00</span>
-              </Box>
-            </Box>
-
-            <Popover >
-              <PopoverTrigger>
-                <Box color='white' fontWeight='800' w='20px' h='20px'>
-                  <span>...</span>
+            onClick={() => setSingleProject(project)}>
+            <Box display='flex'
+              alignItems='center'
+              justifyContent='space-between'
+              p='10px 14px'
+              bg={singleProject._id === project._id ? "#374050" : "initial"}
+              cursor='pointer'
+              _hover={{ background: "#374050" }}
+              onClick={() => setSingleProject(project)}
+              key={project._id}
+            >
+              <Box>
+                <Box display='flex'
+                  alignItems='center'
+                  gap='10px'>
+                  <Box h='15px' w='15px' borderRadius='3px' bg='lightgray'></Box>
+                  <Text color='white' fontWeight={600} fontSize='14px'>{project.projectName}</Text>
                 </Box>
-              </PopoverTrigger>
-              <PopoverContent bg='#2a313c' w='200px' borderColor='#374050'>
-                <PopoverBody fontWeight={600} fontSize='13px' color='white'>
-                  <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "#343d4b" }}>
-                    Edit project
+                <Box display='flex' alignItems='center' gap='10px'>
+                  <Progress value={Math.floor((project.duration / (project.estimatedTime * 3600)) * 100)} colorScheme='green' height='4px' w='20px' borderRadius='2px' />
+                  <span style={{ fontSize: "8px", color: "white", fontWeight: "600" }}>{Math.floor((project.duration / (project.estimatedTime * 3600)) * 100)}%</span>
+                  <span style={{ fontSize: "8px", color: "#989CA2", fontWeight: "600" }}>{project.duration}s/{project.estimatedTime}:00</span>
+                </Box>
+              </Box>
+
+              <Popover >
+                <PopoverTrigger>
+                  <Box color='white' fontWeight='800' w='20px' h='20px'>
+                    <span>...</span>
                   </Box>
-                  <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "#343d4b" }}>
-                    Track
-                  </Box>
-                  <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "#343d4b" }}>
-                    Add to favourites
-                  </Box>
-                  <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "#343d4b" }}>
-                    Duplicate this project
-                  </Box>
-                  <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "#343d4b" }}>
-                    Report
-                  </Box>
-                  <Box fontSize='12px' display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "#343d4b" }}>
-                    PRIORITY
-                  </Box>
-                  <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "#343d4b" }}>
-                    Archive
-                  </Box>
-                  <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "#343d4b" }}>
-                    Delete
-                  </Box>
-                </PopoverBody>
-              </PopoverContent>
-            </Popover>
+                </PopoverTrigger>
+                <PopoverContent bg='#2a313c' w='200px' borderColor='#374050'>
+                  <PopoverBody fontWeight={600} fontSize='13px' color='white'>
+                    <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "#343d4b" }}>
+                      Edit project
+                    </Box>
+                    <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "#343d4b" }}>
+                      Track
+                    </Box>
+                    <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "#343d4b" }}>
+                      Add to favourites
+                    </Box>
+                    <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "#343d4b" }}>
+                      Duplicate this project
+                    </Box>
+                    <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "#343d4b" }}>
+                      Report
+                    </Box>
+                    <Box fontSize='12px' display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "#343d4b" }}>
+                      PRIORITY
+                    </Box>
+                    <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "#343d4b" }}>
+                      Archive
+                    </Box>
+                    <Box onClick={() => deleteProject(project._id)} display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "#343d4b" }}>
+                      Delete
+                    </Box>
+                  </PopoverBody>
+                </PopoverContent>
+              </Popover>
+            </Box>
           </Box>
         }) : null}
+
+
       </div>
-    </Box>
+    </Box >
   );
 };
 

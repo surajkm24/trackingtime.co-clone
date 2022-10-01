@@ -11,8 +11,9 @@ import { CgFileDocument } from 'react-icons/cg'
 import { TbGridDots } from 'react-icons/tb'
 import { HiOutlineDocumentReport } from 'react-icons/hi'
 import { BsInboxes, BsShieldCheck } from 'react-icons/bs'
+import TimerNav from './Timer/TimerNav.jsx'
 
-const ToolsNavbar = () => {
+const ToolsNavbar = ({ play, setPlay, updateDuration }) => {
     const activeStyle = {
         color: "#6683FF",
         fontWeight: "bold",
@@ -123,7 +124,8 @@ const ToolsNavbar = () => {
                         </Circle>
                     </HStack>
                     <HStack mr={3} spacing={3}>
-                        <Icon boxSize={7} color="white" as={GoPlay} />
+                        {/* <Icon boxSize={7} color="white" as={GoPlay} /> */}
+                        <TimerNav play={play} setPlay={setPlay} updateDuration={updateDuration}/>
                         <Circle border="0.5px solid silver" p={1} mt={2}>
                             <AddIcon boxSize={2} color="white" />
                         </Circle>

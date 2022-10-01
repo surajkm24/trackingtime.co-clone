@@ -22,13 +22,26 @@ export const postData = async (token, params) => {
     return res.data
 }
 
-export const editData = async (id) => {
-    let res = await axios.PATCH("")
-    return res.data
+export const editData = async (token, id, params) => {
+    const options = {
+        headers: {
+            'token': token
+        }
+    }
+    const data = {
+        ...params
+    }
+    let res = await axios.patch(`http://localhost:8080/project/${id}`, data, options);
+
+    console.log(res.data);
+
+    return res.data;
 }
 
 
-export const deleteData = async (id) => {
-    let res = await axios.PATCH("")
-    return res.data
+export const deleteData = async (token, id) => {
+    let res = await axios.delete(`http://localhost:8080/project/${id}`, {
+        headers: { token: token }
+    });
+    return res.data;
 }
