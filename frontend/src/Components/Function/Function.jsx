@@ -45,3 +45,18 @@ export const deleteData = async (token, id) => {
     });
     return res.data;
 }
+
+export const addTask = async (token, id, params) => {
+    const options = {
+        headers: {
+            'token': token
+        }
+    }
+    const data = {
+        projectId: id,
+        ...params
+    }
+
+    let res = await axios.post(`http://localhost:8080/task`, data, options);
+    return res.data;
+}

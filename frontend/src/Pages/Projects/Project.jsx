@@ -3,7 +3,7 @@ import styles from "./Project.module.css";
 import LeftSidebar from './LeftSidebar';
 import ToolsNavbar from '../../Components/ToolsNavbar';
 import { useState } from 'react';
-import { getData, postData, editData, deleteData } from '../../Components/Function/Function';
+import { getData, postData, editData, deleteData, addTask } from '../../Components/Function/Function';
 import { useContext } from 'react';
 import { AuthContext } from '../ContextAPI/AuthContext.jsx';
 // import Nav2Space from '../NotesComponent/Nav2Space.jsx';
@@ -33,7 +33,7 @@ const Project = () => {
             Math.floor((res.duration % 3600) / 60);
 
         let completedPercent = Math.floor((res.duration / (res.estimatedTime * 3600)) * 100);
-        // console.log(res, 3, 'pr3')
+        console.log(res, 3, 'pr3')
         // console.log(3)
         setProjectData({
           ...projectData,
@@ -85,6 +85,12 @@ const Project = () => {
         getProjects(token, id);
       })
     }, 1000)
+  }
+
+  const addProjectTask = (id, params) => {
+    addTask(token, id, params).then((res) => {
+      projectAPI();
+    })
   }
 
 

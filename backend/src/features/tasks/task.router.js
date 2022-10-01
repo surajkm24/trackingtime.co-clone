@@ -4,11 +4,16 @@ const app = express.Router();
 const Task = require('./task.schema.js');
 const Project = require('../projects/project.schema.js');
 app.post('/', async (req, res) => {
-    let item = await Task.create(req.body);
-    let findProject = await Project.findById(req.body.projectId);
-    let tasks = [...findProject.task, { "taskId": item._id }];
-    let updateProject = await Project.findByIdAndUpdate(req.body.projectId, { "task": tasks })
-    res.send(item);
+    try {
+        let item = await Task.create(req.body);
+        let findProject = await Project.findById(req.body.projectId);
+        let tasks = [...findProject.task, { "taskId": item._id }];
+        let updateProject = await Project.findByIdAndUpdate(req.body.projectId, { "task": tasks })
+        res.send(item);
+    }
+    catch (e) {
+        console.log(e)
+    }
 })
 
 app.get('/', async (req, res) => {
