@@ -23,12 +23,12 @@ const NavProject2 = ({ addProjectTask, projectData,updateProjectTask,deleteProje
     <Box className={styles.NavPro2Container}>
       {/* <SingleProHeader /> */}
       <Flex className={styles.nav}>
-        <NavLink to="/list" className={({ isActive }) => isActive ? styles.active : styles.default}>List</NavLink>
-        <NavLink to="/Board" className={({ isActive }) => isActive ? styles.active : styles.default}>Board</NavLink>
-        <NavLink to="/timeline" className={({ isActive }) => isActive ? styles.active : styles.default}>Timeline</NavLink>
-        <NavLink to="/report" className={({ isActive }) => isActive ? styles.active : styles.default}>Report</NavLink>
-        <NavLink to="/notes" className={({ isActive }) => isActive ? styles.active : styles.default}>Notes</NavLink>
-        <NavLink to="/files" className={({ isActive }) => isActive ? styles.active : styles.default}>Files</NavLink>
+        <NavLink to="/project/list" className={({ isActive }) => isActive ? styles.active : styles.default}>List</NavLink>
+        <NavLink to="/project/boards" className={({ isActive }) => isActive ? styles.active : styles.default}>Board</NavLink>
+        <NavLink to="/project/timeline" className={({ isActive }) => isActive ? styles.active : styles.default}>Timeline</NavLink>
+        <NavLink to="/project/report" className={({ isActive }) => isActive ? styles.active : styles.default}>Report</NavLink>
+        <NavLink to="/project/notes" className={({ isActive }) => isActive ? styles.active : styles.default}>Notes</NavLink>
+        <NavLink to="/project/files" className={({ isActive }) => isActive ? styles.active : styles.default}>Files</NavLink>
 
         <Flex className={styles.menuRight}>
           {/* open task */}

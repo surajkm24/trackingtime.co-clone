@@ -18,6 +18,11 @@ export const AllRoutes = () => {
     return (
         <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/hours" element={<PrivateRoute><Project /></PrivateRoute>} />
+            <Route path="/reports" element={<PrivateRoute><Project /></PrivateRoute>} />
+            <Route path="/manage" element={<PrivateRoute><Project /></PrivateRoute>} />
+           
+           
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/productivity" element={<Productivity />} />
             <Route path="/remotework" element={<RemoteWork />} />
@@ -29,7 +34,15 @@ export const AllRoutes = () => {
             <Route path="/signup" element={<SignupPage />}></Route>
             <Route path="/create-new-acc" element={<CreateNewAcc />}></Route>
             <Route path="/create-new-org" element={<CreateNewOrg />}></Route>
+            <Route path="/project/list" element={<PrivateRoute><Project /></PrivateRoute>} />
             <Route path="/project" element={<PrivateRoute><Project /></PrivateRoute>} />
+            <Route path="/project/notes" element={<PrivateRoute><Project /></PrivateRoute>} />
+            <Route path="/project/report" element={<PrivateRoute><Project /></PrivateRoute>} />
+            <Route path="/project/boards" element={<PrivateRoute><Project /></PrivateRoute>} />
+            <Route path="/project/timeline" element={<PrivateRoute><Project /></PrivateRoute>} />
+            <Route path="/project/files" element={<PrivateRoute><Project /></PrivateRoute>} />
+            
+
         </Routes>
 
     )
