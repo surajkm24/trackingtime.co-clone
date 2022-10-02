@@ -6,12 +6,12 @@ import { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import { AuthContext } from '../ContextAPI/AuthContext';
 
-export const SingleProjectTask = ({ singleProject, play, setPlay,projectData }) => {
+export const SingleProjectTask = ({deleteProjectTask, singleProject, play, setPlay, projectData, addProjectTask, updateProjectTask }) => {
     const { token } = useContext(AuthContext);
     // console.log(projectData, 1);
     return <Box>
         <SingleProHeader singleProject={singleProject} projectData={projectData} play={play} setPlay={setPlay} />
-        <NavProject2 />
+        <NavProject2 deleteProjectTask={deleteProjectTask} addProjectTask={addProjectTask} projectData={projectData} updateProjectTask={updateProjectTask} />
     </Box>
 }
 

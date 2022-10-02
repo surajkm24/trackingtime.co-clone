@@ -28,18 +28,26 @@ app.get('/:id', async (req, res) => {
 })
 
 app.delete('/:id', async (req, res) => {
-    let id = req.params.id;
-    let deleteTask = await Task.findByIdAndDelete(id);
-    let findProject = await Project.findById(req.body.projectId);
-    let tasks = findProject.task.filter(ele => ele.taskId.toString() !== id);
-    let updateProject = await Project.findByIdAndUpdate(req.body.projectId, { "task": tasks })
-    res.send(deleteTask);
+    try {
+        let id = req.params.id;
+        let task = await Task.findOne({ 'id': id });
+        let deleteTask = await Task.findByIdAndDelete(id);
+        res.send(deleteTask);
+    }
+    catch (e) {
+        console.log(e)
+    }
 })
 
 app.patch('/:id', async (req, res) => {
-    let id = req.params.id;
-    let item = await Task.findByIdAndUpdate(id, req.body)
-    res.send(item);
+    try {
+        let id = req.params.id;
+        let item = await Task.findByIdAndUpdate(id, req.body)
+        res.send(item);
+    }
+    catch (e) {
+        console.log(e)
+    }
 })
 
 module.exports = app;

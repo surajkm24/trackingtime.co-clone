@@ -1,7 +1,8 @@
 
 .ProjectBodyBox{
     background-color: #2a313c;
-    height:655px;
+    height:100vh;
+    overflow: hidden;
 }
 
 

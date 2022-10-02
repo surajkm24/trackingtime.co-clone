@@ -26,7 +26,7 @@ const LeftSidebar = ({ addProject, data, singleProject, setSingleProject, delete
 
   const [Filtered, setFiltered] = useState({ all: "ALL", duedate: "BY DUEDATE" })
   return (
-    <Box w="23%" h="92vh" bg="#313946" >
+    <Box w="23%" h="93vh" bg="#313946" >
       <Box
         borderBottom="1px solid #374050"
         color="#7fa8c1"
@@ -203,7 +203,10 @@ const LeftSidebar = ({ addProject, data, singleProject, setSingleProject, delete
                 <Box display='flex' alignItems='center' gap='10px'>
                   <Progress value={Math.floor((project.duration / (project.estimatedTime * 3600)) * 100)} colorScheme='green' height='4px' w='20px' borderRadius='2px' />
                   <span style={{ fontSize: "8px", color: "white", fontWeight: "600" }}>{Math.floor((project.duration / (project.estimatedTime * 3600)) * 100)}%</span>
-                  <span style={{ fontSize: "8px", color: "#989CA2", fontWeight: "600" }}>{project.duration}s/{project.estimatedTime}:00</span>
+                  <span style={{ fontSize: "8px", color: "lightgray", fontWeight: "600" }}>
+                    {project.duration < 60 ?
+                    project.duration + "s" :
+                    Math.floor(project.duration / 3600) + "h:" + Math.floor((project.duration % 3600) / 60) + 'm'}/{project.estimatedTime}:00</span>
                 </Box>
               </Box>
 

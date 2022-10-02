@@ -3,7 +3,7 @@ import styles from "./Project.module.css";
 import LeftSidebar from './LeftSidebar';
 import ToolsNavbar from '../../Components/ToolsNavbar';
 import { useState } from 'react';
-import { getData, postData, editData, deleteData, addTask } from '../../Components/Function/Function';
+import { getData, postData, editData, deleteData, addTask, updateTask, deleteTask } from '../../Components/Function/Function';
 import { useContext } from 'react';
 import { AuthContext } from '../ContextAPI/AuthContext.jsx';
 // import Nav2Space from '../NotesComponent/Nav2Space.jsx';
@@ -24,13 +24,10 @@ const Project = () => {
   const projectAPI = () => {
     getProject(token, singleProject._id)
       .then((res) => {
-        let completedTasks = res.task.filter(({ taskId }) => { return taskId.status }).length;
+        let completedTasks = 0;
         let hoursCompleted = res.duration < 60 ?
           res.duration + "s" :
-          Math.floor(res.duration / 3600) + ":" +
-            Math.floor((res.duration % 3600) / 60) < 10 ? "0" +
-          Math.floor((res.duration % 3600) / 60) :
-            Math.floor((res.duration % 3600) / 60);
+          Math.floor(res.duration / 3600) + "h:" +Math.floor((res.duration % 3600) / 60)+'m'
 
         let completedPercent = Math.floor((res.duration / (res.estimatedTime * 3600)) * 100);
         console.log(res, 3, 'pr3')
@@ -87,12 +84,25 @@ const Project = () => {
     }, 1000)
   }
 
-  const addProjectTask = (id, params) => {
-    addTask(token, id, params).then((res) => {
+  const addProjectTask = (params) => {
+    addTask(token, singleProject._id, params).then((res) => {
       projectAPI();
     })
   }
 
+  const updateProjectTask = (status, id) => {
+    let params = { status: status };
+    updateTask(token, id, params).then((res) => {
+      projectAPI();
+    })
+  }
+
+  const deleteProjectTask = (id) => {
+    deleteTask(token, id,singleProject._id).then((res) => {
+      console.log('deleted task 2')
+      projectAPI();
+    })
+  }
 
   useEffect(() => {
     getProjects(token);
@@ -109,7 +119,7 @@ const Project = () => {
       <ToolsNavbar play={play} setPlay={setPlay} updateDuration={updateDuration} />
       <Flex>
         <LeftSidebar deleteProject={deleteProject} addProject={addProject} data={data} singleProject={singleProject} setSingleProject={setSingleProject} />
-        <SingleProjectTask singleProject={singleProject} play={play} setPlay={setPlay} projectData={projectData} />
+        <SingleProjectTask deleteProjectTask={deleteProjectTask} updateProjectTask={updateProjectTask} singleProject={singleProject} play={play} setPlay={setPlay} projectData={projectData} addProjectTask={addProjectTask} />
       </Flex>
 
 
