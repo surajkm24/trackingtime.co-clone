@@ -1,28 +1,28 @@
 import React, { useContext, useState } from 'react';
-import { Box, Button, Image, Input, Text, InputGroup, InputLeftElement } from "@chakra-ui/react";
+import { Box, Button, Image, Input, Text, InputGroup, InputLeftElement, Slide, Alert, AlertIcon, AlertTitle, AlertDescription } from "@chakra-ui/react";
 import styles from "../Login/Login.module.css";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { AuthContext } from '../../ContextAPI/AuthContext';
 
 // post user
-const postUser = async(text)=>{
-  try{
-      let res = await axios.post("http://localhost:8080/user/signup", text);
-      return res.data;
-  }catch(e){
+const postUser = async (text) => {
+  try {
+    let res = await axios.post("http://localhost:8080/user/signup", text);
+    return res.data;
+  } catch (e) {
     console.log(e);
-  } 
+  }
 }
 
-  //  main sign up function
-  // const SignupPage = () => {
-  //   const navigate = useNavigate();
-  //   const [email, setEmail] = useState(''); 
-  //   const [text, setText] = useState({
-  //     email: "",
-  //     password: "",
-  //   });
+//  main sign up function
+// const SignupPage = () => {
+//   const navigate = useNavigate();
+//   const [email, setEmail] = useState(''); 
+//   const [text, setText] = useState({
+//     email: "",
+//     password: "",
+//   });
 // const postUser = async (text) => {
 //   try {
 //     let res = await axios.post("http://localhost:8080/user/signup", text);
@@ -34,7 +34,8 @@ const postUser = async(text)=>{
 
 //  main sign up function
 const SignupPage = () => {
-  const {setToken} = useContext(AuthContext);
+  const { setToken } = useContext(AuthContext);
+  const [alert, setAlert] = useState(false);
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [text, setText] = useState({
@@ -57,6 +58,10 @@ const SignupPage = () => {
       })
       .catch(() => {
         console.log("error");
+        setAlert(true);
+        setTimeout(() => {
+          setAlert(false)
+        }, 4000)
       })
   };
 
@@ -70,7 +75,13 @@ const SignupPage = () => {
 
   return (
     <Box className={styles.LoginMainBox} >
-
+      <Slide in={alert} direction='left' position='fixed' top='0px' style={{ zIndex: 10 }} bg='white'>
+        <Alert status='error' w='80vw' mx='10vw' mt='50px' flexWrap='wrap'  >
+          <AlertIcon />
+          <AlertTitle>User with given credentials doesn't exist!</AlertTitle>
+          <AlertDescription>Try signing up.</AlertDescription>
+        </Alert>
+      </Slide>
       {/* <div class="background" style="background-image: url(img/ui-login-background.svg);"></div> */}
       {/* leftBox */}
       <Box className={styles.leftBox} >

@@ -11,9 +11,12 @@ import { CgFileDocument } from 'react-icons/cg'
 import { TbGridDots } from 'react-icons/tb'
 import { HiOutlineDocumentReport } from 'react-icons/hi'
 import { BsInboxes, BsShieldCheck } from 'react-icons/bs'
-import TimerNav from './Timer/TimerNav.jsx'
+import TimerNav from './Timer/TimerNav.jsx';
+import { useContext } from 'react';
+import { AuthContext } from '../Pages/ContextAPI/AuthContext.jsx'
 
 const ToolsNavbar = ({ play, setPlay, updateDuration }) => {
+    const { setToken } = useContext(AuthContext)
     const activeStyle = {
         color: "#6683FF",
         fontWeight: "bold",
@@ -24,6 +27,10 @@ const ToolsNavbar = ({ play, setPlay, updateDuration }) => {
         TextDecoration: "none",
         fontWeight: "bold",
         fontSize: "14px"
+    }
+    const logout = () => {
+        localStorage.removeItem('token');
+        setToken('')
     }
     return (
         <Box backgroundColor={"#2A313C"} w="100%">
@@ -125,7 +132,7 @@ const ToolsNavbar = ({ play, setPlay, updateDuration }) => {
                     </HStack>
                     <HStack mr={3} spacing={3}>
                         {/* <Icon boxSize={7} color="white" as={GoPlay} /> */}
-                        <TimerNav play={play} setPlay={setPlay} updateDuration={updateDuration}/>
+                        <TimerNav play={play} setPlay={setPlay} updateDuration={updateDuration} />
                         <Circle border="0.5px solid silver" p={1} mt={2}>
                             <AddIcon boxSize={2} color="white" />
                         </Circle>
