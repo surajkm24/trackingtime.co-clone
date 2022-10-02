@@ -1,0 +1,13 @@
+#projectTiles {
+    height:69vh;
+    overflow-y: scroll;
+    width:100%;
+}
+#projectTiles::-webkit-scrollbar{
+    width:10px;
+}
+
+#projectTiles::-webkit-scrollbar-thumb{
+    background-color: #dc143c;
+    border-radius:5px
+}

@@ -1,12 +1,16 @@
-*{
-    margin:0px;
+* {
+    margin: 0px;
     padding: 0px;
     box-sizing: border-box;
 }
-body{
+/* body{
     height: 100vh;
     overflow: hidden;
 }
 
 
 
+body {
+    height: 100vh;
+    overflow: hidden;
+} */

@@ -5,7 +5,8 @@ const taskSchema = new mongoose.Schema({
     taskName: { type: String, required: true },
     description: { type: String },
     duration: { type: Number, default: 0 },
-    status: { type: Boolean, default: false }
+    status: { type: Boolean, default: false },
+    estimatedTime: { type: Number }
 });
 
 const Task = mongoose.model('task', taskSchema);
