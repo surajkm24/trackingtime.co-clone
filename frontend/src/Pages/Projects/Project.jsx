@@ -24,6 +24,7 @@ const Project = () => {
   const projectAPI = () => {
     getProject(token, singleProject._id)
       .then((res) => {
+        if(res==='error') return 'error'
         let completedTasks = 0;
         let hoursCompleted = res.duration < 60 ?
           res.duration + "s" :
@@ -61,7 +62,9 @@ const Project = () => {
   }
 
   const addProject = (params) => {
+    console.log(params)
     postData(token, params).then((res) => {
+      console.log(res)
       setData([...data, res])
       setSingleProject(res);
     })
@@ -77,6 +80,7 @@ const Project = () => {
     let id = singleProject._id;
     console.log((+time) + (+singleProject.duration), 'duration')
     //  alert(params+" "+id)
+    if(!id) return;
     setTimeout(() => {
       editData(token, id, params).then((res) => {
         getProjects(token, id);
@@ -109,7 +113,9 @@ const Project = () => {
   }, []);
 
   useEffect(() => {
-    projectAPI();
+    if(singleProject._id){
+      projectAPI();
+    }
   }, [singleProject])
 
   return (
