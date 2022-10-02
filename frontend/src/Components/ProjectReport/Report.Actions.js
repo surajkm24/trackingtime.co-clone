@@ -3,7 +3,7 @@ import axios from 'axios';
 export const getProject = async (token, id) => {
     try {
         if(id){
-            let res = await axios.get(`http://localhost:8080/project/${id}`, {
+            let res = await axios.get(`https://whispering-beyond-98740.herokuapp.com/project/${id}`, {
                 headers: {
                     token: token
                 }

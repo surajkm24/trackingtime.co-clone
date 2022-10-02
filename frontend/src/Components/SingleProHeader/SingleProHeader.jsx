@@ -7,6 +7,7 @@ const SingleProHeader = ({ singleProject, projectData, play, setPlay }) => {
   useEffect(() => {
     console.log(projectData);
   }, [projectData])
+  
   return (
     <Box>
       <Flex color={"white"}

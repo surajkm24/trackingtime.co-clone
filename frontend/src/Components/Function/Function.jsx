@@ -1,6 +1,6 @@
 import axios from "axios"
 export const getData = async (token) => {
-    let res = await axios.get("http://localhost:8080/project", {
+    let res = await axios.get("https://whispering-beyond-98740.herokuapp.com/project", {
         headers: { token: token }
     })
     return res.data
@@ -17,7 +17,7 @@ export const postData = async (token, params) => {
         userId: id,
         ...params
     }
-    let res = await axios.post("http://localhost:8080/project", data, options);
+    let res = await axios.post("https://whispering-beyond-98740.herokuapp.com/project", data, options);
     // console.log(res);
     return res.data
 }
@@ -31,7 +31,7 @@ export const editData = async (token, id, params) => {
     const data = {
         ...params
     }
-    let res = await axios.patch(`http://localhost:8080/project/${id}`, data, options);
+    let res = await axios.patch(`https://whispering-beyond-98740.herokuapp.com/project/${id}`, data, options);
 
     console.log(res.data);
 
@@ -40,7 +40,7 @@ export const editData = async (token, id, params) => {
 
 
 export const deleteData = async (token, id) => {
-    let res = await axios.delete(`http://localhost:8080/project/${id}`, {
+    let res = await axios.delete(`https://whispering-beyond-98740.herokuapp.com/project/${id}`, {
         headers: { token: token }
     });
     return res.data;
@@ -57,7 +57,7 @@ export const addTask = async (token, id, params) => {
         ...params
     }
 
-    let res = await axios.post(`http://localhost:8080/task`, data, options);
+    let res = await axios.post(`https://whispering-beyond-98740.herokuapp.com/task`, data, options);
     return res.data;
 }
 
@@ -71,7 +71,7 @@ export const updateTask = async (token, id, params) => {
         ...params
     }
 
-    let res = await axios.patch(`http://localhost:8080/task/${id}`, data, options);
+    let res = await axios.patch(`https://whispering-beyond-98740.herokuapp.com/task/${id}`, data, options);
     return res.data;
 }
 
@@ -87,7 +87,7 @@ export const deleteTask = async (token, taskId, projectId) => {
 
     console.log(token,'token');
 
-    let res = await axios.delete(`http://localhost:8080/task/${taskId}`,options);
+    let res = await axios.delete(`https://whispering-beyond-98740.herokuapp.com/task/${taskId}`,options);
     console.log(res,'deleted task',taskId)
     return res.data;
 }

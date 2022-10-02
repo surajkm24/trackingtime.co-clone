@@ -8,7 +8,7 @@ import { AuthContext } from '../../ContextAPI/AuthContext';
 // post user
 const postUser = async (text) => {
   try {
-    let res = await axios.post("http://localhost:8080/user/login", text);
+    let res = await axios.post("https://whispering-beyond-98740.herokuapp.com/user/login", text);
     return res.data;
   }
   catch (e) {
