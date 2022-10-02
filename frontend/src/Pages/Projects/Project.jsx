@@ -9,16 +9,18 @@ import { AuthContext } from '../ContextAPI/AuthContext.jsx';
 // import Nav2Space from '../NotesComponent/Nav2Space.jsx';
 // import NavProject2 from '../../Components/NavProject2/NavProject2.jsx'
 import NavProject2 from '../../Components/NavProject2/NavProject2';
-import { Box, Flex } from '@chakra-ui/react';
+import { Alert, AlertDescription, AlertIcon, AlertTitle, Box, Flex, Slide } from '@chakra-ui/react';
 import SingleProHeader from '../../Components/SingleProHeader/SingleProHeader';
 import { SingleProjectTask } from './SingleProjectTask';
 import { getProject } from '../../Components/ProjectReport/Report.Actions';
+import NoProject from './NoProject';
 
 const Project = () => {
   const [projectData, setProjectData] = useState({ data: {}, completedTasks: 0, hoursCompleted: "", completedPercent: 0 });
   const [data, setData] = useState([]);
   const [singleProject, setSingleProject] = useState({});
-  const [play, setPlay] = useState(0)
+  const [play, setPlay] = useState(0);
+  const [alertMsg, setAlertMsg] = useState(false);
 
   const { token } = useContext(AuthContext);
   const projectAPI = () => {
@@ -68,6 +70,12 @@ const Project = () => {
       setData([...data, res])
       setSingleProject(res);
     })
+     .catch((e)=>{
+       setAlertMsg(true);
+          setTimeout(() => {
+          setAlertMsg(false)
+        }, 4000)
+     })
   }
 
   const deleteProject = (id) => {
@@ -124,9 +132,13 @@ const Project = () => {
 
       <ToolsNavbar play={play} setPlay={setPlay} updateDuration={updateDuration} />
       <Flex>
-        <LeftSidebar deleteProject={deleteProject} addProject={addProject} data={data} singleProject={singleProject} setSingleProject={setSingleProject} />
-        <SingleProjectTask deleteProjectTask={deleteProjectTask} updateProjectTask={updateProjectTask} singleProject={singleProject} play={play} setPlay={setPlay} projectData={projectData} addProjectTask={addProjectTask} />
-      </Flex>
+        <LeftSidebar deleteProject={deleteProject} addProject={addProject} data={data} singleProject={singleProject} setSingleProject={setSingleProject} alertMsg={alertMsg}/>
+
+        {data.length === 0 ? <NoProject /> :
+           <SingleProjectTask deleteProjectTask={deleteProjectTask} updateProjectTask={updateProjectTask} singleProject={singleProject} 
+             play={play} setPlay={setPlay} projectData={projectData} addProjectTask={addProjectTask} />
+         }
+      </Flex> 
 
 
     </div>

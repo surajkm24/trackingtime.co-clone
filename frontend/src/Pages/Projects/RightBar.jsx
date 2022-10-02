@@ -22,6 +22,11 @@ import {
   useDisclosure,
   Switch,
   Tooltip,
+  Slide,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
 } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
 import styles from "./Project.module.css";
@@ -29,7 +34,7 @@ import { AiOutlineClockCircle } from "react-icons/ai"
 
 
 
-function RightBar({ addProject }) {
+function RightBar({ addProject, alertMsg }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const firstField = React.useRef();
   const [date, setDate] = useState("")
@@ -39,11 +44,22 @@ function RightBar({ addProject }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    onClose();
     addProject(formData);
   }
 
   return (
     <>
+
+     <Slide in={alertMsg} direction='left' position='fixed' top='0px' style={{ zIndex: 10 }} bg='white' color="red" mt={"-20px"}>
+        <Alert status='error' w='60vw' mx='20vw'  color="red">
+          <AlertIcon />
+          <AlertTitle>Project with this name already exist.</AlertTitle>
+          <AlertDescription>Try creating new project.</AlertDescription>
+        </Alert>
+      </Slide>
+
+
       <Button variant="unstyled" fontSize={14} pb="16px" leftIcon={<AddIcon />} onClick={onOpen}>
         Project
       </Button>

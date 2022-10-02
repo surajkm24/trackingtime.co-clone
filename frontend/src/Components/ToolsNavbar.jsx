@@ -12,8 +12,13 @@ import { TbGridDots } from 'react-icons/tb'
 import { HiOutlineDocumentReport } from 'react-icons/hi'
 import { BsInboxes, BsShieldCheck } from 'react-icons/bs'
 import TimerNav from './Timer/TimerNav.jsx'
+import { useContext } from 'react';
+import { AuthContext } from '../Pages/ContextAPI/AuthContext.jsx';
 
 const ToolsNavbar = ({ play, setPlay, updateDuration }) => {
+
+    const {setToken} = useContext(AuthContext);
+
     const activeStyle = {
         color: "#6683FF",
         fontWeight: "bold",
@@ -25,6 +30,12 @@ const ToolsNavbar = ({ play, setPlay, updateDuration }) => {
         fontWeight: "bold",
         fontSize: "14px"
     }
+
+    const logOut = () =>{
+       localStorage.removeItem("token");
+       setToken("");
+    }
+
     return (
         <Box backgroundColor={"#2A313C"} w="100%">
             <Box border={"1px solid"} p={2}>
@@ -138,7 +149,7 @@ const ToolsNavbar = ({ play, setPlay, updateDuration }) => {
                                 <Avatar bg='red.500' icon={<AiOutlineUser color='white' fontSize={28} />} w="30px" h="30px" />
                             </PopoverTrigger>
                             <Portal>
-                                <PopoverContent color='white' bg='#2A313C' borderColor='#2A313C' w="170px" mt={1} h="290px">
+                                <PopoverContent color='white' bg='#2A313C' borderColor='#2A313C' w="170px" mt={1} h="290px" cursor={"pointer"}>
                                     <PopoverBody fontSize="14px" fontWeight="bold" lineHeight={7}>
                                         <Text>Setting</Text>
                                         <Text>Apps</Text>
@@ -154,7 +165,7 @@ const ToolsNavbar = ({ play, setPlay, updateDuration }) => {
                                         </Select>
                                         <Divider pb={3} />
                                         <Text pt={2}>What's New</Text>
-                                        <Flex>
+                                        <Flex onClick={logOut}>
                                             <Text>Logout</Text>
                                             <IconButton boxSize={4}
                                                 colorScheme='transparent' as={FiLogOut} mt={2} ml={"65px"} />

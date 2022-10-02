@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Box, Button, Image, Input, InputGroup, InputLeftElement, Text } from "@chakra-ui/react";
+import { Alert, AlertDescription, AlertIcon, AlertTitle, Box, Button, Image, Input, InputGroup, InputLeftElement, Slide, Text } from "@chakra-ui/react";
 import styles from "./Login.module.css";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
@@ -20,6 +20,8 @@ const postUser = async (text) => {
 const Login = () => {
   const { token, setToken } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [alertMsg, setAlertMsg] = useState(false);
+  const [success, setSuccess] = useState(false);
   const [text, setText] = useState({
     email: "",
     password: "",
@@ -32,12 +34,21 @@ const Login = () => {
       if (res.token) {
         localStorage.setItem('token', res.token);
         setToken(res.token);
-        return navigate("/create-new-acc")
+        setSuccess(true);
+        setTimeout(()=>{
+            setSuccess(false);
+            navigate('/create-new-acc')
+        },3000)
       }
       else {
         console.log('Login Failed');
       }
-    }).catch(e => console.log(e));
+    }).catch(e => {
+      setAlertMsg(true);
+          setTimeout(() => {
+          setAlertMsg(false)
+        }, 4000)
+    });
 
   };
 
@@ -56,7 +67,23 @@ const Login = () => {
 
 
     <Box className={styles.LoginMainBox} >
+        
+        <Slide in={success} direction='left' position='fixed' top='0px' style={{ zIndex: 10 }}>
+            <Alert status='success'  w='80vw' mx='10vw' >
+                <AlertIcon />
+                <AlertTitle>Logged In Succesfully!</AlertTitle>
+                <AlertDescription>Redirecting to create new account page</AlertDescription>
+            </Alert>
+        </Slide>
 
+
+        <Slide in={alertMsg} direction='left' position='fixed' top='0px' style={{ zIndex: 10 }} bg='white' mt={"-20px"}>
+          <Alert status='error' w='60vw' mx='20vw'  >
+            <AlertIcon />
+            <AlertTitle>User with given credentials doesn't exist!</AlertTitle>
+            <AlertDescription>Try signup.</AlertDescription>
+          </Alert>
+      </Slide>
       {/* <div class="background" style="background-image: url(img/ui-login-background.svg);"></div> */}
       {/* leftBox */}
       <Box className={styles.leftBox} >

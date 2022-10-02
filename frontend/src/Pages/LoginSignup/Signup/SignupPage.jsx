@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Box, Button, Image, Input, Text, InputGroup, InputLeftElement } from "@chakra-ui/react";
+import { Box, Button, Image, Input, Text, InputGroup, InputLeftElement, AlertIcon, AlertTitle, AlertDescription, Alert, Slide } from "@chakra-ui/react";
 import styles from "../Login/Login.module.css";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
@@ -36,6 +36,7 @@ const postUser = async(text)=>{
 const SignupPage = () => {
   const {setToken} = useContext(AuthContext);
   const navigate = useNavigate();
+  const [alertMsg, setAlertMsg] = useState(false);
   const [email, setEmail] = useState('');
   const [text, setText] = useState({
     email: "",
@@ -56,7 +57,10 @@ const SignupPage = () => {
         }
       })
       .catch(() => {
-        console.log("error");
+        setAlertMsg(true);
+          setTimeout(() => {
+          setAlertMsg(false)
+        }, 4000)
       })
   };
 
@@ -71,6 +75,13 @@ const SignupPage = () => {
   return (
     <Box className={styles.LoginMainBox} >
 
+     <Slide in={alertMsg} direction='left' position='fixed' top='0px' style={{ zIndex: 10 }} bg='white' mt={"-20px"}>
+        <Alert status='error' w='60vw' mx='20vw'  >
+          <AlertIcon />
+          <AlertTitle>User with given credentials does exist!</AlertTitle>
+          <AlertDescription>Try login.</AlertDescription>
+        </Alert>
+      </Slide>
       {/* <div class="background" style="background-image: url(img/ui-login-background.svg);"></div> */}
       {/* leftBox */}
       <Box className={styles.leftBox} >
@@ -133,6 +144,5 @@ const SignupPage = () => {
     </Box>
   )
 }
-
 
 export default SignupPage

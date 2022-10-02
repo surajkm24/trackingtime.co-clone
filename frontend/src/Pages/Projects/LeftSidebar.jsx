@@ -22,9 +22,9 @@ import RightBar from "./RightBar";
 
 
 
-const LeftSidebar = ({ addProject, data, singleProject, setSingleProject, deleteProject }) => {
+const LeftSidebar = ({ addProject, data, singleProject, setSingleProject, deleteProject, alertMsg }) => {
 
-  const [Filtered, setFiltered] = useState({ all: "ALL", duedate: "BY DUEDATE" })
+  const [Filtered, setFiltered] = useState({ all: "ALL", duedate: "BY DUEDATE" });
   return (
     <Box w="23%" h="93vh" bg="#313946" >
       <Box
@@ -65,7 +65,7 @@ const LeftSidebar = ({ addProject, data, singleProject, setSingleProject, delete
             borderRadius="5px"
             border="1px solid #374050"
           >
-            <RightBar addProject={addProject} />
+            <RightBar addProject={addProject} alertMsg={alertMsg}/>
           </Box>
         </HStack>
       </Box>
