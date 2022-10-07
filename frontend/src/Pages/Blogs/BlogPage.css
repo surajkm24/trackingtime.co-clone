@@ -126,7 +126,7 @@
     /* border:1px solid red; */
     width:90%;
     margin: auto;
-    margin-top: 30px;
+    padding-top: 30px;
     font-weight: 700;
     font-size: 18px;
 
@@ -136,8 +136,6 @@
    width:100%;
    height:480px;
    background-color: #3a609b; 
-   margin-top: 20px;
-
 }
 
 .sub-heading {

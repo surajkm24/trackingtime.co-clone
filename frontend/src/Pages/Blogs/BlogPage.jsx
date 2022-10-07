@@ -9,13 +9,8 @@ import "./BlogPage.css";
 const BlogPage = () => {
   return (
     <div>
-
-      {/* navbar */}
       <Navbar/>
-
-
       <BlogNavbar />
-
       <div className="heroimage-box">
         <div className="sub-heading">
           <p>
