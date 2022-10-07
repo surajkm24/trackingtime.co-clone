@@ -5,106 +5,102 @@ import styles from "./Integration.module.css";
 const Integration = () => {
   return (
     <>
+      <Navbar />
 
-    {/* navbar */}
-    <Navbar/>
+      <div className={styles.integration}>
 
-    <div className={styles.integration}>
-
-      {/* <nav></nav> */}
-      <div className={styles.header}>
-        <div className={styles.row}>
-          <div className={styles.col_12}>
-            <h2>
-              TRACKING TIME BUTTON <br /> FOR CHROME
-            </h2>
-            <h1>
-              Tracking Time <br /> Integrations
-            </h1>
-            <h2>TIME TRACKING INTEGRATIONS THAT YOU'LL LOVE</h2>
-          </div>
-        </div>
-      </div>
-
-      <div className={styles.mainContent}>
-        <div className={styles.row_search}>
-          <div className={styles.input}>
-            <input
-              type="text"
-              placeholder="SEARCH YOUR FAVOURITE APP!"
-              className={styles.gsearch}
-            />
-          </div>
-        </div>
-
-        <div className={styles.summary}>
-          <article>
-            <p>
-              <br />
-              Improve your time tracking and increase your productivity with
-              these Integrations.
-              <br />
-              See how much time you spend on each task or project!
-              TrackingTime's integrations make it easy to keep track of your
-              billable and non-billable tasks by integrating with more than 30
-              apps.
-            </p>
-            <p>
-              TrackingTime can be integrated with other apps, such as project
-              management, accounting,
-              <br /> and customer support. Get instant timesheets and analytics
-              with TrackingTime!
-            </p>
-          </article>
-        </div>
-
-        <div className={styles.cards}>
+        {/* <nav></nav> */}
+        <div className={styles.header}>
           <div className={styles.row}>
-            {items.map((item) => {
-              return (
-                <div className={styles.card}>
-                  <div className={styles.cardImg}>
-                    <img src={item.icon} alt={item.title} />
-                  </div>
-                  <h2 className={styles.title}>{item.title}</h2>
-                  <p className={styles.desc}>{item.desc}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-
-      <div className={styles.section}>
-        <div className={styles.parts}>
-          <img
-            src="https://trackingtime.co/wp-content/themes/trackingtime-v5/img/temp/home/download-section/phone.png"
-            alt=""
-          />
-          <div className={styles.sec_right}>
-            <h1>Track Everywhere</h1>
-            <p>
-              Track your time everywhere you work with our <br /> mobile apps
-              for iOS and Android.
-            </p>
-            <div className={styles.stores}>
-              <img
-                src="https://trackingtime.co/wp-content/themes/trackingtime-v5/img/temp/home/download-section/playstore.png"
-                alt=""
-              />
-              <img
-                src="https://trackingtime.co/wp-content/themes/trackingtime-v5/img/temp/home/download-section/apstore.png"
-                alt=""
-              />
+            <div className={styles.col_12}>
+              <h2>
+                TRACKING TIME BUTTON FOR CHROME
+              </h2>
+              <h1>
+                Tracking Time <br /> Integrations
+              </h1>
+              <h2>TIME TRACKING INTEGRATIONS THAT YOU'LL LOVE</h2>
             </div>
           </div>
         </div>
+
+        <div className={styles.mainContent}>
+          <div className={styles.row_search}>
+            <div className={styles.input}>
+              <input
+                type="text"
+                placeholder="SEARCH YOUR FAVOURITE APP!"
+                className={styles.gsearch}
+              />
+            </div>
+          </div>
+
+          <div className={styles.summary}>
+            <article>
+              <p>
+                <br />
+                Improve your time tracking and increase your productivity with
+                these Integrations.
+                <br />
+                See how much time you spend on each task or project!
+                TrackingTime's integrations make it easy to keep track of your
+                billable and non-billable tasks by integrating with more than 30
+                apps.
+              </p>
+              <br/>
+              <p>
+                TrackingTime can be integrated with other apps, such as project
+                management, accounting, and customer support. Get instant timesheets and analytics
+                with TrackingTime!
+              </p>
+            </article>
+          </div>
+
+          <div className={styles.cards}>
+            <div className={styles.row}>
+              {items.map((item) => {
+                return (
+                  <div className={styles.card}>
+                    <div className={styles.cardImg}>
+                      <img src={item.icon} alt={item.title} />
+                    </div>
+                    <h2 className={styles.title}>{item.title}</h2>
+                    <p className={styles.desc}>{item.desc}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.section}>
+          <div className={styles.parts}>
+            <img
+              src="https://trackingtime.co/wp-content/themes/trackingtime-v5/img/temp/home/download-section/phone.png"
+              alt=""
+            />
+            <div className={styles.sec_right}>
+              <h1>Track Everywhere</h1>
+              <p>
+                Track your time everywhere you work with our mobile apps
+                for iOS and Android.
+              </p>
+              <div className={styles.stores}>
+                <img
+                  src="https://trackingtime.co/wp-content/themes/trackingtime-v5/img/temp/home/download-section/playstore.png"
+                  alt=""
+                />
+                <img
+                  src="https://trackingtime.co/wp-content/themes/trackingtime-v5/img/temp/home/download-section/apstore.png"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
-
-      {/* <footer></footer> */}
       <Footer />
-    </div>
-
     </>
   );
 };

@@ -1,6 +1,8 @@
-.integration{
+.integration {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    margin-top: 4rem;
+    padding-top: 4rem;
+    background-color: #f6f8f9;
+    overflow-x: hidden;
 }
 
 .header {
@@ -10,7 +12,7 @@
 
 .header>.row {
     /* border: 1px solid red; */
-    width: 80%;
+    width: 90%;
     margin: auto;
 }
 
@@ -23,46 +25,48 @@
     font-size: 3rem;
     font-weight: 700;
     width: fit-content;
+    line-height: 120%;
+    margin: 10px 0px 20px 0px;
 }
 
 .header>.row>.col_12>h2 {
     color: #252850;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 700;
     width: fit-content;
-    background-color: white;
+    letter-spacing: 2px;
 }
 
 
 .mainContent {
     /* border: 1px solid black; */
     position: relative;
-    margin-top: 2rem;
+    margin-top: 2.5rem;
 }
 
-.mainContent:before {
+.mainContent {
     content: '';
     display: block;
     background: url(https://trackingtime.co/wp-content/themes/trackingtime-v5/img/layout/integrations/lines-integration.svg);
-    width: 700px;
-    height: 300px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: -200px;
-    z-index: -1;
+    /* width: 700px;
+    height: 300px; */
+    background-repeat: no-repeat;
+    background-position: 50px -200px;
+    
+   
 }
 
 .mainContent>.row_search {
-    width: 80%;
+    width: 90%;
     margin: auto;
     /* border: 2px solid purple; */
 }
 
 .mainContent>.row_search>.input {
-    width: 70%;
+    width: 60%;
     display: flex;
     align-items: flex-start;
+    margin-top: 35px;
     /* border: 2px solid red; */
 }
 
@@ -78,13 +82,16 @@
 }
 
 .mainContent>.row_search>.input>.gsearch {
-    padding: 30px;
     width: calc(100%);
     font-weight: bold;
     letter-spacing: .1rem;
     border-radius: 3px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border: none;
+    height: 70px;
+    padding: 0px 15px;
+    outline: none;
+    font-size: 14px;
     /* border: 2px solid green; */
 }
 
@@ -95,35 +102,37 @@
 }
 
 .mainContent>.summary {
-    width: 80%;
+    width: 90%;
     margin: auto;
     text-align: left;
     font-weight: 600;
     color: rgb(109, 109, 109);
-    font-size: larger;
+    font-size: 18px;
 }
 
 .mainContent>.summary>article {
-    width: 100%;
+    width: 80%;
 }
 
-.mainContent>.cards{
+.mainContent>.cards {
     margin-top: 4rem;
 }
-.mainContent>.cards>.row{
+
+.mainContent>.cards>.row {
     /* border: 1px solid red; */
-    width: 80%;
+    width: 90%;
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 5rem;
 }
-.mainContent>.cards>.row>.card{
+
+.mainContent>.cards>.row>.card {
     /* border: 1px solid red; */
     text-align: left;
 }
 
-.mainContent>.cards>.row>.card>.cardImg{
+.mainContent>.cards>.row>.card>.cardImg {
     padding: 20px;
     /* border: 1px solid black; */
     width: fit-content;
@@ -131,61 +140,148 @@
     border-radius: 7px;
     /* margin: auto; */
 }
-.mainContent>.cards>.row>.card>.title{
+
+.mainContent>.cards>.row>.card>.title {
     font-weight: 700;
     font-size: 20px;
     margin-top: 30px;
 }
-.mainContent>.cards>.row>.card>.cardImg>img{
+
+.mainContent>.cards>.row>.card>.cardImg>img {
     width: 50px;
 }
-.mainContent>.cards>.row>.card>.desc{
+
+.mainContent>.cards>.row>.card>.desc {
     color: gray;
     font-weight: 500;
+    margin-top: 20px;
 }
-.section{
+
+.section {
     margin-top: 50px;
 }
-.section>.parts{
+
+.section>.parts {
     /* border: 1px solid red; */
     width: 90%;
     margin: auto;
-    display: grid;
-    grid-template-columns: 50% 30%;
+    display: flex;
     align-items: center;
     font-size: larger;
-
-    
+    justify-content: center;
+   justify-content: space-evenly;
 }
+
+.parts>img{
+    width:40%;
+}
+
 /* .section>.parts>img{
     border: 1px solid black;
 } */
-.section>.parts>.sec_right{
+.section>.parts>.sec_right {
     text-align: left;
+    width:35%;
 }
-.section>.parts>.sec_right>h1{
+
+.section>.parts>.sec_right>h1 {
     font-size: 40px;
     font-weight: 600;
-}
-.section>.parts>.sec_right>p{
     margin-bottom: 20px;
 }
-.section>.parts>.sec_right>.stores{
+
+.section>.parts>.sec_right>p {
+    margin-bottom: 20px;
+    font-size:17px;
+    color:gray;
+}
+
+.section>.parts>.sec_right>.stores {
     display: flex;
     gap: 20px;
+    margin-top: 40px;
 }
-.section>.parts>.sec_right>.stores>img{
-    background-color:black;
+
+.section>.parts>.sec_right>.stores>img {
+    background-color: black;
     width: 50px;
     padding: 10px;
     border-radius: 7px;
 }
 
+@media all and (max-width:1000px){
+    .parts>img{
+        width:30%;
+    }
+    .section>.parts>.sec_right>h1 {
+        font-size: 30px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    .sec_right>p{
+        font-size:14px;
+        margin-bottom:10px
+    }
+}
 
-
-
-
-
-
-
-
+@media all and (max-width:760px) {
+    .integration{
+        padding-top:2.5rem;
+    }
+    .mainContent>.summary,.mainContent>.row_search,.mainContent>.cards>.row>.card>.desc {
+        display:none;
+    }
+    .header>.row>.col_12>h1 {
+        color: #2a2e4e;
+        font-size: 2.4rem;
+        font-weight: 700;
+        width: fit-content;
+        line-height: 120%;
+        text-align: center;
+        margin: 10px auto 20px auto;
+    }
+    
+    .header>.row>.col_12>h2 {
+        color: #252850;
+        font-size: 1rem;
+        font-weight: 700;
+        max-width: 250px;
+        letter-spacing: 2px;
+        margin:auto;
+        text-align: center;
+    }
+    .header>.row>.col_12>h2:last-child{
+        color: #252850;
+        font-size: 1rem;
+        font-weight: 700;
+        width: fit-content;
+        letter-spacing: 2px;
+        max-width:90%;
+        margin:auto;
+        text-align: center;
+    }
+    .mainContent>.cards>.row{
+        grid-template-columns:repeat(2,1fr);
+        justify-content: space-around;
+    }
+    .card{
+        display:grid;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .cardImg,.cardImg>img{
+        margin:auto
+    }
+    .parts>img{
+        display:none;
+    }
+    .parts{
+        display:block;
+        width:90%
+    }
+    .section>.parts>.sec_right{
+        width:100%;
+        margin-bottom:50px
+    }
+}
