@@ -3,40 +3,33 @@
 
 TrackingTime is a collaborative, cloud-based time tracking service that helps businesses of any size manage their projects, track working times and measure productivity.
 
+## Deployed Link
+- Netlify - https://wondrous-stardust-501a11.netlify.app/
 
-## Roadmap
+## Tech Stack (MERN)
+### Frontend
+> - ReactJs
+> - Redux
+> - React Router
+> - Chakra-Ui
+</hr>
 
-- Day 2 - Static pages with Responsiveness
-  - Navbar - Suraj
-  - Home page - Shivam
-  - Integration page - Nirmal
-  - Blog page - Priyanshu
-  - Login - Sandhya
+### Backend
+> - NodeJs
+> - ExpressJs
+> - MongoDb
+> - Mongoose
 
-- Day 3 - Backend & Tool 
-  - Create Server.js - Everyone
-  - User Features - Sandhya & Priyanshu & Shivam
-  - Projects Features - Nirmal & Suraj
-  - Server Deployement - Everyone
+### Tools and Bundlers
+> - Create-react-app
+> - Heroku(Backend Deployment)
+> - Netlify(Frontend Deployment)
 
-<!-- DAY-3  tasks commit section-->
-<!-- user.router/ user.schema  =  Suraj -->
-<!-- config/server.js = sandhya-->
-<!-- login.jsx/function = priyanshu -->
-<!-- signup.jsx/ function = shivam -->
-
-
-- Day 4 - Tool Projects Static
-  - Projects Frontend(Project Modal, Side Bar) - Priyanshu, Shivam
-  - List (Task items, butoon to add, Task Modal ) - Nirmal
-  - Report - Suraj
-  - Tool Navbar - Shivam
-  - Notes - Sandhya
-  
-- Day 5 - Tool Projects Functionality
-  - Projects Frontend(Project Modal, Side Bar) Functional - Priyanshu
-  - List (Task items, butoon to add, Task Modal ) Functional - Nirmal
-  - Report  Functional - Suraj
-  - Tool Navbar  Functional - Shivam
-  - Notes  Functional - Sandhya  
+## Features & Functionalities Implemented
+- Created an attractive website ui with mobile responsive design.
+- Users can login/signup.
+- Token based authentication.
+- Users can add, update or delete projects.
+- Users can add, update or delete tasks in a particular project.
+- real time timer to keep track of time during a project.
 
