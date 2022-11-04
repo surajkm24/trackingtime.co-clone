@@ -1,7 +1,9 @@
-import React from 'react'
+import React from 'react';
 import { useState } from 'react';
-import { createContext } from 'react'
-let initToken = localStorage.getItem('trackTimeToken') || ""
+import { createContext } from 'react';
+let initToken = localStorage.getItem('trackTimeToken') || "";
+
+// Context for providing authentication
 export const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
@@ -15,4 +17,4 @@ const AuthContextProvider = ({ children }) => {
     )
 }
 
-export default AuthContextProvider
+export default AuthContextProvider;

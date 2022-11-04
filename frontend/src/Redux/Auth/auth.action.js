@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { AUTH_LOGIN_ERROR, AUTH_LOGIN_LOADING, AUTH_LOGIN_SUCCESS, AUTH_LOGOUT, AUTH_SIGNUP_SUCCESS } from './auth.types';
 
+// Action for signing up
 export const singupAPI = (creds) => async (dispatch) => {
     dispatch({ type: AUTH_LOGIN_LOADING });
     try {
@@ -15,6 +16,8 @@ export const singupAPI = (creds) => async (dispatch) => {
         return e;
     }
 }
+
+// Action for logging in
 export const loginAPI = (creds) => async (dispatch) => {
     dispatch({ type: AUTH_LOGIN_LOADING });
     try {
@@ -30,4 +33,5 @@ export const loginAPI = (creds) => async (dispatch) => {
     }
 }
 
+// Function for logging out
 export const logoutAPI = () => ({ type: AUTH_LOGOUT })

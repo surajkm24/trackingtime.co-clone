@@ -1,11 +1,12 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
 import BlogNavbar from "../../Components/BlogNavbar/BlogNavbar";
 import { Footer } from "../../Components/Footer/Footer";
 import { Navbar } from "../../Components/Navbar/Navbar";
 import { BlogData } from "./BlogData";
 import BlogItem from "./BlogItem";
 import "./BlogPage.css";
+
+// Component for blog page;
 const BlogPage = () => {
   return (
     <div>

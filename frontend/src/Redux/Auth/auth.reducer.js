@@ -1,12 +1,15 @@
 import { AUTH_LOGIN_ERROR, AUTH_LOGIN_LOADING, AUTH_LOGIN_SUCCESS, AUTH_LOGOUT, AUTH_SIGNUP_SUCCESS } from "./auth.types"
 
 let token = localStorage.getItem('trackTimeToken')||""
+
+// initial state of auth state;
 const initState = {
     token:token,
     loading:false,
     error:false
 }
 
+// Reducer for authentication containg different state updates for different action types;
 export const authReducer = (state=initState,action) => {
 
     switch (action.type){

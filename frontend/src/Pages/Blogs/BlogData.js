@@ -1,5 +1,5 @@
 
-
+// Blog cards data;
 export const BlogData = [
     {
       "id": 1,

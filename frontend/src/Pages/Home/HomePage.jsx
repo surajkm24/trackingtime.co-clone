@@ -14,6 +14,7 @@ import Marquee from "react-fast-marquee";
 import { Navbar } from '../../Components/Navbar/Navbar';
 import { Footer } from '../../Components/Footer/Footer';
 
+// Data containg features provided by trackingtime
 const featuresData = [
     {
         img: "https://trackingtime.co/wp-content/themes/trackingtime-v5/img/keywords/article-1.svg",
@@ -32,6 +33,7 @@ const featuresData = [
     }
 ]
 
+// Data for tools which can be integrated with trackingtime.
 const toolsData = [
     {
         img: 'https://trackingtime.co/wp-content/themes/trackingtime-v5/img/temp/logos/asana.png',
@@ -55,6 +57,7 @@ const toolsData = [
     }
 ]
 
+// Features which distinguishes trackingtime from other productivity tools
 const extraFeaturesData = [
     {
         img: 'https://trackingtime.co/wp-content/themes/trackingtime-v5/img/keywords/slider-1.svg',
@@ -78,6 +81,7 @@ const extraFeaturesData = [
     }
 ]
 
+// Home page component
 const HomePage = () => {
     return (
         <>
@@ -89,9 +93,14 @@ const HomePage = () => {
                     spacing={{ base: 8, md: 10 }}
                 >
                     <Box maxW="90%" mb={{ base: '10px', md: '24px' }}>
-                        <Text fontSize={{ base: '10px', md: "12px" }} fontWeight="bold" m={'auto'} mb={{ base: '18px', md: '30px' }}
-                            color={"#ED565A"} letterSpacing='2px' >TRACKINGTIME TIME TRACKER SOFTWARE</Text>
-                        <Heading fontSize={{ base: '14px', md: "18px" }} fontWeight={800} letterSpacing='3px' color="#242954" mb={{ base: '10px', md: '20px' }}>SET AND FORGET TIME TRACKING</Heading>
+                        <Text fontSize={{ base: '10px', md: "12px" }} fontWeight="bold" m={'auto'}
+                            mb={{ base: '18px', md: '30px' }} color={"#ED565A"} letterSpacing='2px'>
+                            TRACKINGTIME TIME TRACKER SOFTWARE
+                        </Text>
+                        <Heading fontSize={{ base: '14px', md: "18px" }} fontWeight={800}
+                            letterSpacing='3px' color="#242954" mb={{ base: '10px', md: '20px' }}>
+                            SET AND FORGET TIME TRACKING
+                        </Heading>
                         <Heading
                             maxW={{ base: "90vw", md: '80vw', lg: '70vw', xl: '60vw' }}
                             fontWeight={700}
@@ -102,7 +111,8 @@ const HomePage = () => {
                             Bring your Productivity to the next level.
                         </Heading>
                     </Box>
-                    <Box display={{ base: "block", md: "flex" }} gap='10px' w='90%' m='auto' justifyContent='center' >
+                    <Box display={{ base: "block", md: "flex" }} gap='10px' w='90%' m='auto'
+                        justifyContent='center' >
                         <Input
                             borderColor={'black'}
                             color='black'
@@ -128,7 +138,9 @@ const HomePage = () => {
                             >
                                 START FOR FREE
                             </Button>
-                            <Text textAlign='center' fontSize='12px' mt='10px'>14-day-PRO trial included</Text>
+                            <Text textAlign='center' fontSize='12px' mt='10px'>
+                                14-day-PRO trial included
+                            </Text>
                         </Box>
                     </Box>
                     <Flex gap='20px'>
@@ -225,9 +237,9 @@ const HomePage = () => {
                         <Image w='70%' src='https://trackingtime.co/wp-content/themes/trackingtime-v5/img/home/bottom-action.svg' m='auto' />
                     </Box>
                     <Box w={{ base: "90%", lg: "40%" }} p={5} m='auto'>
-                        <Heading fontSize={{base:"24px",md:"29px",lg:"33px"}} lineHeight={'100%'} color="#242954" textAlign={{base:"center",lg:"left"}}>Get Professional timesheets done in no time!</Heading>
-                        <Text mt='20px' color="gray" lineHeight={2} textAlign={{base:"center",lg:"left"}} display={{base:"none",lg:"block"}}>Sign up Today and join thousands of people around the world using TrackingTime to simplify their timesheets</Text>
-                        <Text mt='20px' color='#0a192f' fontSize='22px' fontWeight={700} textAlign={{base:"center",lg:"left"}} display={{base:"block",lg:"none"}}>Try Tracking Time Pro</Text>
+                        <Heading fontSize={{ base: "24px", md: "29px", lg: "33px" }} lineHeight={'100%'} color="#242954" textAlign={{ base: "center", lg: "left" }}>Get Professional timesheets done in no time!</Heading>
+                        <Text mt='20px' color="gray" lineHeight={2} textAlign={{ base: "center", lg: "left" }} display={{ base: "none", lg: "block" }}>Sign up Today and join thousands of people around the world using TrackingTime to simplify their timesheets</Text>
+                        <Text mt='20px' color='#0a192f' fontSize='22px' fontWeight={700} textAlign={{ base: "center", lg: "left" }} display={{ base: "block", lg: "none" }}>Try Tracking Time Pro</Text>
                         <Box mt='20px' display={{ base: "block", lg: "flex" }} gap='10px' w='100%' justifyContent='center' >
                             <Input
                                 borderColor={'black'}

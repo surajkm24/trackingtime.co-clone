@@ -3,6 +3,7 @@ import BlogNavbar from "../../Components/BlogNavbar/BlogNavbar";
 import { Navbar } from "../../Components/Navbar/Navbar";
 import "./BlogPage.css";
 
+// Component for single blog page;
 const BlogDetail = () => {
   return (
     <div>
