@@ -10,7 +10,7 @@ const projectSchema = new mongoose.Schema({
     task: [{ taskId: { type: mongoose.Schema.Types.ObjectId, ref: 'task' } }],
     duration: { type: Number, default: 0 }
 });
-
+// feedback: fw18_0042 - Model name should be always in capital ex: Project
 const Project = mongoose.model('project', projectSchema);
 
 module.exports = Project;
