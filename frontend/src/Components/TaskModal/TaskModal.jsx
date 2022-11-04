@@ -38,35 +38,37 @@ const TaskModal = ({ addProjectTask, projectData, updateProjectTask, deleteProje
     onClose();
   }
   return (
-    <Box p='10px 10px'>
+    <Box p='10px 25px'>
       {projectData.data?.task?.map(({ taskId }) => {
         if (taskId === null) return <></>
-        return <Box display='flex' alignItems='center' justifyContent='space-between' gap='20px' borderBottom='1px solid #374050' p='10px 15px' _hover={{ background: "#343d4b" }}>
-          <Box display='flex' alignItems='center' gap='20px'>
-            <Checkbox colorScheme='green' borderColor='#969BA6' isChecked={taskId.status} onChange={(e) => updateProjectTask(e.target.checked, taskId._id)} />
-            <Text color='white' fontSize='13px' fontWeight='600'>{taskId.taskName}</Text>
+        return (
+          <Box display='flex' alignItems='center' justifyContent='space-between' gap='20px' borderBottom='1px solid rgba(0,0,0,0.1)' p='10px 15px' _hover={{ background: "rgba(0,0,0,0.11)" }}>
+            <Box display='flex' alignItems='center' gap='20px'>
+              <Checkbox colorScheme='green' borderColor='#969BA6' isChecked={taskId.status} onChange={(e) => updateProjectTask(e.target.checked, taskId._id)} />
+              <Text color='#0a192f' fontSize='13px' fontWeight='600'>{taskId.taskName.toUpperCase()}</Text>
+            </Box>
+            <Popover trigger='hover'>
+              <PopoverTrigger>
+                <Box color='black' fontWeight='800' w='20px' h='20px' cursor='pointer'>
+                  <span>...</span>
+                </Box>
+              </PopoverTrigger>
+              <PopoverContent mr='20px' bg='white' w='150px' >
+                <PopoverBody px='0' boxShadow='lg' fontWeight={600} fontSize='13px' color='#0a192f'>
+                  <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "rgba(0,0,0,0.1)" }}>
+                    <AiFillEdit /> Edit task
+                  </Box>
+                  <Box onClick={() => deleteProjectTask(taskId._id)} display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "rgba(0,0,0,0.1)" }}>
+                    <MdDelete /> Delete
+                  </Box>
+                </PopoverBody>
+              </PopoverContent>
+            </Popover>
           </Box>
-          <Popover trigger='hover'>
-            <PopoverTrigger>
-              <Box color='white' fontWeight='800' w='20px' h='20px' cursor='pointer'>
-                <span>...</span>
-              </Box>
-            </PopoverTrigger>
-            <PopoverContent bg='#2a313c' w='200px' borderColor='#374050'>
-              <PopoverBody fontWeight={600} fontSize='13px' color='white'>
-                <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "#343d4b" }}>
-                  <AiFillEdit /> Edit task
-                </Box>
-                <Box onClick={() => deleteProjectTask(taskId._id)} display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "#343d4b" }}>
-                  <MdDelete /> Delete
-                </Box>
-              </PopoverBody>
-            </PopoverContent>
-          </Popover>
-        </Box>
+        )
       })}
-      <Button ref={btnRef} colorScheme='teal' onClick={onOpen}>
-       + Add Task
+      <Button mt='10px' h='30px' w='80px' ref={btnRef} color='gray' fontSize='12px' fontWeight={700} variant='unstyled' _hover={{ color: 'black', background: "rgba(0,0,0,0.1)" }} onClick={onOpen}>
+        + Add Task
       </Button>
       <Drawer
         isOpen={isOpen}
@@ -77,11 +79,10 @@ const TaskModal = ({ addProjectTask, projectData, updateProjectTask, deleteProje
       >
         <DrawerOverlay />
         <DrawerContent
-          bg={'#2a313c'}
-          mt={40}
+          bg={'white'}
         >
           {/* right Section */}
-          <DrawerCloseButton color={'white'} />
+          <DrawerCloseButton color={'black'} />
           {/* here comes the head */}
           <form onSubmit={handleSubmit}>
             <DrawerHeader display={"flex"}>
@@ -90,19 +91,27 @@ const TaskModal = ({ addProjectTask, projectData, updateProjectTask, deleteProje
             {/* <hr /> */}
             <DrawerBody>
               <Input placeholder='Task name' borderWidth={".3px"}
-                color='white'
+                color='black'
                 value={formData.taskName}
+                fontSize='17px'
+                required
                 onChange={(e) => setFormData({ ...formData, taskName: e.target.value })} />
               <br />
               <br />
               <Textarea placeholder={'Add Details...'}
-                color='white'
+                color='black'
                 value={formData.description}
+                fontSize='14px'
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })} />
               <br />
               <Down formData={formData} setFormData={setFormData} />
               <br />
-              <ProjAdd />
+              <Flex justifyContent={"flex-end"} gap='20px' position='absolute' bottom='20px' right='20px'>
+                <Button fontSize='14px' fontWeight={700} variant="unstyled" color="rgba(0,0,0,0.7)" _hover={{ textDecoration: "underline", color: "black" }} onClick={onClose} mr='20px'>
+                  CANCEL
+                </Button>
+                <Button bg="black" _hover='black' w='120px' h='40px' fontSize='14px' fontWeight={600} color="whitesmoke" type='submit'>SAVE</Button>
+              </Flex>
               <br />
 
             </DrawerBody>

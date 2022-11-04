@@ -131,7 +131,7 @@ const DesktopNav = () => {
         <Stack direction={'row'} spacing={4}>
             {NAV_ITEMS.map((navItem) => (
                 <Box key={navItem.label}>
-                    <Popover trigger={'hover'} placement={'bottom-start'}>
+                    <Popover trigger={'hover'} placement={'bottom-start'} >
                         <PopoverTrigger>
                             <Link
                                 p={2}
@@ -157,8 +157,10 @@ const DesktopNav = () => {
                                 px={4}
                                 py={6}
                                 rounded={'md'}
-                                minW={'fit-content'}>
-                                <Stack gap="16px">
+                                minW={'fit-content'}
+                            >
+                                <Stack gap="16px" className='popFea'
+                                >
                                     {navItem.children.map((child) => (
                                         <DesktopSubNav key={child.label} {...child} />
                                     ))}

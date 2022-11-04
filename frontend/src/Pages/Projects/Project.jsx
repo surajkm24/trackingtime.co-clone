@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react'
+import { useToast } from '@chakra-ui/react'
 import styles from "./Project.module.css";
 import LeftSidebar from './LeftSidebar';
 import ToolsNavbar from '../../Components/ToolsNavbar';
 import { useState } from 'react';
 import { getData, postData, editData, deleteData, addTask, updateTask, deleteTask } from '../../Components/Function/Function';
-import { useContext } from 'react';
-import { AuthContext } from '../ContextAPI/AuthContext.jsx';
 // import Nav2Space from '../NotesComponent/Nav2Space.jsx';
 // import NavProject2 from '../../Components/NavProject2/NavProject2.jsx'
 import NavProject2 from '../../Components/NavProject2/NavProject2';
@@ -14,6 +13,7 @@ import SingleProHeader from '../../Components/SingleProHeader/SingleProHeader';
 import { SingleProjectTask } from './SingleProjectTask';
 import { getProject } from '../../Components/ProjectReport/Report.Actions';
 import NoProject from './NoProject';
+import { useSelector } from 'react-redux';
 
 const Project = () => {
   const [projectData, setProjectData] = useState({ data: {}, completedTasks: 0, hoursCompleted: "", completedPercent: 0 });
@@ -21,16 +21,17 @@ const Project = () => {
   const [singleProject, setSingleProject] = useState({});
   const [play, setPlay] = useState(0);
   const [alertMsg, setAlertMsg] = useState(false);
+  const toast = useToast()
 
-  const { token } = useContext(AuthContext);
+  const { token } = useSelector(store => store.auth)
   const projectAPI = () => {
     getProject(token, singleProject._id)
       .then((res) => {
-        if(res==='error') return 'error'
+        if (res === 'error') return 'error'
         let completedTasks = 0;
         let hoursCompleted = res.duration < 60 ?
           res.duration + "s" :
-          Math.floor(res.duration / 3600) + "h:" +Math.floor((res.duration % 3600) / 60)+'m'
+          Math.floor(res.duration / 3600) + "h:" + Math.floor((res.duration % 3600) / 60) + 'm'
 
         let completedPercent = Math.floor((res.duration / (res.estimatedTime * 3600)) * 100);
         console.log(res, 3, 'pr3')
@@ -69,18 +70,30 @@ const Project = () => {
       console.log(res)
       setData([...data, res])
       setSingleProject(res);
+      toast({
+        title: 'Project created.',
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+      })
     })
-     .catch((e)=>{
-       setAlertMsg(true);
-          setTimeout(() => {
+      .catch((e) => {
+        setAlertMsg(true);
+        setTimeout(() => {
           setAlertMsg(false)
         }, 4000)
-     })
+      })
   }
 
   const deleteProject = (id) => {
     deleteData(token, id).then((res) => {
       getProjects(token);
+      toast({
+        title: 'Project deleted!',
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      })
     })
   }
   const updateDuration = (time) => {
@@ -88,7 +101,7 @@ const Project = () => {
     let id = singleProject._id;
     console.log((+time) + (+singleProject.duration), 'duration')
     //  alert(params+" "+id)
-    if(!id) return;
+    if (!id) return;
     setTimeout(() => {
       editData(token, id, params).then((res) => {
         getProjects(token, id);
@@ -99,6 +112,13 @@ const Project = () => {
   const addProjectTask = (params) => {
     addTask(token, singleProject._id, params).then((res) => {
       projectAPI();
+      toast({
+        title: 'Task added.',
+        status: 'success',
+        variant:"subtle",
+        duration: 3000,
+        isClosable: true,
+      })
     })
   }
 
@@ -106,13 +126,27 @@ const Project = () => {
     let params = { status: status };
     updateTask(token, id, params).then((res) => {
       projectAPI();
+      toast({
+        title: 'Task updated!',
+        status: 'info',
+        variant:"subtle",
+        duration: 3000,
+        isClosable: true,
+      })
     })
   }
 
   const deleteProjectTask = (id) => {
-    deleteTask(token, id,singleProject._id).then((res) => {
+    deleteTask(token, id, singleProject._id).then((res) => {
       console.log('deleted task 2')
       projectAPI();
+      toast({
+        title: 'Task deleted!',
+        status: 'error',
+        variant:"subtle",
+        duration: 3000,
+        isClosable: true,
+      })
     })
   }
 
@@ -121,27 +155,24 @@ const Project = () => {
   }, []);
 
   useEffect(() => {
-    if(singleProject._id){
+    if (singleProject._id) {
       projectAPI();
     }
   }, [singleProject])
 
   return (
 
-    <div className={styles.ProjectBodyBox} >
-
+    <Box bg='white' h='100vh' overflow='hidden'>
       <ToolsNavbar play={play} setPlay={setPlay} updateDuration={updateDuration} />
-      <Flex>
-        <LeftSidebar deleteProject={deleteProject} addProject={addProject} data={data} singleProject={singleProject} setSingleProject={setSingleProject} alertMsg={alertMsg}/>
+      <Flex w='100%'>
+        <LeftSidebar deleteProject={deleteProject} addProject={addProject} data={data} singleProject={singleProject} setSingleProject={setSingleProject} alertMsg={alertMsg} />
 
         {data.length === 0 ? <NoProject /> :
-           <SingleProjectTask deleteProjectTask={deleteProjectTask} updateProjectTask={updateProjectTask} singleProject={singleProject} 
-             play={play} setPlay={setPlay} projectData={projectData} addProjectTask={addProjectTask} />
-         }
-      </Flex> 
-
-
-    </div>
+          <SingleProjectTask deleteProjectTask={deleteProjectTask} updateProjectTask={updateProjectTask} singleProject={singleProject}
+            play={play} setPlay={setPlay} projectData={projectData} addProjectTask={addProjectTask} />
+        }
+      </Flex>
+    </Box>
   )
 }
 

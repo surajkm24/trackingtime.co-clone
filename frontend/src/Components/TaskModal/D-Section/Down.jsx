@@ -3,14 +3,15 @@ import React from 'react'
 
 const Down = ({ formData, setFormData }) => {
   return (
-    <Box color={"white"}>
+    <Box color={"black"}>
       <br />
       <Box>
         <Text fontSize={"xl"} fontWeight={600} >Information</Text>
         <label>Estimated Time</label>
         <Input type='number'
-          value={formData.estimatedTime}
-          onChange={(e) => setFormData({ ...formData, estimatedTime: e.target.value })}
+          placeholder='00:00'
+          value={formData.estimatedTime||""}
+          onChange={(e) => setFormData({ ...formData, estimatedTime: +e.target.value || 0 })}
         />
       </Box>
       {/* <Box>

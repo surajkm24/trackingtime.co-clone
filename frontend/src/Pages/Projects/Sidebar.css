@@ -1,7 +1,8 @@
 #projectTiles {
-    height:69vh;
+    height:71vh;
     overflow-y: scroll;
-    width:100%;
+    width:310px;
+    margin-top:10px
 }
 #projectTiles::-webkit-scrollbar{
     width:10px;

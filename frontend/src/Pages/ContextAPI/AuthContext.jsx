@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { createContext } from 'react'
-let initToken = localStorage.getItem('token') || ""
+let initToken = localStorage.getItem('trackTimeToken') || ""
 export const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {

@@ -17,63 +17,59 @@ import { ChevronDownIcon } from '@chakra-ui/icons';
 import SingleProHeader from '../SingleProHeader/SingleProHeader';
 import TaskModal from '../TaskModal/TaskModal.jsx'
 
-const NavProject2 = ({ addProjectTask, projectData,updateProjectTask,deleteProjectTask }) => {
+const NavProject2 = ({ addProjectTask, projectData, updateProjectTask, deleteProjectTask }) => {
   return (
 
-    <Box className={styles.NavPro2Container}>
+    <Box className={styles.NavPro2Container} flex='1'>
       {/* <SingleProHeader /> */}
-      <Flex className={styles.nav}>
-        <NavLink to="/project/list" className={({ isActive }) => isActive ? styles.active : styles.default}>List</NavLink>
-        <NavLink to="/project/boards" className={({ isActive }) => isActive ? styles.active : styles.default}>Board</NavLink>
-        <NavLink to="/project/timeline" className={({ isActive }) => isActive ? styles.active : styles.default}>Timeline</NavLink>
-        <NavLink to="/project/report" className={({ isActive }) => isActive ? styles.active : styles.default}>Report</NavLink>
-        <NavLink to="/project/notes" className={({ isActive }) => isActive ? styles.active : styles.default}>Notes</NavLink>
-        <NavLink to="/project/files" className={({ isActive }) => isActive ? styles.active : styles.default}>Files</NavLink>
-
-        <Flex className={styles.menuRight}>
-          {/* open task */}
-          {/* <Box> */}
+      <Flex px='13px' className={styles.nav} justifyContent='space-between' alignItems='center' borderBottom='1px solid rgba(0,0,0,0.1)'>
+        <Flex>
+          <NavLink to="/project/list" className={({ isActive }) => isActive ? styles.active : styles.default}><Text _hover={{ color: "black" }}>List</Text></NavLink>
+          <NavLink to="/project/boards" className={({ isActive }) => isActive ? styles.active : styles.default}><Text _hover={{ color: "black" }}>Board</Text></NavLink>
+          <NavLink to="/project/timeline" className={({ isActive }) => isActive ? styles.active : styles.default}><Text _hover={{ color: "black" }}>Timeline</Text></NavLink>
+          <NavLink to="/project/report" className={({ isActive }) => isActive ? styles.active : styles.default}><Text _hover={{ color: "black" }}>Report</Text></NavLink>
+          <NavLink to="/project/notes" className={({ isActive }) => isActive ? styles.active : styles.default}><Text _hover={{ color: "black" }}>Notes</Text></NavLink>
+          <NavLink to="/project/files" className={({ isActive }) => isActive ? styles.active : styles.default}><Text _hover={{ color: "black" }}>Files</Text></NavLink>
+        </Flex>
+        <Flex gap='20px'>
           <Menu>
             {({ isOpen }) => (
               <>
                 <MenuButton isActive={isOpen} as={Button} rightIcon={<ChevronDownIcon />}
-                  w={"120px"} h={"30px"} fontSize={"13px"}
-                  fontWeight={"bold"} mt={"12px"} backgroundColor={"#343D4B"}
-                  color={"white"} _hover={{ backgroundColor: "#343D4B" }}>
+                  w={"120px"} h={"30px"} fontSize={"12px"}
+                  fontWeight={"bold"} backgroundColor={"rgba(0,0,0,0.09)"}
+                  color={"#0a192f"} _hover={{ backgroundColor: "rgba(0,0,0,0.19)" }}>
                   {isOpen ? 'Open tasks' : 'Open tasks'}
                 </MenuButton>
-                <MenuList backgroundColor={"#343D4B"} color={"white"}>
-                  <MenuItem _hover={{ backgroundColor: "#374050" }}>All tasks</MenuItem>
-                  <MenuItem _hover={{ backgroundColor: "#374050" }} onClick={() => alert('Kagebunshin')}>open tasks</MenuItem>
+                <MenuList w='70px' fontSize='13px' backgroundColor={"white"} color={"#0a192f"}>
+                  <MenuItem fontWeight={600} _hover={{ backgroundColor: "rgba(216,226,238)", color: "blue" }}>All tasks</MenuItem>
+                  <MenuItem fontWeight={600} _hover={{ backgroundColor: "rgba(216,226,238)", color: "blue" }} >Open tasks</MenuItem>
                 </MenuList>
               </>
             )}
           </Menu>
-          {/* </Box> */}
-
-          {/* add task */}
+          <Button h='30px' fontSize='12px' fontWeight={700} mr='-16px' px='8px' color='#0a192f' bg='rgba(0,0,0,0.09)' _hover={{ background: 'rgba(0,0,0,0.19)' }} borderRadius='4px 0px 0px 4px'>
+            + Tasks
+          </Button>
           <Menu>
             {({ isOpen }) => (
               <>
-                <MenuButton isActive={isOpen} as={Button} rightIcon={<ChevronDownIcon />}
-                  w={"100px"} h={"30px"} fontSize={"13px"} mt={"12px"}
-                  fontWeight={"bold"} backgroundColor={"#343D4B"} color={"white"}
-                  _hover={{ backgroundColor: "#343D4B" }}>
-                  {isOpen ? '+ Tasks' : '+ Tasks'}
+                <MenuButton isActive={isOpen} as={Button}
+                  h={"30px"} fontSize={"13px"} borderRadius='0px 4px 4px 0px'
+                  fontWeight={"bold"} px='0px' backgroundColor={"rgba(0,0,0,0.09)"}
+                  color={"#0a192f"} _hover={{ backgroundColor: "rgba(0,0,0,0.19)" }}>
+                  <ChevronDownIcon px='0px' />
                 </MenuButton>
-                <MenuList backgroundColor={"#343D4B"} color={"white"}>
-                  <MenuItem _hover={{ backgroundColor: "#374050" }}>Add task list</MenuItem>
-                  <MenuItem _hover={{ backgroundColor: "#374050" }} onClick={() => alert('Kagebunshin')}>Add multiple tasks</MenuItem>
+                <MenuList w='70px' fontSize='13px' backgroundColor={"white"} color={"#0a192f"}>
+                  <MenuItem fontWeight={600} _hover={{ backgroundColor: "rgba(216,226,238)", color: "blue" }}>Add task list</MenuItem>
+                  <MenuItem fontWeight={600} _hover={{ backgroundColor: "rgba(216,226,238)", color: "blue" }} >Add multiple tasks</MenuItem>
                 </MenuList>
               </>
             )}
           </Menu>
-
-
         </Flex>
       </Flex>
-      {/* <Nav2Space/> */}
-      <TaskModal deleteProjectTask={deleteProjectTask} addProjectTask={addProjectTask} projectData={projectData} updateProjectTask={updateProjectTask}/>
+      <TaskModal deleteProjectTask={deleteProjectTask} addProjectTask={addProjectTask} projectData={projectData} updateProjectTask={updateProjectTask} />
     </Box>
   )
 }

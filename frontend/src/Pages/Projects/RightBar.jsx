@@ -37,10 +37,7 @@ import { AiOutlineClockCircle } from "react-icons/ai"
 function RightBar({ addProject, alertMsg }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const firstField = React.useRef();
-  const [date, setDate] = useState("")
-  const [show, setShow] = useState(false);
-  const [text, setText] = useState("");
-  const [formData, setFormData] = useState({ projectName: "", dueDate: "", estimatedTime: "",client:"" })
+  const [formData, setFormData] = useState({ projectName: "", dueDate: "", estimatedTime: "", client: "" })
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -51,8 +48,8 @@ function RightBar({ addProject, alertMsg }) {
   return (
     <>
 
-     <Slide in={alertMsg} direction='left' position='fixed' top='0px' style={{ zIndex: 10 }} bg='white' color="red" mt={"-20px"}>
-        <Alert status='error' w='60vw' mx='20vw'  color="red">
+      <Slide in={alertMsg} direction='left' position='fixed' top='0px' style={{ zIndex: 10 }} bg='white' color="red" mt={"-20px"}>
+        <Alert status='error' w='60vw' mx='20vw' color="red">
           <AlertIcon />
           <AlertTitle>Project with this name already exist.</AlertTitle>
           <AlertDescription>Try creating new project.</AlertDescription>
@@ -60,8 +57,8 @@ function RightBar({ addProject, alertMsg }) {
       </Slide>
 
 
-      <Button variant="unstyled" fontSize={14} pb="16px" leftIcon={<AddIcon />} onClick={onOpen}>
-        Project
+      <Button variant="unstyled" fontSize={10} leftIcon={<AddIcon fontSize='9px' />} border='1px solid rgba(0,0,0,0.06)' p='3px 12px' h='fit-content' borderRadius='4px' onClick={onOpen}>
+        PROJECT
       </Button>
 
       <Drawer
@@ -73,10 +70,12 @@ function RightBar({ addProject, alertMsg }) {
 
       >
         <DrawerOverlay />
-        <DrawerContent bg="#313946"  >
-          <DrawerCloseButton color="#a5afbb" Position="absolute" left="20px" top="20px" />
+        <DrawerContent bg="white"  >
+          <Box>
+            <DrawerCloseButton color="#0a192f" Position="absolute" left="20px" top="20px" />
+          </Box>
           <form onSubmit={handleSubmit}>
-            <DrawerHeader color="white" pl="280px">
+            <DrawerHeader color="#0a192f" pl="280px" >
               <Tooltip label="Due Date" aria-label='A tooltip'>
                 <Input
                   placeholder="Due Date"
@@ -95,73 +94,78 @@ function RightBar({ addProject, alertMsg }) {
             </DrawerHeader>
 
             <DrawerBody>
-              <Stack spacing="24px">
-                <Box  >
+              <Stack spacing="24px" borderTop='1px solid rgba(0,0,0,0.1)'>
+                <Box mt='15px' display='flex' gap='10px' alignItems={'center'} border='1px solid rgba(0,0,0,0.1)' p='8px' borderRadius='5px'>
                   {/* <FormLabel htmlFor="username" color="#aeb4b9" fontSize={20} >Project Name</FormLabel> */}
                   <Input
                     ref={firstField}
                     id="username"
-                    border="1px solid #4b576e"
-                    p="8px"
                     outline="none"
-                    color="white"
+                    color="black"
                     variant="unstyled"
-                    mt={5}
                     placeholder="Project name"
-                    fontSize={20}
+                    _placeholder={{ fontWeight: '400' }}
+                    fontWeight={600}
+                    fontSize={18}
                     value={formData.projectName}
                     onChange={(e) => setFormData({ ...formData, projectName: e.target.value })}
                     required
                   />
-                  <Flex w={8} h={8} position="absolute" left="448px" top={100} bg="#4b576e" borderRadius={5}></Flex>
+                  <Flex w={5} h={5} bg="rgba(0,0,0,0.25)" borderRadius={'3px'}></Flex>
                 </Box>
 
 
                 <Box>
-                  <Flex>
-                    <Switch size='md' h={5} mt="3px" defaultChecked />
-                    <Text fontSize={16} color="white" ml="10px" fontWeight={700}>PUBLIC</Text>
+                  <Flex alignItems={'center'} gap='14px'>
+                    <Switch size='sm' defaultChecked />
+                    <Text fontSize={15} color="whit" fontWeight={700}>PUBLIC</Text>
                   </Flex>
                 </Box>
 
                 <Box>
-                  <Flex>
+                  <Flex alignItems='center'>
                     <Box>
-                      <Text color="#7fa8c1">Client</Text>
-                      <Select id='owner' w="xsm" color="white" fontSize={12} variant="unstyled" defaultValue='Add custom field'>
+                      <Text color="black" fontSize='12px' fontWeight={600}>Client</Text>
+                      <Select id='owner' w="100px" color="black" fontSize={12} variant="unstyled" defaultValue='Add custom field'>
                         <option value='segun'>Add custom field</option>
                         <option value='kola'>Manage field</option>
                       </Select>
                     </Box>
-                    <Input w="200px" px="10px" border="1px solid #4b576e" variant="unstyled" borderRadius="5px" ml="100px" placeholder="Client" value={formData.client} onChange={(e)=>setFormData({...formData,client:e.target.value})} color="white" />
-                    <Button variant="unstyled" h="50px" visibility={text == "" ? "hidden" : "visible"} border="1px solid #4b576e" bg="black" color="white" >Add</Button>
+                    <Input  px="10px" py='2px' mr='10px' border="1px solid rgba(0,0,0,0.1)" variant="unstyled" borderRadius="5px" ml="100px" placeholder="Client" value={formData.client} onChange={(e) => setFormData({ ...formData, client: e.target.value })} color="black" />
+                    <Button fontSize='11px' variant="unstyled" borderRadius={'3px'} h="28px" visibility={formData.client == "" ? "hidden" : "visible"} border="1px solid #4b576e" bg="black" color="white" >Add</Button>
                   </Flex>
                 </Box>
 
-                <Box >
-                  <FormLabel htmlFor="owner" color="#7fa8c1" mt={10} fontSize={12} fontWeight={200}>Estimated Time</FormLabel>
-                  <Input
-                    type="number"
-                    placeholder="00.00"
-                    border="1px solid #4b576e"
-                    p="8px"
-                    outline="none"
-                    color="white"
-                    variant="unstyled"
-                    value={formData.estimatedTime}
-                    onChange={(e) => setFormData({ ...formData, estimatedTime: +e.target.value })}
-                    required
-                  />
-                  <AiOutlineClockCircle color="#7fa8c1" style={{ position: "absolute", left: "380px", top: "363px", fontSize: "20px" }} />
+                <Box>
+                  <FormLabel htmlFor="owner" color="#0a192f" mt={10} fontSize={'10px'} fontWeight={700}>Estimated Time</FormLabel>
+                  <Box display='flex'
+                    border="1px solid rgba(0,0,0,0.1)"
+                    p='8px'
+                    borderRadius='5px'
+                    gap='10px'
+                    alignItems='center'
+                  >
+                    <Input
+                      type="number"
+                      placeholder="00.00"
+                      outline="none"
+                      color="black"
+                      variant="unstyled"
+                      value={formData.estimatedTime}
+                      onChange={(e) => setFormData({ ...formData, estimatedTime: +e.target.value })}
+                      required
+                    />
+                    <AiOutlineClockCircle color="#0a192f" style={{ fontSize: "20px" }} />
+                  </Box>
                 </Box>
               </Stack>
             </DrawerBody>
 
-            <DrawerFooter>
-              <Button variant="unstyled" p={2} border="1px solid #4b576e" color="#7fa8c1" mr={4} onClick={onClose}>
-                Cancel
+            <DrawerFooter position='absolute' bottom='0px' right='0px'>
+              <Button fontSize='14px' fontWeight={700} variant="unstyled" color="rgba(0,0,0,0.7)" _hover={{textDecoration:"underline",color:"black"}} onClick={onClose} mr='20px'>
+                CANCEL
               </Button>
-              <Button bg="black" color="white" type='submit'>Save</Button>
+              <Button bg="black" _hover='black' w='120px' h='40px' fontSize='14px' fontWeight={600} color="whitesmoke" type='submit'>SAVE</Button>
             </DrawerFooter>
           </form>
         </DrawerContent>

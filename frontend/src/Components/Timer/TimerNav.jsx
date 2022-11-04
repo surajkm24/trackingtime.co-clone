@@ -46,9 +46,9 @@ export default function TimerNav({ play, setPlay, updateDuration }) {
     }
 
     return (
-        <HStack color='white'>
-            {play ? <Box color='white' fontSize={"14px"} fontWeight={700}>{converter(time)}</Box> : null}
-            {play ? <AiFillPauseCircle onClick={() => toggleTimer()} style={{ height: "25px", width: "25px" }} /> : <GoPlay onClick={() => toggleTimer()} style={{ height: "25px", width: "25px" }} />}
+        <HStack color='black'>
+            {play ? <Box color='black' fontSize={"14px"} fontWeight={700}>{converter(time)}</Box> : null}
+            {play ? <AiFillPauseCircle color='teal' onClick={() => toggleTimer()} style={{ height: "25px", width: "25px" }} /> : <GoPlay onClick={() => toggleTimer()} style={{ height: "25px", width: "25px" }} />}
         </HStack>
     );
 }

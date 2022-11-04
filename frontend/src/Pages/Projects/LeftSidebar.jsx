@@ -1,4 +1,4 @@
-import { ChevronDownIcon } from "@chakra-ui/icons";
+import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import {
   Box,
   Flex,
@@ -11,246 +11,271 @@ import {
   PopoverBody,
   Button,
   Text,
-  Progress
+  Progress,
+  Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon, Image
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import styles from "./Project.module.css";
 import './Sidebar.css';
 import RightBar from "./RightBar";
-
+import { AiFillDelete, AiFillStar, AiTwotoneEdit } from "react-icons/ai";
+import {BsArchive, BsFillPlayFill} from 'react-icons/bs';
+import {HiDocumentReport, HiOutlineDuplicate} from 'react-icons/hi'
 
 
 
 
 const LeftSidebar = ({ addProject, data, singleProject, setSingleProject, deleteProject, alertMsg }) => {
-
-  const [Filtered, setFiltered] = useState({ all: "ALL", duedate: "BY DUEDATE" });
+  const [showSideBar, setShowSideBar] = useState(true);
+  const [Filtered, setFiltered] = useState({ all: "ALL", order: "BY ORDER" });
   return (
-    <Box w="23%" h="93vh" bg="#313946" >
-      <Box
-        borderBottom="1px solid #374050"
-        color="#7fa8c1"
-        fontSize={14}
-        fontWeight={800}
-        p="14px"
-        _hover={{ color: "white" }}
-      >
-        MY TASKS
-      </Box>
-      <Box align="center" mt="10px" mb="20px">
-        <HStack spacing="10px">
-          <Box
-            w="200px"
-            h="10"
-            mr="10px"
-            pt="8px"
-            fontSize={14}
-            fontWeight={700}
-            alignItems="center"
-            color="white"
-          >
-            PROJECT <ChevronDownIcon color="white" />{" "}
-          </Box>
-          <Box w="50px" h="6" p={1} border="1px solid  #374050 ">
-            <Img
-              src="https://pro.trackingtime.co/img/projects-timeline-ico.svg"
-              h="12px"
-              w="12px"
-            />
-          </Box>
-          <Box
-            w="250px"
-            h="6"
-            color="white"
-            borderRadius="5px"
-            border="1px solid #374050"
-          >
-            <RightBar addProject={addProject} alertMsg={alertMsg}/>
-          </Box>
-        </HStack>
-      </Box>
+    <Box w={showSideBar ? '310px' : '0px'} h='93vh' bg='#f2f2f4' borderRadius='0px 5px 5px 0px' position='relative'>
+      {showSideBar ? <ChevronLeftIcon onClick={() => setShowSideBar(false)} position={'absolute'} right='-20px' border='1px solid rgba(0,0,0,0.09)' borderRadius='0px 50% 50% 0px' fontSize='22px' cursor='pointer' top='10px' /> :
+        <ChevronRightIcon onClick={() => setShowSideBar(true)} position={'absolute'} right='-20px' border='1px solid rgba(0,0,0,0.09)' borderRadius='0px 50% 50% 0px' fontSize='22px' cursor='pointer' top='10px' />}
+      <Box display={showSideBar ? 'block' : "none"}>
+        <Box
+          borderBottom="1px solid rgba(0,0,0,0.09)"
+          color="rgba(0,0,0,0.7)"
+          fontSize={'13px'}
+          fontWeight={800}
+          p="14px"
+          _hover={{ color: "black" }}
+          cursor='pointer'
 
-      <Popover trigger="hover" >
-        <PopoverTrigger>
-          <Button
-            bg="#343D4B"
-            _hover={{ background: "#343D3C" }}
-            fontSize="11px"
-            h="30px"
-            px="10px"
-            color="white"
-          >
-            {Filtered.all} <ChevronDownIcon />
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent bg="#2A313C" w="200px" borderColor="#2A313C" color="white">
-          <PopoverBody fontWeight={600} fontSize="13px">
-            <Box
-              display="flex"
-              cursor="pointer"
-              alignItems="center"
-              gap="7px"
-              padding="10px"
-              _hover={{ color: "blue" }}
-              onClick={() => setFiltered({ ...Filtered, all: "ALL" })}
-            >
-              All
-            </Box>
-            <Box
-              display="flex"
-              cursor="pointer"
-              alignItems="center"
-              gap="7px"
-              padding="10px"
-              _hover={{ color: "blue" }}
-              onClick={() => setFiltered({ ...Filtered, all: "FAVORITES" })}
-
-            >
-              Favorites
-            </Box>
-            <Box
-              display="flex"
-              cursor="pointer"
-              alignItems="center"
-              gap="7px"
-              padding="10px"
-              _hover={{ color: "blue" }}
-              onClick={() => setFiltered({ ...Filtered, all: "BY CLIENT" })}
-            >
-              By Client
-            </Box>
-          </PopoverBody>
-        </PopoverContent>
-      </Popover>
-
-      <Popover trigger="hover" >
-        <PopoverTrigger>
-          <Button
-            bg="#343D4B"
-            _hover={{ background: "#343D3C" }}
-            fontSize="11px"
-            h="30px"
-            px="10px"
-            color="white"
-          >
-            {Filtered.duedate} <ChevronDownIcon />
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent bg="#2A313C" w="200px" borderColor="#2A313C" color="white">
-          <PopoverBody fontWeight={600} fontSize="13px">
-            <Box
-              display="flex"
-              cursor="pointer"
-              alignItems="center"
-              gap="7px"
-              padding="10px"
-              _hover={{ color: "blue" }}
-              onClick={() => setFiltered({ ...Filtered, duedate: "BY ORDER" })}
-            >
-              By Order
-            </Box>
-            <Box
-              display="flex"
-              cursor="pointer"
-              alignItems="center"
-              gap="7px"
-              padding="10px"
-              _hover={{ color: "blue" }}
-              onClick={() => setFiltered({ ...Filtered, duedate: "BY NAME" })}
-              Favorites
-            >
-              By Name
-            </Box>
-            <Box
-              display="flex"
-              cursor="pointer"
-              alignItems="center"
-              gap="7px"
-              padding="10px"
-              _hover={{ color: "blue" }}
-              onClick={() => setFiltered({ ...Filtered, duedate: "BY DUE DATE" })}
-            >
-              By Due Date
-            </Box>
-          </PopoverBody>
-        </PopoverContent>
-      </Popover>
-      <div id='projectTiles'>
-        {data?.length !== 0 ? data.map(project => {
-          return <Box
-            p='10px 14px'
-            bg={singleProject._id === project._id ? "#374050" : "initial"}
-            cursor='pointer'
-            _hover={{ background: "#374050" }}
-            onClick={() => setSingleProject(project)}>
-            <Box display='flex'
-              alignItems='center'
-              justifyContent='space-between'
-              p='10px 14px'
-              bg={singleProject._id === project._id ? "#374050" : "initial"}
-              cursor='pointer'
-              _hover={{ background: "#374050" }}
-              onClick={() => setSingleProject(project)}
-              key={project._id}
-            >
-              <Box>
-                <Box display='flex'
-                  alignItems='center'
-                  gap='10px'>
-                  <Box h='15px' w='15px' borderRadius='3px' bg='lightgray'></Box>
-                  <Text color='white' fontWeight={600} fontSize='14px'>{project.projectName}</Text>
+        >
+          MY TASKS
+        </Box>
+        <Accordion allowMultiple defaultIndex={[0]} allowToggle>
+          <AccordionItem>
+            <Box display='flex' justifyContent={'space-between'} alignItems='center'>
+              <AccordionButton _hover='white' gap='10px'>
+                <Box textAlign='left' fontWeight={800} fontSize='13px'>
+                  PROJECTS
                 </Box>
-                <Box display='flex' alignItems='center' gap='10px'>
-                  <Progress value={Math.floor((project.duration / (project.estimatedTime * 3600)) * 100)} colorScheme='green' height='4px' w='20px' borderRadius='2px' />
-                  <span style={{ fontSize: "8px", color: "white", fontWeight: "600" }}>{Math.floor((project.duration / (project.estimatedTime * 3600)) * 100)}%</span>
-                  <span style={{ fontSize: "8px", color: "lightgray", fontWeight: "600" }}>
-                    {project.duration < 60 ?
-                    project.duration + "s" :
-                    Math.floor(project.duration / 3600) + "h:" + Math.floor((project.duration % 3600) / 60) + 'm'}/{project.estimatedTime}:00</span>
+                <AccordionIcon />
+              </AccordionButton>
+              <Box display='flex' alignItems={'center'} gap='10px'>
+                <Image
+                  src="https://pro.trackingtime.co/img/projects-timeline-ico.svg"
+                  h="12px"
+                  w="12px"
+                  border='1px solid rgba(0,0,0,0.06)'
+                  p='4px'
+                  boxSizing="content-box"
+                  borderRadius={'4px'}
+                />
+                <Box w='100px'>
+                  <RightBar addProject={addProject} alertMsg={alertMsg} />
                 </Box>
               </Box>
-
-              <Popover >
+            </Box>
+            <AccordionPanel pb={4} px='0px'>
+              <Popover trigger="hover" >
                 <PopoverTrigger>
-                  <Box color='white' fontWeight='800' w='20px' h='20px'>
-                    <span>...</span>
-                  </Box>
+                  <Button
+                    _hover='white'
+                    fontSize="10px"
+                    fontWeight={800}
+                    px="0"
+                    color="#0a192f"
+                    borderBottom='1px solid #0a192f'
+                    borderRadius='0px'
+                    py='0'
+                    h='20px'
+                    ml='10px'
+                  >
+                    {Filtered.all} <ChevronDownIcon />
+                  </Button>
                 </PopoverTrigger>
-                <PopoverContent bg='#2a313c' w='200px' borderColor='#374050'>
-                  <PopoverBody fontWeight={600} fontSize='13px' color='white'>
-                    <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "#343d4b" }}>
-                      Edit project
+                <PopoverContent ml='15px' bg="white" w="130px" color="#0a192f">
+                  <PopoverBody borderRadius='5px' p='0' boxShadow='lg' fontWeight={600} fontSize="13px">
+                    <Box
+                      display="flex"
+                      cursor="pointer"
+                      alignItems="center"
+                      borderRadius='5px'
+                      gap="7px"
+                      color={Filtered.all === 'ALL' ? 'blue' : 'black'}
+                      bg={Filtered.all === 'ALL' ? '#CFDAE0' : 'none'}
+                      p='5px 10px'
+                      _hover={{ background: "rgba(0,0,0,0.1)" }}
+                      onClick={() => setFiltered({ ...Filtered, all: "ALL" })}
+                    >
+                      All
                     </Box>
-                    <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "#343d4b" }}>
-                      Track
+                    <Box
+                      display="flex"
+                      cursor="pointer"
+                      alignItems="center"
+                      borderRadius='5px'
+                      gap="7px"
+                      color={Filtered.all === 'FAVORITES' ? 'blue' : 'black'}
+                      bg={Filtered.all === 'FAVORITES' ? '#CFDAE0' : 'none'}
+                      p='5px 10px'
+                      _hover={{ background: "rgba(0,0,0,0.1)" }}
+                      onClick={() => setFiltered({ ...Filtered, all: "FAVORITES" })}
+
+                    >
+                      Favorites
                     </Box>
-                    <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "#343d4b" }}>
-                      Add to favourites
-                    </Box>
-                    <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "#343d4b" }}>
-                      Duplicate this project
-                    </Box>
-                    <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "#343d4b" }}>
-                      Report
-                    </Box>
-                    <Box fontSize='12px' display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "#343d4b" }}>
-                      PRIORITY
-                    </Box>
-                    <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "#343d4b" }}>
-                      Archive
-                    </Box>
-                    <Box onClick={() => deleteProject(project._id)} display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "#343d4b" }}>
-                      Delete
+                    <Box
+                      display="flex"
+                      cursor="pointer"
+                      alignItems="center"
+                      borderRadius='5px'
+                      gap="7px"
+                      color={Filtered.all === 'BY CLIENT' ? 'blue' : 'black'}
+                      bg={Filtered.all === 'BY CLIENT' ? '#CFDAE0' : 'none'}
+                      p='5px 10px'
+                      _hover={{ background: "rgba(0,0,0,0.1)" }}
+                      onClick={() => setFiltered({ ...Filtered, all: "BY CLIENT" })}
+                    >
+                      By Client
                     </Box>
                   </PopoverBody>
                 </PopoverContent>
               </Popover>
-            </Box>
-          </Box>
-        }) : null}
+              <Popover trigger="hover" >
+                <PopoverTrigger>
+                  <Button
+                    _hover='white'
+                    fontSize="10px"
+                    fontWeight={800}
+                    px="0"
+                    color="#0a192f"
+                    borderBottom='1px solid #0a192f'
+                    borderRadius='0px'
+                    py='0'
+                    h='20px'
+                    ml='20px'
+                  >
+                    {Filtered.order} <ChevronDownIcon />
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent ml='65px' bg="white" w="130px" color="#0a192f">
+                  <PopoverBody borderRadius='5px' p='0' boxShadow='lg' fontWeight={600} fontSize="13px">
+                    <Box
+                      display="flex"
+                      cursor="pointer"
+                      alignItems="center"
+                      borderRadius='5px'
+                      gap="7px"
+                      color={Filtered.order === 'BY ORDER' ? 'blue' : 'black'}
+                      bg={Filtered.order === 'BY ORDER' ? '#CFDAE0' : 'none'}
+                      p='5px 10px'
+                      _hover={{ background: "rgba(0,0,0,0.1)" }}
+                      onClick={() => setFiltered({ ...Filtered, order: "BY ORDER" })}
+                    >
+                      By order
+                    </Box>
+                    <Box
+                      display="flex"
+                      cursor="pointer"
+                      alignItems="center"
+                      borderRadius='5px'
+                      gap="7px"
+                      color={Filtered.order === 'BY NAME' ? 'blue' : 'black'}
+                      bg={Filtered.order === 'BY NAME' ? '#CFDAE0' : 'none'}
+                      p='5px 10px'
+                      _hover={{ background: "rgba(0,0,0,0.1)" }}
+                      onClick={() => setFiltered({ ...Filtered, order: "BY NAME" })}
+
+                    >
+                      By name
+                    </Box>
+                    <Box
+                      display="flex"
+                      cursor="pointer"
+                      alignItems="center"
+                      borderRadius='5px'
+                      gap="7px"
+                      color={Filtered.order === 'BY DUEDATE' ? 'blue' : 'black'}
+                      bg={Filtered.order === 'BY DUEDATE' ? '#CFDAE0' : 'none'}
+                      p='5px 10px'
+                      _hover={{ background: "rgba(0,0,0,0.1)" }}
+                      onClick={() => setFiltered({ ...Filtered, order: "BY DUEDATE" })}
+                    >
+                      By Duedate
+                    </Box>
+                  </PopoverBody>
+                </PopoverContent>
+              </Popover>
+              <div id='projectTiles' >
+                {data?.length !== 0 ? data.map(project => {
+                  return (
+
+                    <Box display='flex'
+                      alignItems='center'
+                      justifyContent='space-between'
+                      p='10px 14px'
+                      bg={singleProject._id === project._id ? "rgb(215,226,228)" : "initial"}
+                      cursor='pointer'
+                      _hover={{ background: "rgb(215,226,228)" }}
+                      onClick={() => setSingleProject(project)}
+                      key={project._id}
+                    >
+                      <Box>
+                        <Box display='flex'
+                          alignItems='center'
+                          gap='10px'>
+                          <Box h='15px' w='15px' borderRadius='3px' bg='rgba(0,0,0,0.25)'></Box>
+                          <Text color='black' fontWeight={600} fontSize='14px'>{project.projectName}</Text>
+                        </Box>
+                        <Box display='flex' alignItems='center' gap='10px'>
+                          <Progress value={Math.floor((project.duration / (project.estimatedTime * 3600)) * 100)} colorScheme='blue' height='4px' w='20px' borderRadius='2px' />
+                          <span style={{ fontSize: "8px", color: "black", fontWeight: "600" }}>{Math.floor((project.duration / (project.estimatedTime * 3600)) * 100)}%</span>
+                          <span style={{ fontSize: "8px", color: "rgba(0,0,0,0.6)", fontWeight: "600" }}>
+                            {project.duration < 60 ?
+                              project.duration + "s" :
+                              Math.floor(project.duration / 3600) + "h:" + Math.floor((project.duration % 3600) / 60) + 'm'}/{project.estimatedTime}:00</span>
+                        </Box>
+                      </Box>
+
+                      <Popover >
+                        <PopoverTrigger>
+                          <Box color='black' fontWeight='800' w='20px' h='20px'>
+                            <span>...</span>
+                          </Box>
+                        </PopoverTrigger>
+                        <PopoverContent bg='whitesmoke' w='200px' border='none'>
+                          <PopoverBody boxShadow='xl' px='0' py='10px' fontWeight={700} fontSize='12px' color='#0a192f'>
+                            <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='6px 12px' _hover={{ background: "rgba(0,0,0,0.099)" }}>
+                             <AiTwotoneEdit/> Edit project
+                            </Box>
+                            <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='6px 12px' _hover={{ background: "rgba(0,0,0,0.099)" }}>
+                             <BsFillPlayFill/> Track
+                            </Box>
+                            <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='6px 12px' _hover={{ background: "rgba(0,0,0,0.099)" }}>
+                            <AiFillStar/>  Add to favourites
+                            </Box>
+                            <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='6px 12px' _hover={{ background: "rgba(0,0,0,0.099)" }}>
+                            <HiOutlineDuplicate/> Duplicate this project
+                            </Box>
+                            <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='6px 12px' _hover={{ background: "rgba(0,0,0,0.099)" }}>
+                            <HiDocumentReport/> Report
+                            </Box>
+                            <Box fontSize='12px' display='flex' cursor='pointer' alignItems='center' gap='7px' padding='6px 12px' _hover={{ background: "rgba(0,0,0,0.099)" }}>
+                              PRIORITY
+                            </Box>
+                            <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='6px 12px' _hover={{ background: "rgba(0,0,0,0.099)" }}>
+                             <BsArchive/> Archive
+                            </Box>
+                            <Box onClick={() => deleteProject(project._id)} display='flex' cursor='pointer' alignItems='center' gap='7px' padding='6px 12px' _hover={{ background: "rgba(0,0,0,0.099)" }}>
+                            <AiFillDelete/>  Delete
+                            </Box>
+                          </PopoverBody>
+                        </PopoverContent>
+                      </Popover>
+                    </Box>
+                  )
+                }) : null}
 
 
-      </div>
+              </div>
+            </AccordionPanel>
+          </AccordionItem>
+        </Accordion>
+      </Box>
     </Box >
   );
 };

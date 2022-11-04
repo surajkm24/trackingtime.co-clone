@@ -1,43 +1,26 @@
-import React, { useContext, useState } from 'react';
-import { Box, Button, Image, Input, Text, InputGroup, InputLeftElement, AlertIcon, AlertTitle, AlertDescription, Alert, Slide } from "@chakra-ui/react";
-import styles from "../Login/Login.module.css";
+import React, {useState } from 'react';
+import { Box, Button, Image, Input, Text, AlertIcon, AlertTitle, AlertDescription, Alert, Slide, Checkbox } from "@chakra-ui/react";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
-import { AuthContext } from '../../ContextAPI/AuthContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { singupAPI } from '../../../Redux/Auth/auth.action';
 
 // post user
-const postUser = async(text)=>{
-  try{
-      let res = await axios.post("https://whispering-beyond-98740.herokuapp.com/user/signup", text);
-      return res.data;
-  }catch(e){
+const postUser = async (text) => {
+  try {
+    let res = await axios.post("https://whispering-beyond-98740.herokuapp.com/user/signup", text);
+    return res.data;
+  } catch (e) {
     console.log(e);
-  } 
+  }
 }
 
-  //  main sign up function
-  // const SignupPage = () => {
-  //   const navigate = useNavigate();
-  //   const [email, setEmail] = useState(''); 
-  //   const [text, setText] = useState({
-  //     email: "",
-  //     password: "",
-  //   });
-// const postUser = async (text) => {
-//   try {
-//     let res = await axios.post("http://localhost:8080/user/signup", text);
-//     return res.data;
-//   } catch (e) {
-//     console.log(e);
-//   }
-// }
-
-//  main sign up function
 const SignupPage = () => {
-  const {setToken} = useContext(AuthContext);
+  const { token } = useSelector(store => store.auth);
+  const dispatch = useDispatch()
   const navigate = useNavigate();
   const [alertMsg, setAlertMsg] = useState(false);
-  const [email, setEmail] = useState('');
+  const [success, setSuccess] = useState(false);
   const [text, setText] = useState({
     email: "",
     password: "",
@@ -46,21 +29,23 @@ const SignupPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    postUser(text)
+    dispatch(singupAPI(text))
       .then((res) => {
         if (res.token) {
-          setText("")
-          setToken(res.token);
-          return navigate("/login")
-        } else {
-          console.log("Signup failed");
-        }
-      })
-      .catch(() => {
-        setAlertMsg(true);
+          setSuccess(true);
           setTimeout(() => {
-          setAlertMsg(false)
-        }, 4000)
+            setSuccess(false);
+            navigate('/create-new-acc')
+          }, 3000)
+        }
+        else {
+          setAlertMsg(true);
+          setTimeout(() => {
+            setAlertMsg(false)
+          }, 4000)
+        }
+      }).catch(err => {
+        console.log(err);
       })
   };
 
@@ -73,71 +58,72 @@ const SignupPage = () => {
   };
 
   return (
-    <Box className={styles.LoginMainBox} >
+    <Box display='flex' maxW='100%' >
 
-     <Slide in={alertMsg} direction='left' position='fixed' top='0px' style={{ zIndex: 10 }} bg='white' mt={"-20px"}>
-        <Alert status='error' w='60vw' mx='20vw'  >
+      <Slide in={success} direction='left' position='fixed' top='0px' style={{ zIndex: 10 }}>
+        <Alert status='success' w='80vw' mx='10vw' flexWrap={'wrap'}>
           <AlertIcon />
-          <AlertTitle>User with given credentials does exist!</AlertTitle>
-          <AlertDescription>Try login.</AlertDescription>
+          <AlertTitle>Sign Up Succesfull!</AlertTitle>
+          <AlertDescription>Redirecting to create new account page</AlertDescription>
         </Alert>
       </Slide>
-      {/* <div class="background" style="background-image: url(img/ui-login-background.svg);"></div> */}
-      {/* leftBox */}
-      <Box className={styles.leftBox} >
-        {/* <Box backgroundImage="url:(img/ui-login-background.svg)"></Box> */}
+      <Slide in={alertMsg} direction='left' position='fixed' top='0px' style={{ zIndex: 10 }} bg='white' mt={"-20px"}>
+        <Alert status='error' w='60vw' mx='20vw' flexWrap={'wrap'} >
+          <AlertIcon />
+          <AlertTitle>User with given credentials does exist!</AlertTitle>
+          <AlertDescription>Try login!</AlertDescription>
+        </Alert>
+      </Slide>
 
-        <Image src="https://pro.trackingtime.co/img/ui-login-background.svg"></Image>
+      <Box w='50%' display={{ base: "none", md: "block" }} bgColor='#2e4476' bgSize='100% 100%' minH='100vh' bgGradient={`url('https://pro.trackingtime.co/img/ui-login-background.svg')`}>
+        {/* <Image src="https://pro.trackingtime.co/img/ui-login-background.svg" w='100%' bg='#2e4476' h='100%'></Image> */}
       </Box>
 
       {/* rightBox */}
-      <Box className={styles.rightBox} >
-        <Image src={process.env.PUBLIC_URL + "TrackingTime-logo.png"}></Image>
+      <Box w={{ base: '100%', md: "50%" }} py={{ base: "40px", md: "60px" }}>
+        <Image src='https://trackingtime.co/wp-content/themes/trackingtime-v5/img/layout/header/logo.svg' w='135px' m='auto' mb='20px'></Image>
 
-        <Box className={styles.inputBox}>
-          <InputGroup>
-            <InputLeftElement className={styles.iconImg} children={<Image src={process.env.PUBLIC_URL + "google-logo-login.png"} color="gray.300" />} />
-            <Input className={styles.greyBackG} placeholder="Sign in with Google"></Input>
-          </InputGroup>
-
-          {/* <br /> */}
-          <InputGroup>
-            <InputLeftElement className={styles.iconImg} children={<Image src={process.env.PUBLIC_URL + "microsoft-logo-login.png"} color="gray.300" />} />
-            <Input className={styles.greyBackG} placeholder="Sign in Microsoft"></Input>
-          </InputGroup>
-          {/* <br /> */}
-          <InputGroup>
-            <InputLeftElement className={styles.iconImg} children={<Image src={process.env.PUBLIC_URL + "apple-logo-login.png"} color="gray.300" />} />
-            <Input className={styles.greyBackG} placeholder="Sign in with Apple"></Input>
-          </InputGroup>
-
+        <Box w='100%'>
+          <Button display='flex' position='relative' gap='15px' fontSize='13px' alignItems='center' w='250px' justifyContent={'center'} pl='10px' m='auto' mb='5px'>
+            <img width='30px' style={{ position: 'absolute', left: "10px" }} src='https://pro.trackingtime.co/img/login/google-logo.png' />
+            <p>Sign up with Google</p>
+          </Button>
+          <Button display='flex' position='relative' gap='15px' fontSize='13px' alignItems='center' w='250px' justifyContent={'center'} pl='10px' m='auto' mb='5px'>
+            <img width='30px' style={{ position: 'absolute', left: "10px" }} src='https://pro.trackingtime.co/img/login/microsoft-logo.png' />
+            <p>Sign up with Microsoft</p>
+          </Button>
+          <Button display='flex' position='relative' gap='15px' fontSize='13px' alignItems='center' w='250px' justifyContent={'center'} pl='10px' m='auto' mb='5px'>
+            <img width='30px' style={{ position: 'absolute', left: "10px" }} src='https://pro.trackingtime.co/img/login/apple-logo.png' />
+            <p>Sign up with Apple</p>
+          </Button>
           {/* form start */}
-          <form onSubmit={handleSubmit}>
-            <Text className={styles.text2}>Sign in with you email</Text>
+          <form onSubmit={handleSubmit} width='100%' >
+            <Text fontSize='13px' align='center' fontWeight={600} mt='20px'>Sign up with your email</Text>
             <br />
-            <Input className={styles.whiteBackG} onChange={handleChange} name="email" required value={text.email} type="email" placeholder="Email"></Input>
-            <br />
-            <Input className={styles.whiteBackG} onChange={handleChange} name="password" required value={text.password} type="password" placeholder="Password"></Input>
-            <br />
-            <Box>
-              <Input className={styles.check} type="checkbox"></Input>
+            <Box w='fit-content' m='auto'>
+              <Input w='250px' mb='9px' textAlign='center' onChange={handleChange} name="email" required value={text.email} type="email" placeholder="Email" variant='unstyled' py='8px' border='1px solid rgba(0,0,0,0.1)' backgroundColor='white' _focus={{ border: '1px solid blue' }}></Input>
+              <br />
+              <Input w='250px' mb='9px' textAlign='center' onChange={handleChange} name="password" required value={text.password} type="password" placeholder="Password" variant='unstyled' py='8px' border='1px solid rgba(0,0,0,0.1)' backgroundColor='white' _focus={{ border: '1px solid blue' }}></Input>
+              <br />
             </Box>
-            <Text className={styles.switch}>I agree with<a href=''>Terms of service & </a></Text>
-            <Text className={styles.switch}><a href=''>Privacy Policy. </a></Text>
+
+            <Box w='fit-content' m='auto'>
+              <Checkbox borderColor='gray' required />
+            </Box>
+            <Text fontSize='12px' fontWeight={600} w='fit-content' m='auto' color='gray'>I agree with the <a href='' style={{ textDecoration: "underline" }}>Terms of service & </a></Text>
+            <Text fontSize='12px' fontWeight={600} w='fit-content' m='auto' color='gray'><a href='' style={{ textDecoration: "underline" }}>Privacy Policy. </a></Text>
             <br />
-            <Button className={styles.loginBtn} type='submit'>
-              {/* <Link to="/login"> */}
-
-              SIGN UP
-              {/* </Link>  */}
-            </Button>
+            <Box w='fit-content' m='auto' mt='-10px'>
+              <Button type='submit' w='250px' m='auto' bg='black' color='white' _hover={{ opacity: "0.9" }}>
+                SIGN UP
+              </Button>
+            </Box>
           </form>
-          {/* form end */}
 
           <br />
-          <Text className={styles.switch}><Link to="/login">Back to login</Link></Text>
+          <Text fontSize='12px' color='gray' textAlign='center' fontWeight={600} textDecoration={'underline'} mt='-10px'><Link to="/login">Back to login</Link></Text>
           <br />
-          <Text className={styles.switch}><a href=''>Terms of service</a> /<a href=''>Privacy Policy</a></Text>
+          <Text fontSize='12px' color='gray' textAlign='center' fontWeight={600} mt='0px'><a href='' style={{ textDecoration: "underline" }}>Terms of service</a> / <a href='' style={{ textDecoration: "underline" }}>Privacy Policy</a></Text>
         </Box>
       </Box>
 

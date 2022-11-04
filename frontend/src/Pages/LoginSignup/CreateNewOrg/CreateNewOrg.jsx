@@ -1,88 +1,84 @@
-import { Box, Image, Text, Input,Flex, Button, Slide, Alert, AlertIcon, AlertTitle, AlertDescription } from '@chakra-ui/react'
+import { Box, Image, Text, Input, Flex, Button, Slide, Alert, AlertIcon, AlertTitle, AlertDescription } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { Form, Link, useNavigate } from 'react-router-dom'
 import styles from "../CreateNewOrg/CreateNewOrg.module.css"
 
 const CreateNewOrg = () => {
    const navigate = useNavigate();
-  const [success, setSuccess] = useState(false);
+   const [success, setSuccess] = useState(false);
 
 
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSuccess(true);
-        setTimeout(()=>{
-            setSuccess(false);
-            navigate('/project')
-        },2000)
-    // navigate("/project");
-  }
+   const handleSubmit = (e) => {
+      e.preventDefault();
+      setSuccess(true);
+      setTimeout(() => {
+         setSuccess(false);
+         navigate('/project')
+      }, 2000)
+      // navigate("/project");
+   }
 
 
 
-  return (
-    <Box className={styles.CreateMainBox} >
+   return (
+      <Box display='flex' maxW='100%'>
 
-      <Slide in={success} direction='left' position='fixed' top='0px' style={{ zIndex: 10 }}>
-            <Alert status='success'  w='80vw' mx='10vw' >
-                <AlertIcon />
-                <AlertTitle>Succesfully created account!</AlertTitle>
-                <AlertDescription>Now you can start your new project.</AlertDescription>
+         <Slide in={success} direction='left' position='fixed' top='0px' style={{ zIndex: 10 }}>
+            <Alert status='success' w='80vw' mx='10vw' flexWrap='wrap'>
+               <AlertIcon />
+               <AlertTitle>Succesfully created account!</AlertTitle>
+               <AlertDescription>Now you can start your new project.</AlertDescription>
             </Alert>
-        </Slide>
+         </Slide>
 
 
-    {/* leftBox */}
-    <Box className={styles.leftBox} >
-       <Image src="https://pro.trackingtime.co/img/onboarding/onboarding-join-account.svg"></Image>
-    </Box>
+         {/* leftBox */}
+         <Box w='50%' display={{ base: "none", md: "block" }} bgColor='#2e4476' bgSize='100% 100%' minH='100vh' bgGradient={`url('https://pro.trackingtime.co/img/onboarding/onboarding-join-account.svg')`}>
+         </Box>
 
-    {/* rightBox */}
-    <Box className={styles.rightBox} > 
+         {/* rightBox */}
+         <Box w={{ base: '100%', md: "50%" }} py={{ base: "25px", md: "60px" }} display='grid' alignItems={'center'} minH='100vh'>
+            <Box w={{ base: '90%', md: "70%" }} m='auto'>
+               <Image src='https://trackingtime.co/wp-content/themes/trackingtime-v5/img/layout/header/logo.svg' w='150px' ></Image>
+               <form onSubmit={handleSubmit}>
+                  <Box >
 
-      <Box className={styles.rightBox2}>
-       <Image  src="time-white-logo.svg"></Image>
+                     <Text fontSize='25px' fontWeight={700} mt='10px'>Create your organization</Text>
 
-     
-    <form onSubmit={handleSubmit}> 
-       <Box className={styles.inputBox}>
-        
-          <Text className={styles.lets}>Create your organization</Text>
-          
-          <Text className={styles.welcome}>Set up your company in TrackingTime.</Text>
-          
-         <Text className={styles.orgName}>Organization name</Text>
-         <Input required className={styles.inp}></Input>
+                     <Text fontSize='14px' fontWeight={600} color='rgba(0,0,0,0.7)' mt='10px'>Set up your company in TrackingTime.</Text>
 
-         <Text className={styles.orgName}>Team size</Text>
-         <Flex className={styles.BtnFlex}>
-            <Button>solo (1)</Button>
-            <Button>2-5</Button>
-            <Button>5-15</Button>
-            <Button>+15</Button>
-         </Flex>
+                     <Text fontSize='10px' fontWeight={600} color='rgba(0,0,0,0.9)' mt='20px' mb='3px'>Organization name</Text>
+                     <Input required placeholder='Organization' variant='unstyled' p='10px' border='1px solid rgba(55,57,62,0.5)'></Input>
 
-         <Text className={styles.orgName}>Your name</Text>
-         <Input required className={styles.inp}></Input>
+                     <Text fontSize='10px' fontWeight={600} color='rgba(0,0,0,0.9)' mt='20px' mb='3px'>Team size</Text>
+                     <Flex gap={'15px'} flexWrap='wrap'>
+                        <Button bg='#0a192f' color='white' fontWeight={500} _hover={{ opacity: "0.85", transform: 'scale(0.99)' }}>solo (1)</Button>
+                        <Button bg='#0a192f' color='white' fontWeight={500} _hover={{ opacity: "0.85", transform: 'scale(0.99)' }}>2-5</Button>
+                        <Button bg='#0a192f' color='white' fontWeight={500} _hover={{ opacity: "0.85", transform: 'scale(0.99)' }}>5-15</Button>
+                        <Button bg='#0a192f' color='white' fontWeight={500} _hover={{ opacity: "0.85", transform: 'scale(0.99)' }}>+15</Button>
+                     </Flex>
 
-         <Text className={styles.orgName}>Last name</Text>
-         <Input required className={styles.inp}></Input>
+                     <Text fontSize='10px' fontWeight={600} color='rgba(0,0,0,0.9)' mt='20px' mb='3px'>Your name</Text>
+                     <Input required placeholder='First Name' variant='unstyled' p='10px' border='1px solid rgba(55,57,62,0.5)'></Input>
 
-         <Flex className={styles.getStarted}>
-            <Button className={styles.back}>BACK</Button>
-            {/* <Link to="/project"> */}
-              <Button type='submit' className={styles.started}>GET STARTED</Button>
-            {/* </Link> */}
-         </Flex>
-       </Box>
+                     <Text fontSize='10px' fontWeight={600} color='rgba(0,0,0,0.9)' mt='20px' mb='3px'>Last name</Text>
+                     <Input required placeholder='Last Name' variant='unstyled' p='10px' border='1px solid rgba(55,57,62,0.5)'></Input>
 
-       </form>
-       </Box>
-    </Box>
+                     <Flex gap="15px" mt='10px'>
+                        <Button bg='#dc143c' fontWeight={700} color='whitesmoke' _hover={{ opacity: "0.85", transform: 'scale(0.99)' }} onClick={() => navigate('/create-new-acc')}>BACK</Button>
+                        {/* <Link to="/project"> */}
+                        <Button type='submit' bg='#0a192f' color='white' fontWeight={500} _hover={{ opacity: "0.85", transform: 'scale(0.99)' }}>GET STARTED</Button>
+                        {/* </Link> */}
+                     </Flex>
+                  </Box>
 
-  </Box>
-  )
+               </form>
+            </Box>
+         </Box>
+
+      </Box>
+   )
 }
 
 export default CreateNewOrg

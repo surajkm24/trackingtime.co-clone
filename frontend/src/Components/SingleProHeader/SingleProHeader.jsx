@@ -2,25 +2,25 @@ import React, { useEffect } from 'react'
 import { Box, Flex } from "@chakra-ui/react";
 import Timer from '../Timer/Timer'
 const SingleProHeader = ({ singleProject, projectData, play, setPlay }) => {
-  // console.log(singleProject,'single')
 
   useEffect(() => {
     console.log(projectData);
   }, [projectData])
-  
+
   return (
-    <Box>
-      <Flex color={"white"}
+    <Box borderBottom='1px solid rgba(0,0,0,0.1)'>
+      <Flex color={"#0a192f"}
         fontSize={"18px"} fontWeight={"bold"}
-        h={"52px"}
-        w={"80%"}
-        ml={"5%"}
-        gap={"18px"}
+        h={"47px"}
+        w={"100%"}
+        ml={"30px"}
+        gap={"24px"}
+        alignItems='center'
       //    padding={"5px"}
       >
-        <Box h='20px' w='20px' mt={"17px"} borderRadius='3px' bg='lightgray'></Box>
-        <Box mt={"10px"} ml={"-10px"}>{singleProject.projectName}</Box>
-        <Box mt={"17px"}><Timer play={play} setPlay={setPlay} projectData={projectData} /></Box>
+        <Box h='18px' w='18px' borderRadius='3px' bg='rgba(0,0,0,0.25)'></Box>
+        <Box ml={"-10px"}>{singleProject.projectName}</Box>
+        <Box ><Timer play={play} setPlay={setPlay} projectData={projectData} /></Box>
       </Flex>
     </Box>
   )

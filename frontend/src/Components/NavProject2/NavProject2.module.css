@@ -1,10 +1,7 @@
 .NavPro2Container{
-    /* border:1px solid red; */
     width: 100%;
-    height: 90%;
-    /* margin-top: 4%; */
-    /* margin-left:24%; */
-    background-color:#2A313C;
+    background-color:white;
+    box-sizing: border-box;
 }
 
 .nav{
@@ -16,18 +13,13 @@
     font-size: 14px;
 }
 
-.menuRight{
-    margin-left: 300px;
-    gap:10px
-}
-
 .active {
     color: rgb(116, 116, 240);
     text-decoration:underline;
     padding: 1rem;
   }
 .default{
-    color:#969BA6;
+    color:#787b81;
     text-decoration: none;
     padding: 1rem;
 }
