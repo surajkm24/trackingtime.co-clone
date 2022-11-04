@@ -24,6 +24,7 @@ const NavProject2 = ({ addProjectTask, projectData, updateProjectTask, deletePro
       {/* <SingleProHeader /> */}
       <Flex px='13px' className={styles.nav} justifyContent='space-between' alignItems='center' borderBottom='1px solid rgba(0,0,0,0.1)'>
         <Flex>
+        {/* Use loop here if possible using an array*/}
           <NavLink to="/project/list" className={({ isActive }) => isActive ? styles.active : styles.default}><Text _hover={{ color: "black" }}>List</Text></NavLink>
           <NavLink to="/project/boards" className={({ isActive }) => isActive ? styles.active : styles.default}><Text _hover={{ color: "black" }}>Board</Text></NavLink>
           <NavLink to="/project/timeline" className={({ isActive }) => isActive ? styles.active : styles.default}><Text _hover={{ color: "black" }}>Timeline</Text></NavLink>
