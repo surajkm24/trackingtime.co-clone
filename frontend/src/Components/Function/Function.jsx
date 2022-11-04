@@ -1,4 +1,8 @@
 import axios from "axios"
+
+// feedback: fw18_0042, fw16_644, fw19_0658 - Don't use static URLs, 
+// most of the time, we will be using different env to access APIs 
+// make them dynamic with env config
 export const getData = async (token) => {
     let res = await axios.get("https://whispering-beyond-98740.herokuapp.com/project", {
         headers: { token: token }
