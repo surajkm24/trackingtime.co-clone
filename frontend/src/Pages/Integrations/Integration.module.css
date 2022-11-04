@@ -4,7 +4,19 @@
     background-color: #f6f8f9;
     overflow-x: hidden;
 }
+/*
+Feedback: 
+Just a sample for how to nest and group
+.header {
+    /* border: 1px solid red; */
+    text-align: left;
 
+   .row {
+     width: 90%;
+     margin: auto;
+    }
+}
+*/
 .header {
     /* border: 1px solid red; */
     text-align: left;
