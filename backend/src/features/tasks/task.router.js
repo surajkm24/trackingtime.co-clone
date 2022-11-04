@@ -31,8 +31,9 @@ app.get('/:id', async (req, res) => {
 
 app.delete('/:id', async (req, res) => {
     try {
+         // feedback: fw18_0042 - We can delete the task in one go.
         let id = req.params.id;
-        let task = await Task.findOne({ 'id': id });
+        let task = await Task.findOne({ 'id': id }); // no need for this
         let deleteTask = await Task.findByIdAndDelete(id);
         res.send(deleteTask);
     }
