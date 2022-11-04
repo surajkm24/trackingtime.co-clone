@@ -16,6 +16,7 @@ export const Report = () => {
     const [projectData, setProjectData] = useState({ data: {}, completedTasks: 0, hoursCompleted: "", completedPercent: 0 });
     const { data, completedTasks, hoursCompleted, completedPercent } = projectData;
     const projectAPI = () => {
+        // feedback: fw18_0042 - is this some sceret? You should use config file here
         getProject("63356355042263ed5a39461c:a@gmail.com:a", "6335d2dad368cf59fdf276bd")
             .then((res) => {
                 let completedTasks = res.task.filter(({ taskId }) => { return taskId.status }).length;
