@@ -22,7 +22,7 @@ app.use('/task', authmiddleware, taskRouter);
 
 // listen
 app.listen(PORT, async () => {
-
+    // feedback: fw16_644 - you can connect db at the top or before calling cors or other configuration
     await dbConnect();
     console.log(`Listening on port: http://localhost:${PORT}`);
 })
