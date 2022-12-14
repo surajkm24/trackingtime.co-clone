@@ -3,10 +3,6 @@ import BlogNavbar from "../../Components/BlogNavbar/BlogNavbar";
 import { Navbar } from "../../Components/Navbar/Navbar";
 import "./BlogPage.css";
 
-// Feedback - fw19_0658
-// You can divide big components into smaller one for better management
-// Use constant files for using static data, it will make components light weight and easily readable 
-// Don't use URLs directly into view instead use from any constant files
 const BlogDetail = () => {
   return (
     <div>

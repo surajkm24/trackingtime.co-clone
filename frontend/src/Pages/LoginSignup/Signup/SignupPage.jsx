@@ -5,16 +5,6 @@ import axios from "axios";
 import { useDispatch, useSelector } from 'react-redux';
 import { singupAPI } from '../../../Redux/Auth/auth.action';
 
-// post user
-const postUser = async (text) => {
-  try {
-    let res = await axios.post("https://whispering-beyond-98740.herokuapp.com/user/signup", text);
-    return res.data;
-  } catch (e) {
-    console.log(e);
-  }
-}
-
 const SignupPage = () => {
   const { token } = useSelector(store => store.auth);
   const dispatch = useDispatch()

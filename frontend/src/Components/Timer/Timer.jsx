@@ -22,8 +22,7 @@ export default function Timer({ play, setPlay, projectData }) {
     }
   }
 
-// feedback: fw18_0042 and fw16_644 - you can use numeric constants here 
-// example secondsInMinute = 3600, an example 
+
   function strToSeconds(str) {
     str = str.split(":").map(Number);
     let seconds = (str[0] * 60 * 60) + (str[1] * 60) + str[2]

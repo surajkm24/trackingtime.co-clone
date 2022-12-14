@@ -1,10 +1,9 @@
 import axios from "axios"
 
-// feedback: fw18_0042, fw16_644, fw19_0658 - Don't use static URLs, 
-// most of the time, we will be using different env to access APIs 
-// make them dynamic with env config
+const api = 'https://tracting-time.vercel.app';
+
 export const getData = async (token) => {
-    let res = await axios.get("https://whispering-beyond-98740.herokuapp.com/project", {
+    let res = await axios.get(`${api}/project`, {
         headers: { token: token }
     })
     return res.data
@@ -21,7 +20,7 @@ export const postData = async (token, params) => {
         userId: id,
         ...params
     }
-    let res = await axios.post("https://whispering-beyond-98740.herokuapp.com/project", data, options);
+    let res = await axios.post(`${api}/project`, data, options);
     // console.log(res);
     return res.data
 }
@@ -35,7 +34,7 @@ export const editData = async (token, id, params) => {
     const data = {
         ...params
     }
-    let res = await axios.patch(`https://whispering-beyond-98740.herokuapp.com/project/${id}`, data, options);
+    let res = await axios.patch(`${api}/project/${id}`, data, options);
 
     console.log(res.data);
 
@@ -44,7 +43,7 @@ export const editData = async (token, id, params) => {
 
 
 export const deleteData = async (token, id) => {
-    let res = await axios.delete(`https://whispering-beyond-98740.herokuapp.com/project/${id}`, {
+    let res = await axios.delete(`${api}/project/${id}`, {
         headers: { token: token }
     });
     return res.data;
@@ -61,7 +60,7 @@ export const addTask = async (token, id, params) => {
         ...params
     }
 
-    let res = await axios.post(`https://whispering-beyond-98740.herokuapp.com/task`, data, options);
+    let res = await axios.post(`${api}/task`, data, options);
     return res.data;
 }
 
@@ -75,7 +74,7 @@ export const updateTask = async (token, id, params) => {
         ...params
     }
 
-    let res = await axios.patch(`https://whispering-beyond-98740.herokuapp.com/task/${id}`, data, options);
+    let res = await axios.patch(`${api}/task/${id}`, data, options);
     return res.data;
 }
 
@@ -91,7 +90,7 @@ export const deleteTask = async (token, taskId, projectId) => {
 
     console.log(token,'token');
 
-    let res = await axios.delete(`https://whispering-beyond-98740.herokuapp.com/task/${taskId}`,options);
+    let res = await axios.delete(`${api}/task/${taskId}`,options);
     console.log(res,'deleted task',taskId)
     return res.data;
 }

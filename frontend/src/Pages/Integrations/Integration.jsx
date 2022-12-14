@@ -106,10 +106,7 @@ const Integration = () => {
 };
 
 export default Integration;
-/**
-* feedback: fw16_644, fw17_0513, fw18_0042 - export the static data to constant files or JSON file
-* It will segregate the data and view
-*/
+
 const items = [
   {
     icon: "https://trackingtime.co/wp-content/themes/trackingtime-v5/img/temp/logos/airtable.png",

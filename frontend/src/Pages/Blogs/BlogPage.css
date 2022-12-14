@@ -18,12 +18,8 @@
     height:350px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-/* feedback: fw18_0042 and fw19_0658: CSS optimisation this is just an example */
-/* 
-.Blog-link:nth-child(n+1) >.Blog-box:first-child > .Blog-image-box{
- background-color: #ff6164;
-}
-*/
+
+
 .Blog-link:nth-child(1) >.Blog-box:first-child > .Blog-image-box{
     background-color: #ff6164;
 }

@@ -1,9 +1,11 @@
 import axios from 'axios';
 
+const api = 'https://tracting-time.vercel.app';
+
 export const getProject = async (token, id) => {
     try {
         if(id){
-            let res = await axios.get(`https://whispering-beyond-98740.herokuapp.com/project/${id}`, {
+            let res = await axios.get(`${api}/project/${id}`, {
                 headers: {
                     token: token
                 }

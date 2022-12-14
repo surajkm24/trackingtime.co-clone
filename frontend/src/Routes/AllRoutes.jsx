@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom"
+import { Navbar } from "../Components/Navbar/Navbar"
 import BestPractice from "../Pages/Blogs/BestPractice"
 import BlogDetail from "../Pages/Blogs/BlogDetail"
 import BlogPage from "../Pages/Blogs/BlogPage"
@@ -13,10 +14,6 @@ import Login from "../Pages/LoginSignup/Login/Login"
 import CreateNewOrg from "../Pages/LoginSignup/CreateNewOrg/CreateNewOrg"
 import Project from "../Pages/Projects/Project"
 import { PrivateRoute } from "./PrivateRoute"
-
-// feedback: fw18_0042, fw19_0074, fw16_644, fw19_0658
-// You can orgainse the routes in different modules and it will be easy to maintain
-// Always replace static data with constants through constant file
 export const AllRoutes = () => {
     return (
         <Routes>
@@ -24,6 +21,8 @@ export const AllRoutes = () => {
             <Route path="/hours" element={<PrivateRoute><Project /></PrivateRoute>} />
             <Route path="/reports" element={<PrivateRoute><Project /></PrivateRoute>} />
             <Route path="/manage" element={<PrivateRoute><Project /></PrivateRoute>} />
+
+
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/productivity" element={<Productivity />} />
             <Route path="/remotework" element={<RemoteWork />} />
@@ -42,6 +41,9 @@ export const AllRoutes = () => {
             <Route path="/project/boards" element={<PrivateRoute><Project /></PrivateRoute>} />
             <Route path="/project/timeline" element={<PrivateRoute><Project /></PrivateRoute>} />
             <Route path="/project/files" element={<PrivateRoute><Project /></PrivateRoute>} />
+
+
         </Routes>
+
     )
 }
