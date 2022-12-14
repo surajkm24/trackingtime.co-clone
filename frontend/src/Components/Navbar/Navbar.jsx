@@ -1,35 +1,13 @@
-import {
-    Box,
-    Flex,
-    Text,
-    IconButton,
-    Button,
-    Stack,
-    Collapse,
-    Icon,
-    Link,
-    Popover,
-    PopoverTrigger,
-    PopoverContent,
-    useColorModeValue,
-    useDisclosure,
-} from '@chakra-ui/react';
-import {
-    HamburgerIcon,
-    CloseIcon,
-    ChevronDownIcon,
-    ChevronRightIcon,
-} from '@chakra-ui/icons';
+import { Box, Flex, Text, IconButton, Button, Stack, Collapse, Icon, Link, Popover, PopoverTrigger, PopoverContent, useColorModeValue, useDisclosure } from '@chakra-ui/react';
+import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { BsTwitter, BsLinkedin } from 'react-icons/bs';
 import { GrFacebookOption } from 'react-icons/gr';
 import { NavLink, Outlet } from 'react-router-dom';
 import './Navbar.css';
-import { useNavigate } from "react-router-dom"
-import Login from '../../Pages/LoginSignup/Login/Login';
 
 export function Navbar() {
     const { isOpen, onToggle } = useDisclosure();
-    const navigate = useNavigate()
+
     return (
         <Box style={{ position: "sticky", top: "0px", width: "100%", zIndex: 2 }}>
             <Flex
