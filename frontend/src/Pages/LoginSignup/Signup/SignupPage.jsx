@@ -1,16 +1,14 @@
-import React, {useState } from 'react';
-import { Box, Button, Image, Input, Text, AlertIcon, AlertTitle, AlertDescription, Alert, Slide, Checkbox } from "@chakra-ui/react";
+import React, { useState,useEffect } from 'react';
+import { Box, Button, Image, Input, Text, Checkbox, useToast } from "@chakra-ui/react";
 import { Link, useNavigate } from 'react-router-dom';
-import axios from "axios";
 import { useDispatch, useSelector } from 'react-redux';
 import { singupAPI } from '../../../Redux/Auth/auth.action';
 
 const SignupPage = () => {
   const { token } = useSelector(store => store.auth);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const toast = useToast();
   const navigate = useNavigate();
-  const [alertMsg, setAlertMsg] = useState(false);
-  const [success, setSuccess] = useState(false);
   const [text, setText] = useState({
     email: "",
     password: "",
@@ -22,17 +20,25 @@ const SignupPage = () => {
     dispatch(singupAPI(text))
       .then((res) => {
         if (res.token) {
-          setSuccess(true);
+          toast({
+            title: 'Account created.',
+            description: "We've created your account for you.",
+            status: 'success',
+            duration: 2000,
+            isClosable: true,
+          })
           setTimeout(() => {
-            setSuccess(false);
             navigate('/create-new-acc')
-          }, 3000)
+          }, 2000)
         }
         else {
-          setAlertMsg(true);
-          setTimeout(() => {
-            setAlertMsg(false)
-          }, 4000)
+          toast({
+            title: 'Signup failed.',
+            description: "This email is already registered!",
+            status: 'error',
+            duration: 2000,
+            isClosable: true,
+          })
         }
       }).catch(err => {
         console.log(err);
@@ -47,26 +53,13 @@ const SignupPage = () => {
     });
   };
 
+  useEffect(() => {
+    if (token) navigate('/project');
+  }, [])
+
   return (
     <Box display='flex' maxW='100%' >
-
-      <Slide in={success} direction='left' position='fixed' top='0px' style={{ zIndex: 10 }}>
-        <Alert status='success' w='80vw' mx='10vw' flexWrap={'wrap'}>
-          <AlertIcon />
-          <AlertTitle>Sign Up Succesfull!</AlertTitle>
-          <AlertDescription>Redirecting to create new account page</AlertDescription>
-        </Alert>
-      </Slide>
-      <Slide in={alertMsg} direction='left' position='fixed' top='0px' style={{ zIndex: 10 }} bg='white' mt={"-20px"}>
-        <Alert status='error' w='60vw' mx='20vw' flexWrap={'wrap'} >
-          <AlertIcon />
-          <AlertTitle>User with given credentials does exist!</AlertTitle>
-          <AlertDescription>Try login!</AlertDescription>
-        </Alert>
-      </Slide>
-
       <Box w='50%' display={{ base: "none", md: "block" }} bgColor='#2e4476' bgSize='100% 100%' minH='100vh' bgGradient={`url('https://pro.trackingtime.co/img/ui-login-background.svg')`}>
-        {/* <Image src="https://pro.trackingtime.co/img/ui-login-background.svg" w='100%' bg='#2e4476' h='100%'></Image> */}
       </Box>
 
       {/* rightBox */}
