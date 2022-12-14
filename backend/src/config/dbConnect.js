@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const connect = ()=>{
-    return mongoose.connect("mongodb+srv://newTimeTracking:time1234@cluster0.zevrlzo.mongodb.net/newTimeTracking");
+    return mongoose.connect(process.env.MONGOURL);
 }
 
 module.exports = connect;

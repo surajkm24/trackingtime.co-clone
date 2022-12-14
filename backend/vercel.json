@@ -1,0 +1,16 @@
+{
+    "version": 2,
+    "name":"tracting-time",
+    "builds": [
+        {
+            "src": "./index.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/index.js"
+        }
+    ]
+  }

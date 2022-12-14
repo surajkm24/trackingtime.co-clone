@@ -15,10 +15,9 @@ app.use('/user', userRouter);
 app.use('/project', authmiddleware, projectRouter);
 app.use('/task', authmiddleware, taskRouter);
 
-// app.get("/", async (req, res) => {
-//     let products = await Product.find().limit(10)
-//     res.send(products)
-// })
+app.get("/", async (req, res) => {
+    res.send('Backend is running successfully!')
+})
 
 // listen
 app.listen(PORT, async () => {
