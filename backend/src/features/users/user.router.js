@@ -12,6 +12,7 @@ app.post('/signup', async (req, res) => {
         }
 
         let newUser = await User.create(req.body);
+        // feeback: fw18_0042 - always encode token, never send password back to the client
         return res.send({
             token: `${newUser.id}:${newUser.email}:${newUser.password}`
         })

@@ -1,20 +1,22 @@
-import { Route, Routes } from "react-router-dom";
-import BestPractice from "../Pages/Blogs/BestPractice";
-import BlogDetail from "../Pages/Blogs/BlogDetail";
-import BlogPage from "../Pages/Blogs/BlogPage";
-import Productivity from "../Pages/Blogs/Productivity";
-import RemoteWork from "../Pages/Blogs/RemoteWork";
-import Resource from "../Pages/Blogs/Resource";
-import HomePage from "../Pages/Home/HomePage";
-import Integration from "../Pages/Integrations/Integration";
-import SignupPage from "../Pages/LoginSignup/Signup/SignupPage";
-import CreateNewAcc from "../Pages/LoginSignup/CreateNewAcc/CreateNewAcc";
-import Login from "../Pages/LoginSignup/Login/Login";
-import CreateNewOrg from "../Pages/LoginSignup/CreateNewOrg/CreateNewOrg";
-import Project from "../Pages/Projects/Project";
-import { PrivateRoute } from "./PrivateRoute";
+import { Route, Routes } from "react-router-dom"
+import BestPractice from "../Pages/Blogs/BestPractice"
+import BlogDetail from "../Pages/Blogs/BlogDetail"
+import BlogPage from "../Pages/Blogs/BlogPage"
+import Productivity from "../Pages/Blogs/Productivity"
+import RemoteWork from "../Pages/Blogs/RemoteWork"
+import Resource from "../Pages/Blogs/Resource"
+import HomePage from "../Pages/Home/HomePage"
+import Integration from "../Pages/Integrations/Integration"
+import SignupPage from "../Pages/LoginSignup/Signup/SignupPage"
+import CreateNewAcc from "../Pages/LoginSignup/CreateNewAcc/CreateNewAcc"
+import Login from "../Pages/LoginSignup/Login/Login"
+import CreateNewOrg from "../Pages/LoginSignup/CreateNewOrg/CreateNewOrg"
+import Project from "../Pages/Projects/Project"
+import { PrivateRoute } from "./PrivateRoute"
 
-// Component containing all components for different routes;
+// feedback: fw18_0042, fw19_0074, fw16_644, fw19_0658
+// You can orgainse the routes in different modules and it will be easy to maintain
+// Always replace static data with constants through constant file
 export const AllRoutes = () => {
     return (
         <Routes>

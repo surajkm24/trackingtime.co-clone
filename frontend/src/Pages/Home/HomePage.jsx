@@ -151,6 +151,8 @@ const HomePage = () => {
                         </Link>
                     </Flex>
                 </Stack>
+                
+                {/* feedback:fw18_0042, fw16_644, fw17_0513 - use loops when you want to render the list, create data with array and render on the view*/}
                 <Image src='https://trackingtime.co/wp-content/themes/trackingtime-v5/img/layout/header/ilus-header-2.svg' w='80vw' mx='25px' objectFit='cover' />
                 <Stack borderBottom="1px solid white" boxShadow="lg" backgroundColor="white" pt="15px" pb="20px" h="230px">
                     <Box w={{ base: "90vw", sm: '85vw' }} m='auto' p={5} >

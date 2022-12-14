@@ -19,6 +19,7 @@ app.post('/', async (req, res) => {
         }
     }
     catch (e) {
+        // feedback: fw18_0042 - You can send the error message to client or send it to universal error hanlder
         console.log(e)
     }
 

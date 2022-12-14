@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require('cors');
-const PORT =process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
 const dbConnect = require("./src/config/dbConnect");
 const userRouter = require('./src/features/users/user.router.js');
 const taskRouter = require('./src/features/tasks/task.router.js');
@@ -20,11 +20,13 @@ app.get("/", async (req, res) => {
 })
 
 // listen
-app.listen(PORT, async () => {
-
-    await dbConnect();
-    console.log(`Listening on port: http://localhost:${PORT}`);
+dbConnect().then(() => {
+    app.listen(PORT, async () => {
+        // feedback: fw16_644 - you can connect db at the top or before calling cors or other configuration
+        console.log(`Listening on port: http://localhost:${PORT}`);
+    })
 })
+
 
 
 
