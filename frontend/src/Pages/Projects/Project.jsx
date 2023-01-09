@@ -13,17 +13,18 @@ import SingleProHeader from '../../Components/SingleProHeader/SingleProHeader';
 import { SingleProjectTask } from './SingleProjectTask';
 import { getProject } from '../../Components/ProjectReport/Report.Actions';
 import NoProject from './NoProject';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllProjectsAPI } from '../../Redux/Projects/project.actions';
 
 const Project = () => {
   const [projectData, setProjectData] = useState({ data: {}, completedTasks: 0, hoursCompleted: "", completedPercent: 0 });
-  const [data, setData] = useState([]);
   const [singleProject, setSingleProject] = useState({});
   const [play, setPlay] = useState(0);
   const [alertMsg, setAlertMsg] = useState(false);
   const toast = useToast()
-
+  const dispatch = useDispatch();
   const { token } = useSelector(store => store.auth)
+  const { projects: data } = useSelector(store => store.project)
   const projectAPI = () => {
     getProject(token, singleProject._id)
       .then((res) => {
@@ -46,7 +47,7 @@ const Project = () => {
       }).catch(e => console.log(e, 'error'))
   }
   const getProjects = (token, id) => {
-    getData(token).then((res) => {
+    dispatch(getAllProjectsAPI(token)).then((res) => {
       console.log(res, 'getProjects')
       if (id) {
         res.forEach((ele) => {
@@ -58,7 +59,6 @@ const Project = () => {
       else {
         setSingleProject(res[0] || {});
       }
-      setData(res || [])
     }).catch((e) => {
       console.log(e);
     })
@@ -68,7 +68,6 @@ const Project = () => {
     console.log(params)
     postData(token, params).then((res) => {
       console.log(res)
-      setData([...data, res])
       setSingleProject(res);
       toast({
         title: 'Project created.',
@@ -115,7 +114,7 @@ const Project = () => {
       toast({
         title: 'Task added.',
         status: 'success',
-        variant:"subtle",
+        variant: "subtle",
         duration: 3000,
         isClosable: true,
       })
@@ -129,7 +128,7 @@ const Project = () => {
       toast({
         title: 'Task updated!',
         status: 'info',
-        variant:"subtle",
+        variant: "subtle",
         duration: 3000,
         isClosable: true,
       })
@@ -143,7 +142,7 @@ const Project = () => {
       toast({
         title: 'Task deleted!',
         status: 'error',
-        variant:"subtle",
+        variant: "subtle",
         duration: 3000,
         isClosable: true,
       })
