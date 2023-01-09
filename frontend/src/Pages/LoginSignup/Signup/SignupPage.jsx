@@ -1,11 +1,13 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Button, Image, Input, Text, Checkbox, useToast } from "@chakra-ui/react";
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { singupAPI } from '../../../Redux/Auth/auth.action';
+import { signupFailedToast, signupSuccessToast } from '../../../Controllers/signup.controller';
+import { serverErrorToast } from '../../../Controllers/login.controller';
 
 const SignupPage = () => {
-  const { token } = useSelector(store => store.auth);
+  const { token, loading } = useSelector(store => store.auth);
   const dispatch = useDispatch();
   const toast = useToast();
   const navigate = useNavigate();
@@ -16,33 +18,14 @@ const SignupPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     dispatch(singupAPI(text))
       .then((res) => {
         if (res.token) {
-          toast({
-            title: 'Account created.',
-            description: "We've created your account for you.",
-            status: 'success',
-            duration: 2000,
-            isClosable: true,
-          })
-          setTimeout(() => {
-            navigate('/create-new-acc')
-          }, 2000)
+          signupSuccessToast(toast)
+          setTimeout(() => navigate('/create-new-acc'), 2000)
         }
-        else {
-          toast({
-            title: 'Signup failed.',
-            description: "This email is already registered!",
-            status: 'error',
-            duration: 2000,
-            isClosable: true,
-          })
-        }
-      }).catch(err => {
-        console.log(err);
-      })
+        else signupFailedToast(toast);
+      }).catch(err => serverErrorToast(toast))
   };
 
   const handleChange = (e) => {
@@ -97,7 +80,7 @@ const SignupPage = () => {
             <Text fontSize='12px' fontWeight={600} w='fit-content' m='auto' color='gray'><a href='' style={{ textDecoration: "underline" }}>Privacy Policy. </a></Text>
             <br />
             <Box w='fit-content' m='auto' mt='-10px'>
-              <Button type='submit' w='250px' m='auto' bg='black' color='white' _hover={{ opacity: "0.9" }}>
+              <Button type='submit' w='250px' m='auto' bg='black' color='white' _hover={{ opacity: "0.7" }} isLoading={loading} _active={{ opaciti: "0.7" }}>
                 SIGN UP
               </Button>
             </Box>
