@@ -1,45 +1,27 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Box, Button, Image, Input, Text, useToast } from "@chakra-ui/react";
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginAPI } from '../../../Redux/Auth/auth.action';
+import { loginFailedToast, loginSuccessToast, serverErrorToast } from '../../../Controllers/login.controller';
 
 const Login = () => {
-  const { token } = useSelector(store => store.auth);
+  const { token, loading } = useSelector(store => store.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const toast = useToast();
-  const [text, setText] = useState({
-    email: "",
-    password: "",
-  });
+  const [text, setText] = useState({ email: "", password: "", });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(loginAPI(text)).then((res) => {
       if (res.token) {
-        toast({
-          title: 'Login Successful.',
-          description: "Welcome back!",
-          status: 'success',
-          duration: 2000,
-          isClosable: true,
-        });
-        setTimeout(() => {
-          navigate('/project')
-        }, 2000)
+        loginSuccessToast(toast)
+        setTimeout(() => navigate('/project'), 2000)
       }
-      else {
-        toast({
-          title: 'Login failed.',
-          description: "Invalid credentials!",
-          status: 'error',
-          duration: 2000,
-          isClosable: true,
-        });
-      }
+      else loginFailedToast(toast)
     }).catch(err => {
-      console.log(err);
+      serverErrorToast(toast)
     })
   };
 
@@ -51,9 +33,9 @@ const Login = () => {
     });
   };
 
-  useEffect(()=>{
-    if(token) navigate('/project');
-  },[])
+  useEffect(() => {
+    if (token) navigate('/project');
+  }, [])
 
   return (
     <Box display='flex' maxW='100%' >
@@ -90,7 +72,7 @@ const Login = () => {
             <Text fontSize='10px' w='250px' textAlign='right' m='auto'>Forgot Your password? <a href='' style={{ textDecoration: "underline" }}>Retrieve</a></Text>
             <br />
             <Box w='fit-content' m='auto' mt='-10px'>
-              <Button fontSize='14px' type='submit' w='250px' m='auto' bg='black' color='white' _hover={{ opacity: "0.9" }}>
+              <Button fontSize='14px' type='submit' w='250px' m='auto' bg='black' color='white' _hover={{ opacity: "0.7" }} isLoading={loading} _active={{ opacity: "0.7" }}>
                 LOGIN
               </Button>
             </Box>

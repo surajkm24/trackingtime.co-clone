@@ -7,12 +7,10 @@ export const singupAPI = (creds) => async (dispatch) => {
     dispatch({ type: AUTH_LOGIN_LOADING });
     try {
         let res = await axios.post(`${api}/user/signup`, creds);
-        // console.log(res.data);
         dispatch({ type: AUTH_SIGNUP_SUCCESS, payload: res.data });
         return res.data;
     } 
     catch (e) {
-        // console.log(e);
         dispatch({ type: AUTH_LOGIN_ERROR })
         return e;
     }
@@ -21,12 +19,10 @@ export const loginAPI = (creds) => async (dispatch) => {
     dispatch({ type: AUTH_LOGIN_LOADING });
     try {
         let res = await axios.post(`${api}/user/login`, creds);
-        // console.log(res.data);
         dispatch({ type: AUTH_LOGIN_SUCCESS, payload: res.data });
         return res.data;
     } 
     catch (e) {
-        // console.log(e);
         dispatch({ type: AUTH_LOGIN_ERROR })
         return e;
     }
