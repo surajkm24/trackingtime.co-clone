@@ -14,7 +14,7 @@ import { SingleProjectTask } from './SingleProjectTask';
 import { getProject } from '../../Components/ProjectReport/Report.Actions';
 import NoProject from './NoProject';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllProjectsAPI } from '../../Redux/Projects/project.actions';
+import { createProject, getAllProjectsAPI } from '../../Redux/Projects/project.actions';
 
 const Project = () => {
   const [projectData, setProjectData] = useState({ data: {}, completedTasks: 0, hoursCompleted: "", completedPercent: 0 });
@@ -48,7 +48,6 @@ const Project = () => {
   }
   const getProjects = (token, id) => {
     dispatch(getAllProjectsAPI(token)).then((res) => {
-      console.log(res, 'getProjects')
       if (id) {
         res.forEach((ele) => {
           if (ele._id === id) {
@@ -66,7 +65,7 @@ const Project = () => {
 
   const addProject = (params) => {
     console.log(params)
-    postData(token, params).then((res) => {
+    dispatch(createProject(token, params)).then((res) => {
       console.log(res)
       setSingleProject(res);
       toast({

@@ -1,4 +1,4 @@
-import { GET_ALL_PROJECTS } from "./project.types"
+import { ADD_PROJECT, GET_ALL_PROJECTS } from "./project.types"
 
 const initState = {
     projects: [],
@@ -14,6 +14,12 @@ export const projectReducer = (state = initState, action) => {
                 loading: false,
                 error: false,
                 projects: action.payload || []
+            }
+        }
+        case ADD_PROJECT: {
+            return {
+                ...state,
+                projects: [...state.projects, action.payload]
             }
         }
         default: {

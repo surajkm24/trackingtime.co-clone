@@ -1,5 +1,5 @@
 import axios from "axios"
-import { GET_ALL_PROJECTS } from "./project.types";
+import { ADD_PROJECT, GET_ALL_PROJECTS } from "./project.types";
 
 const api = 'https://tracting-time.vercel.app';
 
@@ -14,5 +14,25 @@ export const getAllProjectsAPI = (token) => async (dispatch) => {
     catch (err) {
         return err;
     }
+}
 
+export const createProject = (token, params) => async (dispatch) => {
+    try {
+        let [id] = token.split(':')
+        const options = {
+            headers: {
+                'token': token
+            }
+        }
+        const data = {
+            userId: id,
+            ...params
+        }
+        let res = await axios.post(`${api}/project`, data, options);
+        dispatch({ type: ADD_PROJECT, payload: res.data || {} })
+        return res.data
+    }
+    catch (err) {
+        return err;
+    }
 }
