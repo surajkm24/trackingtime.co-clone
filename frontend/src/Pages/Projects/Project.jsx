@@ -14,7 +14,7 @@ import { SingleProjectTask } from './SingleProjectTask';
 import { getProject } from '../../Components/ProjectReport/Report.Actions';
 import NoProject from './NoProject';
 import { useDispatch, useSelector } from 'react-redux';
-import { createProject, getAllProjectsAPI } from '../../Redux/Projects/project.actions';
+import { createProject, deleteProjectAPI, getAllProjectsAPI } from '../../Redux/Projects/project.actions';
 
 const Project = () => {
   const [projectData, setProjectData] = useState({ data: {}, completedTasks: 0, hoursCompleted: "", completedPercent: 0 });
@@ -64,9 +64,7 @@ const Project = () => {
   }
 
   const addProject = (params) => {
-    console.log(params)
     dispatch(createProject(token, params)).then((res) => {
-      console.log(res)
       setSingleProject(res);
       toast({
         title: 'Project created.',
@@ -84,7 +82,7 @@ const Project = () => {
   }
 
   const deleteProject = (id) => {
-    deleteData(token, id).then((res) => {
+    dispatch(deleteProjectAPI(token, id)).then((res) => {
       getProjects(token);
       toast({
         title: 'Project deleted!',
