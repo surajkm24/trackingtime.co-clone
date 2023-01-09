@@ -17,9 +17,8 @@ import { ChevronDownIcon } from '@chakra-ui/icons';
 import SingleProHeader from '../SingleProHeader/SingleProHeader';
 import TaskModal from '../TaskModal/TaskModal.jsx'
 
-const NavProject2 = ({ addProjectTask, projectData, updateProjectTask, deleteProjectTask }) => {
+const NavProject2 = ({ addProjectTask, updateProjectTask, deleteProjectTask }) => {
   return (
-
     <Box className={styles.NavPro2Container} flex='1'>
       {/* <SingleProHeader /> */}
       <Flex px='13px' className={styles.nav} justifyContent='space-between' alignItems='center' borderBottom='1px solid rgba(0,0,0,0.1)'>
@@ -69,7 +68,8 @@ const NavProject2 = ({ addProjectTask, projectData, updateProjectTask, deletePro
           </Menu>
         </Flex>
       </Flex>
-      <TaskModal deleteProjectTask={deleteProjectTask} addProjectTask={addProjectTask} projectData={projectData} updateProjectTask={updateProjectTask} />
+      <TaskModal deleteProjectTask={deleteProjectTask} addProjectTask={addProjectTask}
+        updateProjectTask={updateProjectTask} />
     </Box>
   )
 }

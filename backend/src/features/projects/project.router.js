@@ -18,9 +18,8 @@ app.post('/', async (req, res) => {
             res.send(item);
         }
     }
-    catch (e) {
-        // feedback: fw18_0042 - You can send the error message to client or send it to universal error hanlder
-        console.log(e)
+    catch (error) {
+        res.send({ error })
     }
 
 
@@ -31,19 +30,19 @@ app.get('/', async (req, res) => {
         let projects = await Project.find({ 'userId': req.userId });
         res.send(projects);
     }
-    catch (e) {
-        console.log(e)
+    catch (error) {
+        res.send({ error })
     }
 })
 
 app.get('/:id', async (req, res) => {
     try {
         let id = req.params.id;
-        let project = await Project.findById(id).populate({ path: "task", populate: { path: "taskId" } });
+        let project = await Project.findById(id);
         res.send(project);
     }
-    catch (e) {
-        console.log(e)
+    catch (error) {
+        res.send({ error })
     }
 })
 
@@ -53,19 +52,19 @@ app.delete('/:id', async (req, res) => {
         let deleteProject = await Project.findByIdAndDelete(id);
         res.send(deleteProject);
     }
-    catch (e) {
-        console.log(e)
+    catch (error) {
+        res.send({ error })
     }
 })
 
 app.patch('/:id', async (req, res) => {
     try {
         let id = req.params.id;
-        let item = await Project.findByIdAndUpdate(id, req.body);
+        let item = await Project.findByIdAndUpdate(id, req.body, { new: true });
         res.send(item);
     }
-    catch (e) {
-        console.log(e)
+    catch (error) {
+        res.send({ error })
     }
 })
 
