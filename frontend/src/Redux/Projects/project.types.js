@@ -1,0 +1,9 @@
+export const GET_ALL_PROJECTS = 'get/all/projects';
+export const ADD_PROJECT = 'add/project';
+export const DEL_PROJECT = 'del/project';
+export const SET_PROJECT = 'set/project';
+export const UPD_PROJECT = 'upd/project'
+export const GET_TASKS = 'get/tasks';
+export const ADD_TASK = 'add/task';
+export const UPD_TASK = 'upd/task';
+export const DEL_TASK = 'del/task';

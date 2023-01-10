@@ -19,14 +19,17 @@ import styles from "./Project.module.css";
 import './Sidebar.css';
 import RightBar from "./RightBar";
 import { AiFillDelete, AiFillStar, AiTwotoneEdit } from "react-icons/ai";
-import {BsArchive, BsFillPlayFill} from 'react-icons/bs';
-import {HiDocumentReport, HiOutlineDuplicate} from 'react-icons/hi'
+import { BsArchive, BsFillPlayFill } from 'react-icons/bs';
+import { HiDocumentReport, HiOutlineDuplicate } from 'react-icons/hi'
+import { useDispatch } from "react-redux";
+import { setProject } from "../../Redux/Projects/project.actions";
 
 
 
 
-const LeftSidebar = ({ addProject, data, singleProject, setSingleProject, deleteProject, alertMsg }) => {
+const LeftSidebar = ({ addProject, data, singleProject, deleteProject, alertMsg }) => {
   const [showSideBar, setShowSideBar] = useState(true);
+  const dispatch = useDispatch();
   const [Filtered, setFiltered] = useState({ all: "ALL", order: "BY ORDER" });
   return (
     <Box w={showSideBar ? '310px' : '0px'} h='93vh' bg='#f2f2f4' borderRadius='0px 5px 5px 0px' position='relative'>
@@ -211,7 +214,7 @@ const LeftSidebar = ({ addProject, data, singleProject, setSingleProject, delete
                       bg={singleProject._id === project._id ? "rgb(215,226,228)" : "initial"}
                       cursor='pointer'
                       _hover={{ background: "rgb(215,226,228)" }}
-                      onClick={() => setSingleProject(project)}
+                      onClick={() => dispatch(setProject(project))}
                       key={project._id}
                     >
                       <Box>
@@ -240,28 +243,28 @@ const LeftSidebar = ({ addProject, data, singleProject, setSingleProject, delete
                         <PopoverContent bg='whitesmoke' w='200px' border='none'>
                           <PopoverBody boxShadow='xl' px='0' py='10px' fontWeight={700} fontSize='12px' color='#0a192f'>
                             <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='6px 12px' _hover={{ background: "rgba(0,0,0,0.099)" }}>
-                             <AiTwotoneEdit/> Edit project
+                              <AiTwotoneEdit /> Edit project
                             </Box>
                             <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='6px 12px' _hover={{ background: "rgba(0,0,0,0.099)" }}>
-                             <BsFillPlayFill/> Track
+                              <BsFillPlayFill /> Track
                             </Box>
                             <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='6px 12px' _hover={{ background: "rgba(0,0,0,0.099)" }}>
-                            <AiFillStar/>  Add to favourites
+                              <AiFillStar />  Add to favourites
                             </Box>
                             <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='6px 12px' _hover={{ background: "rgba(0,0,0,0.099)" }}>
-                            <HiOutlineDuplicate/> Duplicate this project
+                              <HiOutlineDuplicate /> Duplicate this project
                             </Box>
                             <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='6px 12px' _hover={{ background: "rgba(0,0,0,0.099)" }}>
-                            <HiDocumentReport/> Report
+                              <HiDocumentReport /> Report
                             </Box>
                             <Box fontSize='12px' display='flex' cursor='pointer' alignItems='center' gap='7px' padding='6px 12px' _hover={{ background: "rgba(0,0,0,0.099)" }}>
                               PRIORITY
                             </Box>
                             <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='6px 12px' _hover={{ background: "rgba(0,0,0,0.099)" }}>
-                             <BsArchive/> Archive
+                              <BsArchive /> Archive
                             </Box>
                             <Box onClick={() => deleteProject(project._id)} display='flex' cursor='pointer' alignItems='center' gap='7px' padding='6px 12px' _hover={{ background: "rgba(0,0,0,0.099)" }}>
-                            <AiFillDelete/>  Delete
+                              <AiFillDelete />  Delete
                             </Box>
                           </PopoverBody>
                         </PopoverContent>

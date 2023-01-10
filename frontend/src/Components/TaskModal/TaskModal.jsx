@@ -26,12 +26,13 @@ import ProjAdd from './projAdd/ProjAdd'
 import Down from './D-Section/Down';
 import { AiFillEdit } from 'react-icons/ai';
 import { MdDelete } from 'react-icons/md'
+import { useSelector } from 'react-redux'
 
-const TaskModal = ({ addProjectTask, projectData, updateProjectTask, deleteProjectTask }) => {
+const TaskModal = ({ addProjectTask, updateProjectTask, deleteProjectTask }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef();
   const [formData, setFormData] = useState({ taskName: "", description: "", status: false, estimatedTime: 0 })
-
+  const { selectedProject, tasks } = useSelector(store => store.project)
   const handleSubmit = (e) => {
     e.preventDefault();
     addProjectTask(formData);
@@ -39,13 +40,12 @@ const TaskModal = ({ addProjectTask, projectData, updateProjectTask, deleteProje
   }
   return (
     <Box p='10px 25px'>
-      {projectData.data?.task?.map(({ taskId }) => {
-        if (taskId === null) return <></>
+      {tasks?.map((task) => {
         return (
           <Box display='flex' alignItems='center' justifyContent='space-between' gap='20px' borderBottom='1px solid rgba(0,0,0,0.1)' p='10px 15px' _hover={{ background: "rgba(0,0,0,0.11)" }}>
             <Box display='flex' alignItems='center' gap='20px'>
-              <Checkbox colorScheme='green' borderColor='#969BA6' isChecked={taskId.status} onChange={(e) => updateProjectTask(e.target.checked, taskId._id)} />
-              <Text color='#0a192f' fontSize='13px' fontWeight='600'>{taskId.taskName.toUpperCase()}</Text>
+              <Checkbox colorScheme='green' borderColor='#969BA6' isChecked={task.status} onChange={(e) => updateProjectTask(e.target.checked, task._id)} />
+              <Text color='#0a192f' fontSize='13px' fontWeight='600'>{task.taskName.toUpperCase()}</Text>
             </Box>
             <Popover trigger='hover'>
               <PopoverTrigger>
@@ -58,7 +58,7 @@ const TaskModal = ({ addProjectTask, projectData, updateProjectTask, deleteProje
                   <Box display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "rgba(0,0,0,0.1)" }}>
                     <AiFillEdit /> Edit task
                   </Box>
-                  <Box onClick={() => deleteProjectTask(taskId._id)} display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "rgba(0,0,0,0.1)" }}>
+                  <Box onClick={() => deleteProjectTask(task._id)} display='flex' cursor='pointer' alignItems='center' gap='7px' padding='5px 10px' _hover={{ background: "rgba(0,0,0,0.1)" }}>
                     <MdDelete /> Delete
                   </Box>
                 </PopoverBody>

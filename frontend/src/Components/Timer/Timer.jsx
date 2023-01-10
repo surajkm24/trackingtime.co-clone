@@ -3,9 +3,13 @@ import React from 'react';
 import { useEffect, useState } from "react";
 import { AiFillPauseCircle } from 'react-icons/ai';
 import { GoPlay } from "react-icons/go";
+import { useSelector } from 'react-redux';
+import { useProjectStats } from '../../Hooks/useProjectStats';
 
-export default function Timer({ play, setPlay, projectData }) {
-  const [time, setTime] = useState(0)
+export default function Timer({ play, setPlay }) {
+  const [time, setTime] = useState(0);
+  const { selectedProject, tasks } = useSelector(store => store.project);
+  const { hoursCompleted } = useProjectStats(selectedProject, tasks)
   useEffect(() => {
     if (play) {
       let id = setTimeout(() => {
@@ -39,8 +43,11 @@ export default function Timer({ play, setPlay, projectData }) {
 
   return (
     <HStack>
-      {play ? <AiFillPauseCircle cursor='pointer' color='teal' fontSize='24px' onClick={() => toggleTimer()} /> : <GoPlay fontSize='24px' cursor={'pointer'} onClick={() => toggleTimer()} />}
-      <Box fontSize={"14px"} fontWeight={"light"}>{projectData.hoursCompleted}/{projectData?.data?.estimatedTime}:00</Box>
+      {play ? <AiFillPauseCircle cursor='pointer' color='teal' fontSize='24px'
+        onClick={() => toggleTimer()} /> : <GoPlay fontSize='24px' cursor={'pointer'}
+          onClick={() => toggleTimer()} />}
+      <Box fontSize={"14px"} fontWeight={"light"}>{hoursCompleted}/{selectedProject.estimatedTime}:00
+      </Box>
     </HStack>
   );
 }
